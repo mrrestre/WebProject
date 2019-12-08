@@ -9,8 +9,8 @@ require_once 'init/20_imports.php';
 
 
 // query params with 'c' means controller and 'a' means action
-// controller is always the controller of the views
-// and the action is always the method of the controller, which has be called before render HTML
+// controller is alwayse the controller of the views
+// and the action is alwayse the method of the controller, which has be called before render HTML
 
 // check controller name is given? if not use 'pages' as default!
 $controllerName = $_GET['c'] ?? 'pages';
