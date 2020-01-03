@@ -1,9 +1,36 @@
-<h1>Login</h1>
-<form method="post">
-	<label for="email">E-Mail</label> <br />
-	<input type="email" name="email" id="email" /><br />
-	<label for="password">Passwort</label> <br />
-	<input type="password" name="password" id="password" /><br />
-	<br />
-	<input type="submit" name="submit" value="Login now!" /><br />
-</form>
+<?
+require_once '../../init/10_database.php';
+require_once '../../init/20_functions.php';
+require_once '../../init/30_const.php';
+?>
+
+<html>
+<head></head>
+<body>
+	<h1> LOGINNNNNNN </h1>
+	<?php 
+ 		$article = getAnArticle( 0, $database );
+		$image = getArticleImage( 0, $database );
+		$category = getArticleCategory ( 0, $database);
+	?>
+
+	<h2><?= $article->newsTitle ?></h2>
+	<span>published on <?= $article->creation ?> by <?= $article->authorName ?></span>
+	<?= $article->content ?>
+	<hr>
+
+	<? echo $image->imagePath ?>
+
+	
+	<hr>
+	<img src="<?= '../../'.$image->imagePath ?>">
+	<hr>
+
+	<? echo $category->catId ?>
+
+
+
+	
+
+</body>
+</html>
