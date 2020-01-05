@@ -1,44 +1,33 @@
 <?php
 
-session_start();
-
 // all require stuff to work!!
 require_once 'init/10_database.php';
 require_once 'init/20_functions.php';
-require_once 'init/30_const.php';
 
-?> 
+define('ROOT', realpath(__DIR__.'/.'));   		// Define absolute path to this file's directory
+
+if (!isset($_GET['page'])){
+	$page = 'home';
+}
+else{
+	$page = $_GET['page'];      				// Set page variable in URI
+}
+?>
 
 <html>
-<head></head>
-<body>
-	<?php 
- 		$article = getAnArticle( 0, $database );
-		$image = getArticleImage( 0, $database );
-		$category = getArticleCategory ( 0, $database);
-	?>
+	<head>
+		<?php echo file_get_contents("static/head.html"); ?>
+	</head>
 
-	<h2><?= $article->newsTitle ?></h2>
-	<span>published on <?= $article->creation ?> by <?= $article->authorName ?></span>
-	<?= $article->content ?>
-	<hr>
-
-	<? echo $image->imagePath ?>
-
-	<hr>
-	<!-- <img src="assets\images\apple.jpg"> -->
-
-	<hr>
-	<img src="<?= $image->imagePath ?>">
-	<hr>
-
-	<? echo $category->catId ?>
-
-
-
-	
-
-</body>
+	<body>
+		<header>
+			<?php include "static/header.php"; ?>
+		</header>
+		
+		<footer>
+				<?php include "static/footer.php"; ?>
+		</footer>
+	</body>
 </html>
 
 

@@ -1,5 +1,4 @@
 <?php
-
     $host = 'localhost';
     $dbname = 'taketec-pdo-version-1';
     $dbuser = 'root';
@@ -7,9 +6,10 @@
     $charset = 'utf8mb4';
 
     $dns = "mysql:host=$host;dbname=$dbname;charset=$charset";
+    
     $options    = [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC        
     ];
 
 

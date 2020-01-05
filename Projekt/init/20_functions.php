@@ -3,7 +3,7 @@
     
     	function fetchNews( $database )
     	{
-            $request = $database->prepare(" SELECT newsId, newsTitle, newsShortDescription, concat(firstName, surname) as authorName, creation, updated, copyright, paidNew FROM news JOIN user ON user.userId = news.userId ORDER BY creation DESC");
+            $request = $database->prepare(" SELECT newsId, newsTitle, newsShortDescription, concat(firstName, ' ', surname) as authorName, creation, updated, copyright, paidNew FROM news JOIN user ON user.userId = news.userId ORDER BY creation DESC");
     		return $request->execute() ? $request->fetchAll() : false; 
     	}
     
