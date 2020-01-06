@@ -3,6 +3,10 @@
     <!-- hier den css von home hinzüfugen -->
     </head>
     <body>
+        <?if($GLOBALS['currentUser'] != null)
+        {
+            echo $GLOBALS['currentUser'];
+        }?>
         <? $news = fetchNews ($database); ?>
         <?php foreach ($news as $row) :?>
             <h2><a href="index.php?page=readArticle&newsid=<?= $row['newsId'] ?>"><?= $row['newsTitle'] ?></a></h2>

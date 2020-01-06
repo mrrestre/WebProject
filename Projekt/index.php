@@ -14,6 +14,9 @@ if (!isset($_GET['page'])){
 else{
 	$page = $_GET['page'];      				// Set page variable in URI
 }
+
+$GLOBALS['currentUser'] = null;
+
 ?>
 
 <html>

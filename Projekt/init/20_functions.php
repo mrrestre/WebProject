@@ -30,6 +30,25 @@
             $request = $database->prepare(" SELECT content, concat(firstName, ' ', surname) as userName FROM comment JOIN user ON user.userId = comment.userId  WHERE newsId = ? ");
             return $request->execute(array($newsId)) ? $request->fetchAll() : false;
         }
+
+        function getAllUsernamesAndPasswords ( $database )
+        {
+            $request = $database->prepare(" SELECT eMail, password FROM user");
+            return $request->execute() ? $request->fetchAll() : false;
+        }
+
+        function getUsersWithPermission ( $database )
+        {
+            $request = $database->prepare(" SELECT userId FROM user WHERE permission = 1");
+            return $request->execute() ? $request->fetchAll() : false;
+        }
+
+        function getUserIDFromLogin ( $database , $email )
+        {
+            $request = $database->prepare(" SELECT userId FROM user WHERE eMail = ? ");
+            return $request->execute(array($email)) ? $request->fetchAll() : false;
+        }
+        
     	// function getOtherArticles( $differ_id, $database)
     	// {
     	// 	$request =  $database->prepare(" SELECT news_id,  news_title, news_short_description, news_full_content, news_author, news_published_on FROM info_news  WHERE news_id != ? ");

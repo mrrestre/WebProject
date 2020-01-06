@@ -49,7 +49,8 @@ $status='';
             echo $status;
         }
     }
-
+    else{
+    }
 
 
 
@@ -64,7 +65,7 @@ $status='';
         <h1>Welcome to the Registration</h1>
 
         <div class="loginclass">
-            <form action="index.php?page=registration" method="post">
+            <form action="index.php?page=registration" method="POST">
                             
                 <label for="firstName">First Name*</label><br>
                 <input type="text" id="firstName" name="firstName" placeholder="First Name" required><br>

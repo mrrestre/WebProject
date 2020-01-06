@@ -18,17 +18,22 @@
                     <a href="index.php?page=readArticle&newsid=<?echo $random?>">Random</a>
                 </nav>
            </div>
-            
+           <? $permission = getUsersWithPermission ( $database );?>
+           <? $permission = $permission[0]; ?>
             <div class="header-right">
                 <nav>
                     <a href="index.php?page=contact">Contact</a>
                     <?php if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === true) : ?>
 						<a href="index.php?page=profile">Profile</a>
-						<a href="index.php?page=logout">Logout</a>
+                        <a href="index.php?page=logout">Logout</a>
+                        <?php foreach($permission as $row): ?>
+                            <? if($row === $currentUser): ?>
+                                <a href="index.php?page=admin">Admin</a>
+                            <?endif;?>
+                        <?php endforeach; ?>
 					<?php else : ?>
-						<li><a href="index.php?page=login">Login</a>
+                        <a href="index.php?page=login">Login</a> 
 					<?php endif; ?>
-                    <a href="index.php?page=admin">Admin</a>
                     <button class="button" type="submit" id="send"><span>Search</span></button>
                     <input class="search" type="text" placeholder="Search.." name="search">
                 </nav>
