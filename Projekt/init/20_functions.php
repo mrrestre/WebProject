@@ -9,22 +9,27 @@
     
         function getAnArticle( $newsId, $database )
     	{
-       		$request =  $database->prepare(" SELECT newsId, newsTitle, content, concat(firstName, surname) as authorName, creation, updated, copyright, paidNew, price FROM news JOIN user ON user.userId = news.userId WHERE newsId = ? ");
-    		return $request->execute(array($newsId)) ? $request->fetchObject() : false; 
+       		$request =  $database->prepare(" SELECT newsId, newsTitle, content, concat(firstName, ' ', surname) as authorName, creation, updated, copyright, paidNew, price FROM news JOIN user ON user.userId = news.userId WHERE newsId = ? ");
+    		return $request->execute(array($newsId)) ? $request->fetchAll() : false; 
         }
         
         function getArticleImage( $newsId, $database )
         {
             $request = $database->prepare(" SELECT imagePath, copyright FROM image WHERE newsId = ? ");
-            return $request->execute(array($newsId)) ? $request->fetchObject() : false;
+            return $request->execute(array($newsId)) ? $request->fetchAll() : false;
         }
         
         function getArticleCategory( $newsId, $database )
         {
             $request = $database->prepare(" SELECT catId FROM category_has_news WHERE newsId = ? ");
-            return $request->execute(array($newsId)) ? $request->fetchObject() : false;
+            return $request->execute(array($newsId)) ? $request->fetchAll() : false;
         }
-    
+        
+        function getArticleComments( $newsId, $database )
+        {
+            $request = $database->prepare(" SELECT content, concat(firstName, ' ', surname) as userName FROM comment JOIN user ON user.userId = comment.userId  WHERE newsId = ? ");
+            return $request->execute(array($newsId)) ? $request->fetchAll() : false;
+        }
     	// function getOtherArticles( $differ_id, $database)
     	// {
     	// 	$request =  $database->prepare(" SELECT news_id,  news_title, news_short_description, news_full_content, news_author, news_published_on FROM info_news  WHERE news_id != ? ");

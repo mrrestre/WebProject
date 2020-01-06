@@ -78,7 +78,7 @@ button {
     text-align: center;
     font-size: 15px;
     padding: 7px;
-    width: 100px;
+    width: 80px;
     transition: all 0.5s;
     cursor: pointer;
     margin-top: 8px;
@@ -115,5 +115,5 @@ button {
     color: #7f7f7f;
     border-radius: 4px;
     margin-right: 0px;
-    margin-left: 5px;
+    margin-left: 2px;
 }

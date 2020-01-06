@@ -1,10 +1,12 @@
 <?php
 
+session_start();
+
 // all require stuff to work!!
 require_once 'init/10_database.php';
 require_once 'init/20_functions.php';
 
-define('ROOT', realpath(__DIR__.'/.'));   		// Define absolute path to this file's directory
+define('ROOT', str_replace('\\', '/', realpath(__DIR__)));
 
 if (!isset($_GET['page'])){
 	$page = 'home';
