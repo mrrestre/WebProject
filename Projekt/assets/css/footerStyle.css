@@ -1,9 +1,16 @@
 footer {
     text-align: center;
-    line-height: 60px;
+    line-height: 20px;
     color: #00a19c;
     background-color: #27313a;
     width: 100%;
     position: fixed;
     bottom: 0px;
+}
+
+footer a {
+    font-size: 10px;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    color: #00a19c;
 }

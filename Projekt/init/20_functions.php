@@ -39,13 +39,13 @@
 
         function getUsersWithPermission ( $database )
         {
-            $request = $database->prepare(" SELECT userId FROM user WHERE permission = 1");
+            $request = $database->prepare(" SELECT userId FROM user WHERE permission IS NOT NULL");
             return $request->execute() ? $request->fetchAll() : false;
         }
 
         function getUserIDFromLogin ( $database , $email )
         {
-            $request = $database->prepare(" SELECT userId FROM user WHERE eMail = ? ");
+            $request = $database->prepare(" SELECT userId FROM user WHERE eMail = ?");
             return $request->execute(array($email)) ? $request->fetchAll() : false;
         }
         

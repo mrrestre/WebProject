@@ -36,7 +36,9 @@ $status='';
                                 'eMail' => $email]);
 
                 $status ='you were successfully registred';   
-                echo $status;             
+                echo $status;
+                header('Location: index.php?page=login');
+                echo 'You can Log In now!';             
             }
             else{
                 $status = 'Password and Passwordagain must be the same!!';

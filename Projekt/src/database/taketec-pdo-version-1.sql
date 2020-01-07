@@ -100,8 +100,8 @@ CREATE TABLE `image` (
 --
 
 INSERT INTO `image` (`imageId`, `imagePath`, `copyright`, `newsId`) VALUES
-(0, 'Projekt\\assets\\images\\iPad2020.jpg', 'https://flipboard.com/topic/de-ipadpro', 0),
-(1, 'Projekt\\assets\\images\\pixel4a.jpg', 'https://www.gsmarena.com/google_pixel_4_xl_official_render_leak-news-39436.php', 1);
+(0, '/assets/images/iPad2020.jpg', 'https://flipboard.com/topic/de-ipadpro', 0),
+(1, '/assets/images/pixel4a.jpg', 'https://www.gsmarena.com/google_pixel_4_xl_official_render_leak-news-39436.php', 1);
 
 -- --------------------------------------------------------
 

@@ -1,8 +1,9 @@
 <? 
-    $_SESSION['loggedIn'] = false;
-    session_destroy();
-    $currentUser = null;
+    if(isset($_SESSION))
+    { 
+        session_unset();
+        session_destroy();
+    }
     header('Location: index.php?page=login');
-    exit;
-    session_start();
+
 ?>
