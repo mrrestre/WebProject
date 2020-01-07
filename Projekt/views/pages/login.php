@@ -1,32 +1,51 @@
-<?
-$username = getAllUsernamesAndPasswords( $database );
-$status='';
-$success = false;
-if(isset($_POST['submit']))
-{    
-    if(!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] === false)
-	{
-		$email    = $_POST['email'] ?? null;
-		$password = $_POST['password'] ?? null;
+<?php
+    $username = getAllUsernamesAndPasswords( $database );   //All usernames (Email + password) are saved in this variables
+    $status='';                                             //Just in case something goes wrong 
+    $success = false;                                       //Works to determine if the login was succesfull
 
-        foreach ($username as $row)
+    if(isset($_POST['submit']))
+    {    
+        if(!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] === false)
         {
-            
-            if($email === $row['eMail'] && $password === $row['password'])
+            $email    = $_POST['email']     ?? null;
+            $password = $_POST['password']  ?? null;
+
+            foreach ($username as $row)
             {
-                $_SESSION['loggedIn'] = true;
-                $GLOBALS['currentUser'] = getUserIDFromLogin( $database, $email );
-                header('Location: index.php?page=home');
-                $success = true;
+                if($email === $row['eMail'] && $password === $row['password'])
+                {
+                    $_SESSION['loggedIn'] = true;
+
+                    $thisUserID = getUserIDFromLogin( $database, $email );
+                    $thisUserID = $thisUserID[0];
+                    $thisUserID = $thisUserID['userId'];
+
+                    $_SESSION['currentUser'] = $thisUserID;
+                    
+                    $permission = getUsersWithPermission ( $database );
+
+                    foreach($permission as $row)
+                    {
+                        if( $row['userId'] === $_SESSION['currentUser'] )
+                        {
+                            $_SESSION['admin'] = true;
+                            break;
+                        }
+                        else
+                        {
+                            $_SESSION['admin'] = false;
+                        }
+                    }
+                    $success = true;
+                    header('Location: index.php?page=home');
+                }
             }
-        }
-        if (!$success)
-	    {
-		    echo 'Your username or password is wrong';
-	    }
-	}
-	
-}
+            if (!$success)
+            {
+                echo 'Your username or password is wrong';
+            }
+        }   
+    }
 
 ?>
 
@@ -48,6 +67,6 @@ if(isset($_POST['submit']))
                 <input type="submit" id="submit" name="submit" value="Login">   
             </form>
         </div>
-            <p> No Account yet !! <a href="index.php?page=registration"><input type="submit" id="submit" name="submit" value="SignUp"> </a></p>
+            <p> No Account yet? What are you waiting? <a href="index.php?page=registration"><input type="submit" id="submit" name="submit" value="SignUp"> </a></p>
     </body>
 </html>
