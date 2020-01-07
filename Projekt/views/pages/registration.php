@@ -84,7 +84,7 @@ $status='';
                 <label for="gender">Gender*</label><br>  
                 <input type="radio" value="m" id="male" name="gender" required>   
                 <label for="male">male</label>
-                <input type="radio" value="f" name="gender" required>
+                <input type="radio" value="f" id="female" name="gender" required>
                 <label for="female">female</label><br>
                                 
                 <label for="DOB">Date of Birth*</label><br>

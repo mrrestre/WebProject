@@ -74,6 +74,12 @@ else
 						break;
 					case 'impressum':
 						include(ROOT.'/views/pages/impressum.html');
+						break;
+					case 'addArticle':
+						include(ROOT.'/views/pages/addArticle.php');
+						break; 
+					case 'deleteUser':
+						include(ROOT.'/views/pages/deleteUser.php');
 						break; 
 					default:
 						include(ROOT.'/views/pages/error404.php');

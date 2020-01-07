@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 04. Jan 2020 um 19:12
+-- Erstellungszeit: 07. Jan 2020 um 22:40
 -- Server-Version: 10.4.8-MariaDB
 -- PHP-Version: 7.3.10
 
@@ -35,20 +35,6 @@ CREATE TABLE `category` (
   `description` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Daten für Tabelle `category`
---
-
-INSERT INTO `category` (`catId`, `description`) VALUES
-(1, 'Android'),
-(2, 'iOS'),
-(3, 'Windows'),
-(4, 'macOS'),
-(5, 'Samsung'),
-(6, 'Google'),
-(7, 'Huawei'),
-(8, 'iPhone');
-
 -- --------------------------------------------------------
 
 --
@@ -59,15 +45,6 @@ CREATE TABLE `category_has_news` (
   `catId` int(11) NOT NULL,
   `newsId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Daten für Tabelle `category_has_news`
---
-
-INSERT INTO `category_has_news` (`catId`, `newsId`) VALUES
-(1, 1),
-(6, 1),
-(2, 0);
 
 -- --------------------------------------------------------
 
@@ -95,14 +72,6 @@ CREATE TABLE `image` (
   `newsId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Daten für Tabelle `image`
---
-
-INSERT INTO `image` (`imageId`, `imagePath`, `copyright`, `newsId`) VALUES
-(0, '/assets/images/iPad2020.jpg', 'https://flipboard.com/topic/de-ipadpro', 0),
-(1, '/assets/images/pixel4a.jpg', 'https://www.gsmarena.com/google_pixel_4_xl_official_render_leak-news-39436.php', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -127,8 +96,9 @@ CREATE TABLE `news` (
 --
 
 INSERT INTO `news` (`newsId`, `creation`, `updated`, `userId`, `content`, `copyright`, `paidNew`, `price`, `newsTitle`, `newsShortDescription`) VALUES
-(0, '2020-01-01', NULL, 1, 'Should you wait for the 2020 iPad Pro, or is it OK to buy now? That’s a question a lot of people are asking at present, following reports that we’re likely to see new iPads in the first half of the year.\r\n\r\nIt is, of course, a truism in tech that, whenever you buy, something better will come along shortly afterward. You can’t worry about that, or else you’ll never buy anything. The question, then, is how big an upgrade are the 2020 iPad Pro models likely to be?\r\n\r\n\r\n\r\nLet’s start with changes we’re not likely to see.\r\n\r\nThings the 2020 iPad Pro probably won’t offer\r\nThere has long been talk of even larger iPads, with a 14.9-inch model suggested. Indeed, in a reader poll, some 45% of you wanted to see something larger than the 12.9-inch iPad.\r\n\r\nPersonally, I’d love one. It wouldn’t ever leave my home, but there are plenty of times when I’d really appreciate a larger display for home use.\r\n\r\nHowever, while I’m sure there’s a 15-inch iPad prototype floating around in Apple’s design lab, there’s been no indication at all that we’re going to see a larger one next year. The most recent report suggests that the external dimensions of the early 2020 models will be identical to the existing ones.\r\n\r\nWhile it’s not impossible that Apple might make the bezels slightly smaller, it doesn’t seem likely. Chances are that it will be the same display size in the same size casing.\r\n\r\nIt also seems unlikely that Apple will make the switch from LCD to OLED. The type of advanced OLED panels used in the latest iPhones would pose both cost and yield challenges, and there’s been no supply-chain suggestions of any switch at this point.\r\n\r\nIt’s also a safe bet that we won’t see 5G support in this year’s iPads: Apple always introduces new tech to the iPhone first, with the iPad following on behind. Expect 5G iPads next year.\r\n\r\nThings the 2020 iPad Pro may offer\r\nRenders based on a claimed design leak suggests that this year’s iPad Pro models may well get the same triple-camera module as the iPhone 11 Pro.\r\n\r\nWhile some have wondered what the point would be, as taking photos with an iPad is generally considered something of a joke, the leak is via Steve H. McFly, aka Onleaks, who correctly rendered the iPhone 11 Pro design in January of last year. It’s also consistent with a number of earlier reports.\r\n\r\nPersonally, I find the iPad a useful indoor camera, especially for product shots. The large display makes it easy to check focus, and also gives a better sense of the framing than a smaller iPhone screen, so the idea doesn’t seem as far-fetched to me as it does to some.\r\n\r\nWhat might be more interesting to many is a time-of-flight (ToF) camera system for better augmented reality performance, but, like 5G, that is extremely unlikely to come to the iPad ahead of the iPhone.\r\n\r\nBetter performance is a given, but in all honesty, there are few usage patterns that will benefit from it to any notable degree. What might be more appealing is if Apple finally bumps up the storage options. Currently, the base model is 64 GB, a pretty embarrassing starting point for a pro model in 2020. So we could see that boosted to 128 GB.\r\n\r\nWhether that would cascade through the higher storage tiers is a much trickier question. The four current storage tiers are 64 GB, 256 GB, 512 GB, and 1 TB. If the entry point is doubled to 128 GB, would the other levels remain the same, or could we see 512 GB, 1 TB, and 2 TB options?\r\n\r\nIt’s not impossible. Flash storage gets cheaper all the time, and we’ve already seen that reflected in the 16-inch MacBook Pro models, now offering cheaper SSD options throughout — and a massive 8 TB maximum. I wouldn’t, however, put money on it. The current 1 TB maximum is still a huge amount of storage for a tablet, and I suspect just a tiny percentage of buyers go for it. So my money would be on the remaining storage tiers going unchanged.\r\n\r\nSo … buy now, or wait?\r\nIf you do use your iPad Pro as a camera, the reports seem sufficiently plausible to me to suggest waiting in the hope that the triple-camera setup reports are accurate. That would transform the photographic capabilities of the device.\r\n\r\nIf your plan is to buy the base model when it comes to storage, there too I’d suggest waiting. That bump from 64 GB to 128 GB is far from certain, but I’d say there’s at least a decent chance, and it does make the machine significantly more useful when it comes to things like downloading movies and TV shows for viewing on planes and in areas with poor connectivity.\r\n\r\nIf you really do max out the performance of your iPad with things like video editing and games, that too would be another good reason to wait.\r\n\r\nFinally, any new model means discounts available on the old one. While Apple will simply replace the existing one in its lineup, the older models will still be available from other outlets, so you’ll likely save some money by waiting.\r\n\r\nOtherwise, though, I’m not expecting too much. Yes, the new iPad will be better in some respects, and there’s always the chance that Apple has a surprise in store, but you have to weigh that against the fact that if you buy now, you get to enjoy your new iPad for three to six months longer than if you wait for the upgrade. I’d say that if none of the above arguments apply to you, you might as well start enjoying your device today rather than wait an unknown period of time for rather marginal improvements.', 'https://ww.9to5mac.com/2019/12/30/wait-for-the-2020-ipad-pro/', 0, NULL, '2020 iPad Pro', 'Should you wait for the 2020 iPad Pro, or is it OK to buy now?'),
-(1, '2020-01-02', '2020-01-03', 3, 'Google’s Pixel lineup usually leaks in huge quantities before launch, but the upcoming Pixel 4a has been relatively quiet so far outside of a couple of leaks and rumors. Today, a new rumor has come out to reveal two details about the Pixel 4a including its color, but it’s important to take it with a huge grain of salt.\r\n\r\n\r\n\r\nYouTuber Dave2D posted a video today talking about some details he was sent regarding the Pixel 4a. This “juice,” as he calls it, shouldn’t be taken as fact by any means. Not only does Dave2D have no track record for leaks of this nature, but he doesn’t specify his sources either. As we’ll further discuss below, this source goes completely contrary to our own sources so we can’t put any faith in this very sketchy rumor.\r\n\r\nLee explains that Pixel 4a will have a 5.81-inch display which does line up with recent CAD-based leaks of the device. He also mentions that the Pixel 4a will have a plastic unibody design and a fingerprint sensor on the back, but it won’t have wireless charging.\r\n\r\nIn the video, Lee also describes a new color variant for the Pixel 4a. Apparently, the device will come in three colors. The white would be a fairly traditional option with a white body and a “coral” power button, but the black model would adopt a green power button. Most interestingly, the Pixel 4a may come in an “arctic blue” color that has a “hot pink” power button.\r\n\r\nThe biggest part of this rumor, though, is mentioning that Pixel 4a won’t come in an “XL” size, but we wouldn’t put any faith in that.\r\n\r\nNot only would this be unprecedented for a Pixel smartphone, but our own sources have already implied there will be a Pixel 4a XL that will be priced slightly higher than the Pixel 3a XL, perhaps around $499. This information was shared last month on an episode of Alphabet Scoop.\r\n\r\nThe only piece of evidence that a Pixel 4a could drop the XL model is that we’ve yet to spot a potential codename for that device. Currently, only one codename, “Needlefish,” is outstanding but we don’t know for a fact that it relates to the 4a. At this time, we can’t put any faith in this rumor that a 4a XL isn’t coming to market.', 'https://ww.9to5google.com/2020/01/03/pixel-4a-blue-color-sketchy-rumor/', 0, NULL, 'Pixel 4a', 'Sketchy rumor claims Google Pixel 4a could include a blue color variant');
+(1, '0000-00-00', NULL, 1, 'this is a content test', 'www.google.com', 0, '0.00', 'title test', 'teaser test'),
+(2, '2020-01-01', NULL, 1, 'Samsung’s One UI skin over Android has breathed new life into the company’s smartphones and as time goes on, it’s just getting better. Thanks to a teardown of the latest One UI update, we’ve got some hints at what’s coming next to Samsung’s software including battery health monitoring, faster charging, and more new camera features.\r\n\r\n\r\nThe folks over at XDA-Developers took a deep dive into One UI 2.0 to see what’s in preparation under the hood. Among what they found, firstly, is a handful of new details on upcoming camera features.\r\n\r\nNew Camera Features\r\nIf you’ll recall last year, several new camera modes likely arriving on the Galaxy S11/S20 were discovered. One of those new modes was “Director’s View” and this latest teardown digs into that a bit further. Strings suggest that this camera mode will allow users to lock in on a subject and the phone will keep that subject in focus as well as getting close-up shots of the subject.\r\n\r\nFurther, another new camera is found in this latest teardown called “Single Take Photo.” With this mode, Samsung uses AI to automatically capture the best shots. Google does this to an extent with features such as Photobooth on the Pixel, but Samsung seems to be expanding things with tips for framing shots or different angles.\r\n\r\nFinally, rounding things out, there’s evidence that Samsung is bringing back a “Pro Video” mode. This would allow users to adjust shutter speed, ISO, exposure, and more in video just like Galaxy devices can currently do with photos. Bokeh effects may also arrive to mirror some of the Live Focus video effects that arrived with Note 10.', NULL, 0, NULL, 'new Battery', 'Samsung teardown hints at new camera features, ‘Battery Health,’ super fast charging'),
+(3, '2020-01-02', '2020-01-03', 2, 'The success of Chrome OS is thanks to the cheap Chromebooks that sell en masse, not the high-end models. At CES 2020 this week, we got a chance to spend some time with the Lenovo IdeaPad Duet, a Chrome OS tablet that ticks pretty much all of the boxes.\r\n\r\n\r\nSo, what’s been the problem with Chrome OS tablets so far? To date, only two Chrome OS tablets have launched, and, frankly, neither of them have been very good. That’s Google’s Pixel Slate, which was a monumental failure that saw the company pull out of tablets entirely, and the Acer Chromebook Tab 10, an education-focused machine. HP’s Chromebook X2 was perhaps the best effort, but it was still priced too high for general consumers.\r\n\r\nThe IdeaPad Duet solves the problems of those machines. Firstly, it’s affordable. The entire product is $279, and that includes the keyboard and kickstand cover, unlike other Chrome OS tablets that have launched to date.\r\n\r\nSecondly, the Lenovo IdeaPad Duet is a Chrome OS tablet that consumers might actually be interested in. A 10-inch tablet with a keyboard and a full browser is a compelling package that might even sway some iPad users, too.', 'https://ww.9to5google.com/2020/01/06/lenovo-ideapad-duet-first-impressions-chrome-os-tablet/', 1, '19.99', 'Lenovo IdeaPad', 'Lenovo IdeaPad Duet finally gives Chrome OS the tablet it needs');
 
 -- --------------------------------------------------------
 
@@ -150,7 +120,7 @@ CREATE TABLE `news_has_orders` (
 
 CREATE TABLE `order` (
   `orderId` int(11) NOT NULL,
-  `user'Id` int(11) NOT NULL,
+  `userId` int(11) NOT NULL,
   `orderDate` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -169,13 +139,23 @@ CREATE TABLE `payment_method` (
   `nameOnCard` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
+
 --
--- Daten für Tabelle `payment_method`
+-- Tabellenstruktur für Tabelle `purchased_article`
 --
 
-INSERT INTO `payment_method` (`paymentMethodId`, `userId`, `cardType`, `cardNumber`, `CVV`, `nameOnCard`) VALUES
-(1, 1, 1, 'DE8123456789789789', NULL, 'Ahmad Abo Louha'),
-(2, 3, 0, 'DE885522885522885522', NULL, 'Alejandro Restrepo Klinge');
+CREATE TABLE `purchased_article` (
+  `newsId` int(11) NOT NULL,
+  `userId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Daten für Tabelle `purchased_article`
+--
+
+INSERT INTO `purchased_article` (`newsId`, `userId`) VALUES
+(3, 3);
 
 -- --------------------------------------------------------
 
@@ -201,8 +181,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`userId`, `firstName`, `surname`, `password`, `gender`, `DOB`, `country`, `phone`, `eMail`, `permission`) VALUES
-(1, 'Ahmad', 'Abo Louha', '12341234', 'm', '1993-09-08', 'DE', '0177889966', 'ahmad@gmail.com', 1),
-(3, 'Alejandro', 'Restrepo Klinge', '123123', 'm', '1996-12-12', 'DE', '07788445566', 'alejandro@gmail.com', NULL);
+(1, 'Ahmad', 'Abo Louha', '123123', 'm', '1993-09-08', 'DE', '01778899', 'ahmad@gmail.com', 1),
+(2, 'alejandro', 'Restrepo Klinge', '123123', 'm', '1996-12-24', 'DE', '01778888', 'alejandro@gmail.com', 1),
+(3, 'James', 'Bond', '123123', 'm', '1950-07-30', 'UK', '01778877', 'james@gmail.com', NULL);
 
 --
 -- Indizes der exportierten Tabellen
@@ -256,7 +237,7 @@ ALTER TABLE `news_has_orders`
 --
 ALTER TABLE `order`
   ADD PRIMARY KEY (`orderId`),
-  ADD KEY `fk_ORDER_USER1` (`user'Id`);
+  ADD KEY `fk_ORDER_USER1` (`userId`);
 
 --
 -- Indizes für die Tabelle `payment_method`
@@ -266,10 +247,69 @@ ALTER TABLE `payment_method`
   ADD KEY `USERID_idx` (`userId`);
 
 --
+-- Indizes für die Tabelle `purchased_article`
+--
+ALTER TABLE `purchased_article`
+  ADD KEY `fk_purchase_news` (`newsId`),
+  ADD KEY `fk_purchase_user` (`userId`);
+
+--
 -- Indizes für die Tabelle `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`userId`);
+
+--
+-- AUTO_INCREMENT für exportierte Tabellen
+--
+
+--
+-- AUTO_INCREMENT für Tabelle `category`
+--
+ALTER TABLE `category`
+  MODIFY `catId` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT für Tabelle `comment`
+--
+ALTER TABLE `comment`
+  MODIFY `commentId` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT für Tabelle `image`
+--
+ALTER TABLE `image`
+  MODIFY `imageId` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT für Tabelle `news`
+--
+ALTER TABLE `news`
+  MODIFY `newsId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT für Tabelle `news_has_orders`
+--
+ALTER TABLE `news_has_orders`
+  MODIFY `shoppingCartId` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT für Tabelle `order`
+--
+ALTER TABLE `order`
+  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT für Tabelle `payment_method`
+--
+ALTER TABLE `payment_method`
+  MODIFY `paymentMethodId` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT für Tabelle `user`
+--
+ALTER TABLE `user`
+  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints der exportierten Tabellen
@@ -312,13 +352,20 @@ ALTER TABLE `news_has_orders`
 -- Constraints der Tabelle `order`
 --
 ALTER TABLE `order`
-  ADD CONSTRAINT `fk_ORDER_USER1` FOREIGN KEY (`user'Id`) REFERENCES `user` (`userId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_ORDER_USER1` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints der Tabelle `payment_method`
 --
 ALTER TABLE `payment_method`
   ADD CONSTRAINT `USERID` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints der Tabelle `purchased_article`
+--
+ALTER TABLE `purchased_article`
+  ADD CONSTRAINT `fk_purchase_news` FOREIGN KEY (`newsId`) REFERENCES `news` (`newsId`),
+  ADD CONSTRAINT `fk_purchase_user` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
