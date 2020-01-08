@@ -16,4 +16,4 @@
     </label>
 </form>
 
-<h3>or you want to know mor about <a href="index.php?page=impressum">TakeTec Webpage</a></h3>
+<h3>Want to know more about us? <a href="index.php?page=impressum">Impressum</a></h3>

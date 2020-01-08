@@ -1,9 +1,17 @@
 <?php
 
-if(!isset($_SESSION))
+if(empty($_SESSION))
 { 
-    session_start();
-} 
+	session_start();
+}
+
+if(empty($_SESSION['loggedIn'])){
+	$_SESSION['loggedIn'] = null;
+}
+
+if(empty($_SESSION['admin'])){
+	$_SESSION['admin'] = null;
+}
 
 // all require stuff to work!!
 require_once 'init/10_database.php';
@@ -12,7 +20,6 @@ require_once 'init/20_functions.php';
 
 define('ROOT', str_replace('\\', '/', realpath(__DIR__)));
 
-$GLOBALS['currentUser'] = '';
 
 if (!isset($_GET['page']))
 {
@@ -23,6 +30,8 @@ else
 	$page = $_GET['page'];      				// Set page variable in URI
 }
 
+
+$_SESSION['admin'] && $_SESSION['loggedIn']
 
 ?>
 

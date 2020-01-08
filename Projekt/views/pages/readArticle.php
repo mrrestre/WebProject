@@ -15,7 +15,7 @@
         <?php if ( $article && !empty($article) ) :?>
                 <h2><?=$article['newsTitle'] ?></h2>
                 <div>
-                    <img src="<?='.'.$articleImage['imagePath'];?>" alt="<? echo $articleImage['copyright'] ?>">
+                    <img src="<?='./assets/images/'.$articleImage['imagePath'];?>" alt="<? echo $articleImage['copyright'] ?>">
                     <?=$article['content'] ?>
                     <hr>
                 </div>
