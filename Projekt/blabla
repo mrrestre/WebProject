@@ -1,0 +1,6 @@
+!empty($_POST['content'])
+        &&!empty($_POST['title'])
+        &&!empty($_POST['teaser'])
+        &&!empty($_POST['paidNews'])
+        &&!empty($_POST['imagePath'])
+        &&!empty($_POST['imageCopyright'])

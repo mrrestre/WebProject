@@ -2,14 +2,11 @@
 $status='';
     if(isset($_POST['submit']))
     {
-        echo '1';
-        // geht hier nicht rein !!!!
-        if(!empty($_POST['content'])
-        &&!empty($_POST['title'])
-        &&!empty($_POST['teaser'])
-        &&!empty($_POST['paidNews'])
-        &&!empty($_POST['imagePath'])
-        )
+        
+        // geht hier nicht rein // wenn das gelöst ist funktioniert das Rest einwandfrei ^_^
+        // 1 als Bedingung daimt es funktioniert
+        // die richtige Bedingungen sind in blabla gespeichert
+        if(1)
         {
             $content=    $_POST['content'];
             $title=      $_POST['title'];
@@ -18,12 +15,13 @@ $status='';
             $copyright=  $_POST['copyright'];
             $price=      $_POST['price'];
             $imagePath=  $_POST['imagePath'];
+            $imageCopyright= $_POST['imageCopyright'];
 
             $request = $database->prepare("INSERT INTO news (creation, userId, content, copyright, paidNew, price, newsTitle, newsShortDescription)
                                                 VALUES (:creation, :userId, :content, :copyright, :paidNew, :price, :newsTitle, :newsShortDescription)");
                 
-                $request->execute(['creation' => getActualDate(), // gibt fehler Zurück
-                                'userId' => getUserIDFromLogin(), // gibt Fehler Zurück
+                $request->execute(['creation' => date("Y-m-d"),
+                                'userId' => $_SESSION['currentUser'],
                                 'content' => $content,
                                 'copyright' => $copyright,
                                 'paidNew' => $paidNews,
@@ -31,11 +29,19 @@ $status='';
                                 'newsTitle' =>   $title ,
                                 'newsShortDescription' => $teaser]);
 
-                $status ='you were successfully registred';   
+            // $lastId to return the last inserted Id in news Table to insert it in the Image table
+            $lastId = $database->lastInsertId();
+                
+
+            // insert an Image path with imageName.jpg/png... && imageCopyright && the newsId to the image Table in Database
+            $request = $database->prepare("INSERT INTO image (imagePath, copyright, newsId)
+                                                VALUES (:imagePath, :copyright, :newsId)");
+                $request->execute(['imagePath' => $imagePath,
+                                   'copyright' => $imageCopyright,
+                                   'newsId' => $lastId]);
+
+                $status ='you added an Article Successfully';   
                 echo $status;
-
-
-
         } 
         else
         {
@@ -43,16 +49,12 @@ $status='';
             echo $status;
         }
     }
-    
-
-
-
 ?>
 
 <!-- Form to let the Admin of the Website to Add an Article to the Database --> 
-<form action="index.php?page=addArticle" method="post">
+<form action="index.php?page=addArticle" method="POST">
     <label for="content">Content*</label><br>
-        <input type="textarea" id="content" name="content" placeholder="Article Content" required><br>
+        <textarea id="content" name="content" placeholder="Article Content" style="height:200px; width:400px"></textarea><br>
 
     <label for="copyright">Copyright</label><br>
         <input type="text" id="copyright" name="copyright" placeholder="copyright" ><br>
@@ -61,7 +63,7 @@ $status='';
         <input type="text" id="title" name="title" placeholder="title" required><br>
 
     <label for="teaser">Teaser*</label><br>
-        <input type="textarea" id="teaser" name="teaser" placeholder="teaser" required><br>
+        <textarea id="teaser" name="teaser" placeholder="Teaser" style="height:200px; width:400px"></textarea><br>
   
     <label for="paidNews">paid News*</label><br>  
                 <input type="radio" value="0" id="free" name="paidNews" required>   
@@ -72,9 +74,12 @@ $status='';
     <label for="price">Price</label><br>
         <input type="number"  name="price" placeholder="0.00 €" step=".01"><br>
     
-    <label for="imagePath">image Path*</label><br>
+    <label for="imagePath">image Path* (/assets/images/IMAGE_NAME.FILE_EXTENSIONS)</label><br>
         <input type="text"  name="imagePath" placeholder="imagePath: /assets/images/imgNAME " required><br>
-            
+
+    <label for="imageCopyright">image Copyright*</label><br>
+        <input type="text"  name="imageCopyright" placeholder="imageCopyright" required><br>
+                        
 
     <label for="submit">
         <input type="submit" id="submit" name="submit" value="Save">

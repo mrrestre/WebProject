@@ -9,6 +9,7 @@ if(!isset($_SESSION))
 require_once 'init/10_database.php';
 require_once 'init/20_functions.php';
 
+
 define('ROOT', str_replace('\\', '/', realpath(__DIR__)));
 
 $GLOBALS['currentUser'] = '';
@@ -58,7 +59,16 @@ else
 						include(ROOT.'/views/pages/contact.php');
 						break;
 					case 'admin':
-						include(ROOT.'/views/pages/admin.php');
+						if($_SESSION['admin'] === true &&  $_SESSION['loggedIn'] === true)
+						{include(ROOT.'/views/pages/admin.php');}
+						else if($_SESSION['loggedIn'] === true)
+						{
+							echo 'Sorry!! you do not have a Permission to do that';
+						}
+						else{
+							include(ROOT.'/views/pages/login.php');
+							echo 'please Login first';
+						}
 						break;
 					case 'login':
 						include(ROOT.'/views/pages/login.php');
@@ -67,7 +77,12 @@ else
 						include(ROOT.'/views/pages/logout.php');
 						break;
 					case 'profile':
-						include(ROOT.'/views/pages/profile.php');
+						if($_SESSION['loggedIn'] === true)
+						{include(ROOT.'/views/pages/profile.php');}
+						else{
+							include(ROOT.'/views/pages/login.php');
+							echo 'please Login first';
+						}
 						break;
 					case 'registration':
 						include(ROOT.'/views/pages/registration.php');
@@ -76,10 +91,28 @@ else
 						include(ROOT.'/views/pages/impressum.html');
 						break;
 					case 'addArticle':
-						include(ROOT.'/views/pages/addArticle.php');
+						if($_SESSION['admin'] === true &&  $_SESSION['loggedIn'] === true)
+						{include(ROOT.'/views/pages/addArticle.php');}
+						else if($_SESSION['loggedIn'] === true)
+						{
+							echo 'Sorry!! you do not have a Permission to do that';
+						}
+						else{
+							include(ROOT.'/views/pages/login.php');
+							echo 'please Login first';
+						}
 						break; 
 					case 'deleteUser':
-						include(ROOT.'/views/pages/deleteUser.php');
+						if($_SESSION['admin'] === true &&  $_SESSION['loggedIn'] === true)
+						{include(ROOT.'/views/pages/deleteUser.php');}
+						else if($_SESSION['loggedIn'] === true)
+						{
+							echo 'Sorry!! you do not have a Permission to do that';
+						}
+						else{
+							include(ROOT.'/views/pages/login.php');
+							echo 'please Login first';
+						}
 						break; 
 					default:
 						include(ROOT.'/views/pages/error404.php');

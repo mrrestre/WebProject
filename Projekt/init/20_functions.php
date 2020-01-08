@@ -55,8 +55,10 @@
     	// 	return $request->execute(array($differ_id)) ? $request->fetchAll() : false; 
         // }
         
-        // function to get the Actual Date
-        function getActualDate(){
-            $request = $database->prepare(" SELECT CONVERT(DATE, GETDATE())");
-            return $request->execute() ? $request->fetchAll() : false;
+        // function to Delete a User by an Admin Parameter is the e-Mail of the User 
+
+        function deleteUserFromDatabase($database, $email)
+        {
+            $request = $database->prepare(" DELETE user, payment_method FROM user join payment_method on user.userId = payment_method.userId WHERE user.eMail = ?");
+            $request->execute(array($email)) ? $request->fetchAll() : false;
         }
