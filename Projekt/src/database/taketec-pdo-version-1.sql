@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 07. Jan 2020 um 22:40
+-- Erstellungszeit: 10. Jan 2020 um 12:42
 -- Server-Version: 10.4.8-MariaDB
 -- PHP-Version: 7.3.10
 
@@ -72,6 +72,14 @@ CREATE TABLE `image` (
   `newsId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Daten für Tabelle `image`
+--
+
+INSERT INTO `image` (`imageId`, `imagePath`, `copyright`, `newsId`) VALUES
+(7, '/assets/images/test.jpg', 'google', 10),
+(8, 'hallo world', 'hallo worldhallo world', 11);
+
 -- --------------------------------------------------------
 
 --
@@ -88,41 +96,19 @@ CREATE TABLE `news` (
   `paidNew` tinyint(4) NOT NULL DEFAULT 0,
   `price` decimal(5,2) DEFAULT NULL,
   `newsTitle` varchar(100) NOT NULL,
-  `newsShortDescription` varchar(300) NOT NULL
+  `newsShortDescription` varchar(300) NOT NULL,
+  `likes` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Daten für Tabelle `news`
 --
 
-INSERT INTO `news` (`newsId`, `creation`, `updated`, `userId`, `content`, `copyright`, `paidNew`, `price`, `newsTitle`, `newsShortDescription`) VALUES
-(1, '0000-00-00', NULL, 1, 'this is a content test', 'www.google.com', 0, '0.00', 'title test', 'teaser test'),
-(2, '2020-01-01', NULL, 1, 'Samsung’s One UI skin over Android has breathed new life into the company’s smartphones and as time goes on, it’s just getting better. Thanks to a teardown of the latest One UI update, we’ve got some hints at what’s coming next to Samsung’s software including battery health monitoring, faster charging, and more new camera features.\r\n\r\n\r\nThe folks over at XDA-Developers took a deep dive into One UI 2.0 to see what’s in preparation under the hood. Among what they found, firstly, is a handful of new details on upcoming camera features.\r\n\r\nNew Camera Features\r\nIf you’ll recall last year, several new camera modes likely arriving on the Galaxy S11/S20 were discovered. One of those new modes was “Director’s View” and this latest teardown digs into that a bit further. Strings suggest that this camera mode will allow users to lock in on a subject and the phone will keep that subject in focus as well as getting close-up shots of the subject.\r\n\r\nFurther, another new camera is found in this latest teardown called “Single Take Photo.” With this mode, Samsung uses AI to automatically capture the best shots. Google does this to an extent with features such as Photobooth on the Pixel, but Samsung seems to be expanding things with tips for framing shots or different angles.\r\n\r\nFinally, rounding things out, there’s evidence that Samsung is bringing back a “Pro Video” mode. This would allow users to adjust shutter speed, ISO, exposure, and more in video just like Galaxy devices can currently do with photos. Bokeh effects may also arrive to mirror some of the Live Focus video effects that arrived with Note 10.', NULL, 0, NULL, 'new Battery', 'Samsung teardown hints at new camera features, ‘Battery Health,’ super fast charging'),
-(3, '2020-01-02', '2020-01-03', 2, 'The success of Chrome OS is thanks to the cheap Chromebooks that sell en masse, not the high-end models. At CES 2020 this week, we got a chance to spend some time with the Lenovo IdeaPad Duet, a Chrome OS tablet that ticks pretty much all of the boxes.\r\n\r\n\r\nSo, what’s been the problem with Chrome OS tablets so far? To date, only two Chrome OS tablets have launched, and, frankly, neither of them have been very good. That’s Google’s Pixel Slate, which was a monumental failure that saw the company pull out of tablets entirely, and the Acer Chromebook Tab 10, an education-focused machine. HP’s Chromebook X2 was perhaps the best effort, but it was still priced too high for general consumers.\r\n\r\nThe IdeaPad Duet solves the problems of those machines. Firstly, it’s affordable. The entire product is $279, and that includes the keyboard and kickstand cover, unlike other Chrome OS tablets that have launched to date.\r\n\r\nSecondly, the Lenovo IdeaPad Duet is a Chrome OS tablet that consumers might actually be interested in. A 10-inch tablet with a keyboard and a full browser is a compelling package that might even sway some iPad users, too.', 'https://ww.9to5google.com/2020/01/06/lenovo-ideapad-duet-first-impressions-chrome-os-tablet/', 1, '19.99', 'Lenovo IdeaPad', 'Lenovo IdeaPad Duet finally gives Chrome OS the tablet it needs');
-
--- --------------------------------------------------------
-
---
--- Tabellenstruktur für Tabelle `news_has_orders`
---
-
-CREATE TABLE `news_has_orders` (
-  `shoppingCartId` int(11) NOT NULL,
-  `newsId` int(11) NOT NULL,
-  `orderId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Tabellenstruktur für Tabelle `order`
---
-
-CREATE TABLE `order` (
-  `orderId` int(11) NOT NULL,
-  `userId` int(11) NOT NULL,
-  `orderDate` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+INSERT INTO `news` (`newsId`, `creation`, `updated`, `userId`, `content`, `copyright`, `paidNew`, `price`, `newsTitle`, `newsShortDescription`, `likes`) VALUES
+(2, '2020-01-01', NULL, 1, 'Samsung’s One UI skin over Android has breathed new life into the company’s smartphones and as time goes on, it’s just getting better. Thanks to a teardown of the latest One UI update, we’ve got some hints at what’s coming next to Samsung’s software including battery health monitoring, faster charging, and more new camera features.\r\n\r\n\r\nThe folks over at XDA-Developers took a deep dive into One UI 2.0 to see what’s in preparation under the hood. Among what they found, firstly, is a handful of new details on upcoming camera features.\r\n\r\nNew Camera Features\r\nIf you’ll recall last year, several new camera modes likely arriving on the Galaxy S11/S20 were discovered. One of those new modes was “Director’s View” and this latest teardown digs into that a bit further. Strings suggest that this camera mode will allow users to lock in on a subject and the phone will keep that subject in focus as well as getting close-up shots of the subject.\r\n\r\nFurther, another new camera is found in this latest teardown called “Single Take Photo.” With this mode, Samsung uses AI to automatically capture the best shots. Google does this to an extent with features such as Photobooth on the Pixel, but Samsung seems to be expanding things with tips for framing shots or different angles.\r\n\r\nFinally, rounding things out, there’s evidence that Samsung is bringing back a “Pro Video” mode. This would allow users to adjust shutter speed, ISO, exposure, and more in video just like Galaxy devices can currently do with photos. Bokeh effects may also arrive to mirror some of the Live Focus video effects that arrived with Note 10.', NULL, 0, NULL, 'new Battery', 'Samsung teardown hints at new camera features, ‘Battery Health,’ super fast charging', 0),
+(3, '2020-01-02', '2020-01-03', 2, 'The success of Chrome OS is thanks to the cheap Chromebooks that sell en masse, not the high-end models. At CES 2020 this week, we got a chance to spend some time with the Lenovo IdeaPad Duet, a Chrome OS tablet that ticks pretty much all of the boxes.\r\n\r\n\r\nSo, what’s been the problem with Chrome OS tablets so far? To date, only two Chrome OS tablets have launched, and, frankly, neither of them have been very good. That’s Google’s Pixel Slate, which was a monumental failure that saw the company pull out of tablets entirely, and the Acer Chromebook Tab 10, an education-focused machine. HP’s Chromebook X2 was perhaps the best effort, but it was still priced too high for general consumers.\r\n\r\nThe IdeaPad Duet solves the problems of those machines. Firstly, it’s affordable. The entire product is $279, and that includes the keyboard and kickstand cover, unlike other Chrome OS tablets that have launched to date.\r\n\r\nSecondly, the Lenovo IdeaPad Duet is a Chrome OS tablet that consumers might actually be interested in. A 10-inch tablet with a keyboard and a full browser is a compelling package that might even sway some iPad users, too.', 'https://ww.9to5google.com/2020/01/06/lenovo-ideapad-duet-first-impressions-chrome-os-tablet/', 1, '19.99', 'Lenovo IdeaPad', 'Lenovo IdeaPad Duet finally gives Chrome OS the tablet it needs', 0),
+(10, '2020-01-08', NULL, 1, 'content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test ', 'www.google.com', 0, '0.00', 'title test', 'Teaser Test Teaser Test Teaser Test Teaser Test Teaser Test Teaser Test Teaser Test Teaser Test Teaser Test Teaser Test Teaser Test Teaser Test Teaser Test Teaser Test Teaser Test Teaser Test Teaser Test Teaser Test ', 1),
+(11, '2020-01-10', NULL, 1, 'hallo world hallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo world', 'hallo worldhallo world', 1, '0.00', 'hallo world', 'hallo worldhallo worldhallo world', 9);
 
 -- --------------------------------------------------------
 
@@ -183,7 +169,9 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`userId`, `firstName`, `surname`, `password`, `gender`, `DOB`, `country`, `phone`, `eMail`, `permission`) VALUES
 (1, 'Ahmad', 'Abo Louha', '123123', 'm', '1993-09-08', 'DE', '01778899', 'ahmad@gmail.com', 1),
 (2, 'alejandro', 'Restrepo Klinge', '123123', 'm', '1996-12-24', 'DE', '01778888', 'alejandro@gmail.com', 1),
-(3, 'James', 'Bond', '123123', 'm', '1950-07-30', 'UK', '01778877', 'james@gmail.com', NULL);
+(3, 'James', 'Bond', '123123', 'm', '1950-07-30', 'UK', '01778877', 'james@gmail.com', NULL),
+(5, 'Maria', 'Mustermann', '123123', 'f', '2002-02-02', 'DE', '2036598', 'maria@gmail.com', NULL),
+(6, 'Sara', 'Musterfrau', '123123', 'f', '1999-02-02', 'NF', '01778811', 'sara@gmail.com', NULL);
 
 --
 -- Indizes der exportierten Tabellen
@@ -225,21 +213,6 @@ ALTER TABLE `news`
   ADD KEY `fk_NEWS_USER1_idx` (`userId`);
 
 --
--- Indizes für die Tabelle `news_has_orders`
---
-ALTER TABLE `news_has_orders`
-  ADD PRIMARY KEY (`shoppingCartId`),
-  ADD KEY `fk_SHOPPING_CAR_ORDER1_idx` (`orderId`),
-  ADD KEY `fk_SHOPPING_CAR_NEWS1_idx` (`newsId`);
-
---
--- Indizes für die Tabelle `order`
---
-ALTER TABLE `order`
-  ADD PRIMARY KEY (`orderId`),
-  ADD KEY `fk_ORDER_USER1` (`userId`);
-
---
 -- Indizes für die Tabelle `payment_method`
 --
 ALTER TABLE `payment_method`
@@ -279,25 +252,13 @@ ALTER TABLE `comment`
 -- AUTO_INCREMENT für Tabelle `image`
 --
 ALTER TABLE `image`
-  MODIFY `imageId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `imageId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT für Tabelle `news`
 --
 ALTER TABLE `news`
-  MODIFY `newsId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT für Tabelle `news_has_orders`
---
-ALTER TABLE `news_has_orders`
-  MODIFY `shoppingCartId` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT für Tabelle `order`
---
-ALTER TABLE `order`
-  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `newsId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT für Tabelle `payment_method`
@@ -309,7 +270,7 @@ ALTER TABLE `payment_method`
 -- AUTO_INCREMENT für Tabelle `user`
 --
 ALTER TABLE `user`
-  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints der exportierten Tabellen
@@ -340,19 +301,6 @@ ALTER TABLE `image`
 --
 ALTER TABLE `news`
   ADD CONSTRAINT `fk_NEWS_USER1` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints der Tabelle `news_has_orders`
---
-ALTER TABLE `news_has_orders`
-  ADD CONSTRAINT `fk_SHOPPING_CAR_NEWS1` FOREIGN KEY (`newsId`) REFERENCES `news` (`newsId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_SHOPPING_CAR_ORDER1` FOREIGN KEY (`orderId`) REFERENCES `order` (`orderId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints der Tabelle `order`
---
-ALTER TABLE `order`
-  ADD CONSTRAINT `fk_ORDER_USER1` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints der Tabelle `payment_method`
