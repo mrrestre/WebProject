@@ -1,4 +1,4 @@
-<?
+<?php
 $status='';
     if(isset($_POST['submit']))
     {
@@ -35,10 +35,7 @@ $status='';
                                 'phone' =>   $phone ,
                                 'eMail' => $email]);
 
-                $status ='you were successfully registred';   
-                echo $status;
-                header('Location: index.php?page=login');
-                echo 'You can Log In now!';             
+                header('Location: index.php?page=login');            
             }
             else{
                 $status = 'Password and Passwordagain must be the same!!';
@@ -91,7 +88,7 @@ $status='';
                 <input type="date" id="DOB" name="DOB" required><br>
                     
                 <label for="country">Country*</label><br>
-                <input type="text" id="country" name="country" placeholder="Country" required><br>
+                <?php include ROOT.'/assets/country/country.html'; ?> <br>
 
                 <label for="phone">Telephone Number*</label><br>
                 <input type="number" id="phone" name="phone" placeholder="Telephone Number" required><br>

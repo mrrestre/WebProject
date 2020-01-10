@@ -62,3 +62,42 @@
             $request = $database->prepare(" DELETE user, payment_method FROM user join payment_method on user.userId = payment_method.userId WHERE user.eMail = ?");
             $request->execute(array($email)) ? $request->fetchAll() : false;
         }
+
+        // function to increase the Like counter in Database
+
+        function likeCounterIncreasing($database, $newsId)
+        {
+            $request = $database->prepare(" UPDATE news SET likes = likes + 1 WHERE newsId = ?");
+            $request->execute(array($newsId)) ? true : false;
+        }
+
+
+        // for the random number of the existing newsId:
+
+        function getMaxAndMinIDFromNews($database)
+        {
+            $request = $database->prepare("SELECT MAX(newsId), MIN(newsId) FROM news");
+            return $request->execute() ? $request->fetchAll() : false;
+        }
+
+        function getRandomNumberFromIdRange($database)
+        {
+            $request = getMaxAndMinIDFromNews($database);
+            $request = $request[0];
+            if(isset($request['MAX(newsId)']) && isset($request['MIN(newsId)']))
+            {
+                $maxId = $request['MAX(newsId)'];
+                $minId = $request['MIN(newsId)'];
+                while(1)
+                {
+                    $random=rand($minId ,$maxId);
+                    $article = getAnArticle( $random, $database );
+                    if($article)
+                    {
+                        return $random;
+                        break;
+                    }
+                }
+            }
+            
+        }

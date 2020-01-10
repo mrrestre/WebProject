@@ -15,8 +15,7 @@
                 <nav>
                     <a href="index.php?page=home">Home</a>
                     <a href="index.php?page=top10">Top 10</a>
-                    <a href="index.php?page=users">Users</a>
-                    <?php $random = 0; ?>  <!-- Random Funktion hier hinzüfugen -->
+                    <?php $random=getRandomNumberFromIdRange( $database ); ?>
                     <a href="index.php?page=readArticle&newsid=<?echo $random?>">Random</a>
                 </nav>
             </div>

@@ -1,11 +1,22 @@
+<?php
+    if(isset($_POST['like']))
+    {
+        if(isset($_GET['newsid']))
+        {
+            likeCounterIncreasing($database, $_GET['newsid']);
+        }
+    }
+?>
 <html>
     <head>
         <!-- hier den css von home hinzüfugen -->
     </head>
     <body>
         <?php 
-            $id_article = (int)$_GET['newsid'];
-            
+            if(!isset($id_article))
+            {
+                $id_article = $_GET['newsid'];
+            }
             $article = getAnArticle( $id_article, $database );
             $article = $article[0];
             $articleImage = getArticleImage ( $id_article, $database );
@@ -27,6 +38,12 @@
                         }?>
                     <? endif?>
                 </div>  
+                <div>
+                    <form action="index.php?page=readArticle&newsid=<?=$id_article?>" method="POST">
+                        <input type="submit" name="like" Value="like">
+                    </form>
+                </div>
+                
                 <? foreach($articleComment as $row): ?>
                     <h4> Commented by: <?= $row['userName']; ?> </h4>
                     <p> <?= $row['content']; ?> </p>

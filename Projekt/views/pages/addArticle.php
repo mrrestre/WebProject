@@ -3,13 +3,11 @@ $status='';
     if(isset($_POST['submit']))
     {
         
-        // geht hier nicht rein // wenn das gelöst ist funktioniert das Rest einwandfrei ^_^
-        // 1 als Bedingung daimt es funktioniert
-        // die richtige Bedingungen sind in blabla gespeichert
+     
         if(!empty($_POST['content'])
         &&!empty($_POST['title'])
         &&!empty($_POST['teaser'])
-        &&!empty($_POST['paidNews'])
+        &&($_POST['paidNews'] === 1 || $_POST['paidNews'] === 0)
         &&!empty($_POST['imageName'])
         &&!empty($_POST['imageCopyright'])
         )
@@ -79,9 +77,9 @@ $status='';
         <textarea id="teaser" name="teaser" placeholder="Teaser" style="height:200px; width:400px"></textarea><br>
     
         <label for="paidNews">Payed Article?*</label><br>  
-        <input type="radio" value="1" id="free" name="paidNews" required checked>   
+        <input type="radio" value="0" id="free" name="paidNews" required checked>   
         <label for="free">Free</label> //
-        <input type="radio" value="2" id="paid" name="paidNews" required>
+        <input type="radio" value="1" id="paid" name="paidNews" required>
         <label for="paid">Paid</label><br>
         
         <label for="price">Price</label><br>

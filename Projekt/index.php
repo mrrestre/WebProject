@@ -57,10 +57,7 @@ $_SESSION['admin'] && $_SESSION['loggedIn']
 						break;
 					case 'top10':
 						include(ROOT.'/views/pages/top10.php');
-						break;
-					case 'users':
-						include(ROOT.'/views/pages/users.php');
-						break;    
+						break;   
 					case 'readArticle':
 						include(ROOT.'/views/pages/readArticle.php');
 						break;
