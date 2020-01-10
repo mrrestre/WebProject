@@ -5,6 +5,12 @@
     	{
             $request = $database->prepare(" SELECT newsId, newsTitle, newsShortDescription, concat(firstName, ' ', surname) as authorName, creation, updated, copyright, paidNew FROM news JOIN user ON user.userId = news.userId ORDER BY creation DESC");
     		return $request->execute() ? $request->fetchAll() : false; 
+        }
+        
+        function fetchUsers( $database )
+    	{
+            $request = $database->prepare(" SELECT userId, concat(firstName, ' ', surname) as userName, DOB, country, phone, eMail FROM user ");
+    		return $request->execute() ? $request->fetchAll() : false; 
     	}
     
         function getAnArticle( $newsId, $database )
@@ -43,7 +49,7 @@
             return $request->execute() ? $request->fetchAll() : false;
         }
 
-        function getUserIDFromLogin ( $database , $email )
+        function getUserIDByEMail ( $database , $email )
         {
             $request = $database->prepare(" SELECT userId FROM user WHERE eMail = ?");
             return $request->execute(array($email)) ? $request->fetchAll() : false;
@@ -100,4 +106,10 @@
                 }
             }
             
+        }
+
+        function getNumberOfLikes($database, $newsId)
+        {
+            $request = $database->prepare("SELECT likes FROM news WHERE newsId = ?");
+            return $request->execute(array($newsId)) ? $request->fetchAll() : false;
         }

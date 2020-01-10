@@ -1,9 +1,13 @@
 <?php
     if(isset($_POST['like']))
     {
-        if(isset($_GET['newsid']))
+        if(isset($_GET['newsid']) && isset($_SESSION['loggedIn']))
         {
             likeCounterIncreasing($database, $_GET['newsid']);
+        }
+        else
+        {
+            echo 'you can only Like our Article if you logged in ';
         }
     }
 ?>
@@ -39,8 +43,12 @@
                     <? endif?>
                 </div>  
                 <div>
+                    <?php 
+                    $likes = getNumberOfLikes($database, $id_article);
+                    $likes = $likes[0];
+                    ?>
                     <form action="index.php?page=readArticle&newsid=<?=$id_article?>" method="POST">
-                        <input type="submit" name="like" Value="like">
+                    <input type="submit" name="like" Value="like"> <?=$likes['likes']?>
                     </form>
                 </div>
                 

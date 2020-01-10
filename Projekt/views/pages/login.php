@@ -9,14 +9,16 @@
         {
             $email    = $_POST['email']     ?? null;
             $password = $_POST['password']  ?? null;
+            
 
             foreach ($username as $row)
             {
-                if($email === $row['eMail'] && $password === $row['password'])
+                $verifyPassword = password_verify($password, $row['password']);
+                if($email === $row['eMail'] && $verifyPassword === true)
                 {
                     $_SESSION['loggedIn'] = true;
 
-                    $thisUserID = getUserIDFromLogin( $database, $email );
+                    $thisUserID = getUserIDByEMail( $database, $email );
                     $thisUserID = $thisUserID[0];
                     $thisUserID = $thisUserID['userId'];
 

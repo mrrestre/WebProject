@@ -23,18 +23,19 @@ $status='';
             $email=         $_POST['eMail'];
             if($password === $passwordagain)
             {
+                $passwordHash = password_hash($password, PASSWORD_DEFAULT);
                 $request = $database->prepare("INSERT INTO user (firstName, surname, password, gender, DOB, country, phone, eMail)
                                                 VALUES (:firstName, :surname, :password, :gender, :DOB, :country, :phone, :eMail)");
                 
                 $request->execute(['firstName' => $fname,
                                 'surname' => $lname,
-                                'password' => $password,
+                                'password' => $passwordHash,
                                 'gender' => $gender,
                                 'DOB' => $birthdate,
                                 'country' => $country,
                                 'phone' =>   $phone ,
                                 'eMail' => $email]);
-
+                echo 'you were successfully registred';
                 header('Location: index.php?page=login');            
             }
             else{

@@ -90,8 +90,24 @@ $_SESSION['admin'] && $_SESSION['loggedIn']
 							echo 'please Login first';
 						}
 						break;
+					case 'updateProfile':
+						if($_SESSION['loggedIn'] === true)
+						{include(ROOT.'/views/pages/updateProfile.php');}
+						else{
+							include(ROOT.'/views/pages/login.php');
+							echo 'please Login first';
+						}
+						break;
 					case 'registration':
-						include(ROOT.'/views/pages/registration.php');
+						if($_SESSION['loggedIn'] !== true)
+						{
+							include(ROOT.'/views/pages/registration.php');
+						}
+						else if($_SESSION['loggedIn'] === true)
+						{
+							echo 'You are already registered';
+							include(ROOT.'/views/pages/home.php');
+						}
 						break;
 					case 'impressum':
 						include(ROOT.'/views/pages/impressum.html');
