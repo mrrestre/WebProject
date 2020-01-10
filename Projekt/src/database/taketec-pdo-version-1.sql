@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 10. Jan 2020 um 12:42
--- Server-Version: 10.4.8-MariaDB
--- PHP-Version: 7.3.10
+-- Generation Time: Jan 10, 2020 at 03:22 PM
+-- Server version: 10.3.15-MariaDB
+-- PHP Version: 7.3.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,15 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Datenbank: `taketec-pdo-version-1`
+-- Database: `taketec-pdo-version-1`
 --
-CREATE DATABASE IF NOT EXISTS `taketec-pdo-version-1` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `taketec-pdo-version-1`;
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `category`
+-- Table structure for table `category`
 --
 
 CREATE TABLE `category` (
@@ -35,10 +33,23 @@ CREATE TABLE `category` (
   `description` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`catId`, `description`) VALUES
+(1, 'IOS'),
+(2, 'Android'),
+(3, 'Apple'),
+(4, 'Windows'),
+(5, 'Wearables'),
+(6, 'Audio'),
+(7, 'Chrome OS');
+
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `category_has_news`
+-- Table structure for table `category_has_news`
 --
 
 CREATE TABLE `category_has_news` (
@@ -46,10 +57,20 @@ CREATE TABLE `category_has_news` (
   `newsId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `category_has_news`
+--
+
+INSERT INTO `category_has_news` (`catId`, `newsId`) VALUES
+(3, 1),
+(2, 2),
+(2, 3),
+(7, 4);
+
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `comment`
+-- Table structure for table `comment`
 --
 
 CREATE TABLE `comment` (
@@ -59,10 +80,18 @@ CREATE TABLE `comment` (
   `userId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `comment`
+--
+
+INSERT INTO `comment` (`commentId`, `content`, `newsId`, `userId`) VALUES
+(1, 'Thats a really cool Tablet ', 1, 1),
+(2, 'It is but a think is way to expensive!', 1, 2);
+
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `image`
+-- Table structure for table `image`
 --
 
 CREATE TABLE `image` (
@@ -73,17 +102,19 @@ CREATE TABLE `image` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Daten für Tabelle `image`
+-- Dumping data for table `image`
 --
 
 INSERT INTO `image` (`imageId`, `imagePath`, `copyright`, `newsId`) VALUES
-(7, '/assets/images/test.jpg', 'google', 10),
-(8, 'hallo world', 'hallo worldhallo world', 11);
+(1, 'iPad2020.jpg', 'Apple iPad', 1),
+(2, 'galaxyBlomm.jpg', 'https://ww.9to5google.com/2020/01/10/galaxy-bloom/', 2),
+(3, 'lenovo.jpg', 'https://unsplash.com/photos/3Zy3pR28IKc', 4),
+(4, 'akku.jpg', 'https://unsplash.com/photos/rAtzDB6hWrU', 3);
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `news`
+-- Table structure for table `news`
 --
 
 CREATE TABLE `news` (
@@ -101,19 +132,19 @@ CREATE TABLE `news` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Daten für Tabelle `news`
+-- Dumping data for table `news`
 --
 
 INSERT INTO `news` (`newsId`, `creation`, `updated`, `userId`, `content`, `copyright`, `paidNew`, `price`, `newsTitle`, `newsShortDescription`, `likes`) VALUES
-(2, '2020-01-01', NULL, 1, 'Samsung’s One UI skin over Android has breathed new life into the company’s smartphones and as time goes on, it’s just getting better. Thanks to a teardown of the latest One UI update, we’ve got some hints at what’s coming next to Samsung’s software including battery health monitoring, faster charging, and more new camera features.\r\n\r\n\r\nThe folks over at XDA-Developers took a deep dive into One UI 2.0 to see what’s in preparation under the hood. Among what they found, firstly, is a handful of new details on upcoming camera features.\r\n\r\nNew Camera Features\r\nIf you’ll recall last year, several new camera modes likely arriving on the Galaxy S11/S20 were discovered. One of those new modes was “Director’s View” and this latest teardown digs into that a bit further. Strings suggest that this camera mode will allow users to lock in on a subject and the phone will keep that subject in focus as well as getting close-up shots of the subject.\r\n\r\nFurther, another new camera is found in this latest teardown called “Single Take Photo.” With this mode, Samsung uses AI to automatically capture the best shots. Google does this to an extent with features such as Photobooth on the Pixel, but Samsung seems to be expanding things with tips for framing shots or different angles.\r\n\r\nFinally, rounding things out, there’s evidence that Samsung is bringing back a “Pro Video” mode. This would allow users to adjust shutter speed, ISO, exposure, and more in video just like Galaxy devices can currently do with photos. Bokeh effects may also arrive to mirror some of the Live Focus video effects that arrived with Note 10.', NULL, 0, NULL, 'new Battery', 'Samsung teardown hints at new camera features, ‘Battery Health,’ super fast charging', 0),
-(3, '2020-01-02', '2020-01-03', 2, 'The success of Chrome OS is thanks to the cheap Chromebooks that sell en masse, not the high-end models. At CES 2020 this week, we got a chance to spend some time with the Lenovo IdeaPad Duet, a Chrome OS tablet that ticks pretty much all of the boxes.\r\n\r\n\r\nSo, what’s been the problem with Chrome OS tablets so far? To date, only two Chrome OS tablets have launched, and, frankly, neither of them have been very good. That’s Google’s Pixel Slate, which was a monumental failure that saw the company pull out of tablets entirely, and the Acer Chromebook Tab 10, an education-focused machine. HP’s Chromebook X2 was perhaps the best effort, but it was still priced too high for general consumers.\r\n\r\nThe IdeaPad Duet solves the problems of those machines. Firstly, it’s affordable. The entire product is $279, and that includes the keyboard and kickstand cover, unlike other Chrome OS tablets that have launched to date.\r\n\r\nSecondly, the Lenovo IdeaPad Duet is a Chrome OS tablet that consumers might actually be interested in. A 10-inch tablet with a keyboard and a full browser is a compelling package that might even sway some iPad users, too.', 'https://ww.9to5google.com/2020/01/06/lenovo-ideapad-duet-first-impressions-chrome-os-tablet/', 1, '19.99', 'Lenovo IdeaPad', 'Lenovo IdeaPad Duet finally gives Chrome OS the tablet it needs', 0),
-(10, '2020-01-08', NULL, 1, 'content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test content test ', 'www.google.com', 0, '0.00', 'title test', 'Teaser Test Teaser Test Teaser Test Teaser Test Teaser Test Teaser Test Teaser Test Teaser Test Teaser Test Teaser Test Teaser Test Teaser Test Teaser Test Teaser Test Teaser Test Teaser Test Teaser Test Teaser Test ', 1),
-(11, '2020-01-10', NULL, 1, 'hallo world hallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo worldhallo world', 'hallo worldhallo world', 1, '0.00', 'hallo world', 'hallo worldhallo worldhallo world', 9);
+(1, '2019-01-09', NULL, 1, 'Apple first introduced the 12.9-inch iPad Pro in 2015 followed by the 9.7-inch model in March of 2016. Second generation models were introduced in both 12.9-inch and 10.5-inch form factors in 2017.\r\n \r\nApple’s third-generation iPad Pro, which launched in November of 2018, comes in both 12.9-inch and a 11-inch sizes, features an all-screen display with minimal bezels, and no Home button. \r\n\r\nThe new iPads incorporate the TrueDepth camera from the iPhone line, allowing for Face ID biometric authentication.The iPad Pro is marketed as a device that is more powerful than most PCs, and the latest benchmarks of the A12X inside the 2018 models back that claim up.', 'https://ww.9to5mac.com/guides/ipad-pro/', 0, NULL, 'iPad Pro', 'Get to know the iPad Pro', 2),
+(2, '2020-01-09', '2020-01-10', 2, 'Ever since Samsung showcased its potential clamshell foldable design at the Samsung Developer Conference late last year, we’ve been eagerly waiting for a glimpse of a potential clamshell Galaxy Fold sequel.In a secret meeting at CES 2020, Samsung appears to have confirmed the name of the new clamshell device according to South Korean news outlet Ajunews (via SamMobile). \r\nAt this secret meeting, it was confirmed that the updated foldable will be called the Galaxy Bloom, with DJ Koh even talking to select partners and potential providers.A leaked image of the slideshow presentation does indeed show the device with “Bloom” front-and-center. Koh explained to those lucky enough to attend, that the Galaxy Bloom has been inspired by the silhouette of the commonly seen makeup powder boxes from French cosmetic firm  Lancôme.', 'https://ww.9to5google.com/2020/01/10/galaxy-bloom/', 1, '1.99', 'Samsung Galaxy Bloom', 'Report: Samsung’s next foldable will be the ‘Galaxy Bloom’, gets secret CES showcase', 1),
+(3, '2020-01-01', NULL, 2, 'Samsung’s One UI skin over Android has breathed new life into the company’s smartphones and as time goes on, it’s just getting better.\r\n\r\nThanks to a teardown of the latest One UI update, we’ve got some hints at what’s coming next to Samsung’s software including battery health monitoring, faster charging, and more new camera features.\r\nThe folks over at XDA-Developers took a deep dive into One UI 2.0 to see what’s in preparation under the hood. Among what they found, firstly, is a handful of new details on upcoming camera features.\r\nNew Camera Features\r\nIf you’ll recall last year, several new camera modes likely arriving on the Galaxy S11/S20 were discovered. One of those new modes was “Director’s View” and this latest teardown digs into that a bit further. Strings suggest that this camera mode will allow users to lock in on a subject and the phone will keep that subject in focus as well as getting close-up shots of the subject.\r\nFurther, another new camera is found in this latest teardown called “Single Take Photo.” With this mode, Samsung uses AI to automatically capture the best shots. Google does this to an extent with features such as Photobooth on the Pixel, but Samsung seems to be expanding things with tips for framing shots or different angles.\r\nFinally, rounding things out, there’s evidence that Samsung is bringing back a “Pro Video” mode. This would allow users to adjust shutter speed, ISO, exposure, and more in video just like Galaxy devices can currently do with photos. Bokeh effects may also arrive to mirror some of the Live Focus video effects that arrived with Note 10.', NULL, 0, NULL, 'New Battery for Samsung', 'Samsung teardown hints at new camera features, ‘Battery Health,’ super fast charging', 0),
+(4, '2020-01-02', '2020-01-03', 1, 'The success of Chrome OS is thanks to the cheap Chromebooks that sell en masse, not the high-end models. At CES 2020 this week, we got a chance to spend some time with the Lenovo IdeaPad Duet, a Chrome OS tablet that ticks pretty much all of the boxes.\r\n\r\nSo, what’s been the problem with Chrome OS tablets so far? To date, only two Chrome OS tablets have launched, and, frankly, neither of them have been very good. That’s Google’s Pixel Slate, which was a monumental failure that saw the company pull out of tablets entirely, and the Acer Chromebook Tab 10, an education-focused machine. HP’s Chromebook X2 was perhaps the best effort, but it was still priced too high for general consumers.\r\nThe IdeaPad Duet solves the problems of those machines. Firstly, it’s affordable. The entire product is $279, and that includes the keyboard and kickstand cover, unlike other Chrome OS tablets that have launched to date.\r\nSecondly, the Lenovo IdeaPad Duet is a Chrome OS tablet that consumers might actually be interested in. A 10-inch tablet with a keyboard and a full browser is a compelling package that might even sway some iPad users, too.', 'https://ww.9to5google.com/2020/01/06/lenovo-ideapad-duet-first-impressions-chrome-os-tablet/', 1, '19.99', 'Chrome OS in Lenovo IdeaPad', 'Lenovo IdeaPad Duet finally gives Chrome OS the tablet it needs', 5);
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `payment_method`
+-- Table structure for table `payment_method`
 --
 
 CREATE TABLE `payment_method` (
@@ -125,10 +156,18 @@ CREATE TABLE `payment_method` (
   `nameOnCard` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `payment_method`
+--
+
+INSERT INTO `payment_method` (`paymentMethodId`, `userId`, `cardType`, `cardNumber`, `CVV`, `nameOnCard`) VALUES
+(1, 1, 1, '0000000000000000000', '865', 'Ahmad Abo Louha'),
+(2, 2, 0, '111111111111', NULL, 'Alejandro Restrepo Klinge');
+
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `purchased_article`
+-- Table structure for table `purchased_article`
 --
 
 CREATE TABLE `purchased_article` (
@@ -137,16 +176,17 @@ CREATE TABLE `purchased_article` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Daten für Tabelle `purchased_article`
+-- Dumping data for table `purchased_article`
 --
 
 INSERT INTO `purchased_article` (`newsId`, `userId`) VALUES
-(3, 3);
+(4, 3),
+(2, 3);
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -163,35 +203,35 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Daten für Tabelle `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`userId`, `firstName`, `surname`, `password`, `gender`, `DOB`, `country`, `phone`, `eMail`, `permission`) VALUES
 (1, 'Ahmad', 'Abo Louha', '123123', 'm', '1993-09-08', 'DE', '01778899', 'ahmad@gmail.com', 1),
-(2, 'alejandro', 'Restrepo Klinge', '123123', 'm', '1996-12-24', 'DE', '01778888', 'alejandro@gmail.com', 1),
+(2, 'Alejandro', 'Restrepo Klinge', '123123', 'm', '1996-12-24', 'CO', '01778888', 'alejandro@gmail.com', 1),
 (3, 'James', 'Bond', '123123', 'm', '1950-07-30', 'UK', '01778877', 'james@gmail.com', NULL),
-(5, 'Maria', 'Mustermann', '123123', 'f', '2002-02-02', 'DE', '2036598', 'maria@gmail.com', NULL),
-(6, 'Sara', 'Musterfrau', '123123', 'f', '1999-02-02', 'NF', '01778811', 'sara@gmail.com', NULL);
+(4, 'Maria', 'Mustermann', '123123', 'f', '2002-02-02', 'DE', '2036598', 'maria@gmail.com', NULL),
+(5, 'Sara', 'Musterfrau', '123123', 'f', '1999-02-02', 'NF', '01778811', 'sara@gmail.com', NULL);
 
 --
--- Indizes der exportierten Tabellen
+-- Indexes for dumped tables
 --
 
 --
--- Indizes für die Tabelle `category`
+-- Indexes for table `category`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`catId`);
 
 --
--- Indizes für die Tabelle `category_has_news`
+-- Indexes for table `category_has_news`
 --
 ALTER TABLE `category_has_news`
   ADD KEY `fk_CATEGORY_has_NEWS_NEWS1_idx` (`newsId`),
   ADD KEY `fk_CATEGORY_has_NEWS_CATEGORY1_idx` (`catId`);
 
 --
--- Indizes für die Tabelle `comment`
+-- Indexes for table `comment`
 --
 ALTER TABLE `comment`
   ADD PRIMARY KEY (`commentId`),
@@ -199,117 +239,117 @@ ALTER TABLE `comment`
   ADD KEY `fk_COMMENT_USER1_idx` (`userId`);
 
 --
--- Indizes für die Tabelle `image`
+-- Indexes for table `image`
 --
 ALTER TABLE `image`
   ADD PRIMARY KEY (`imageId`),
   ADD KEY `fk_IMAGE_NEWS1_idx` (`newsId`);
 
 --
--- Indizes für die Tabelle `news`
+-- Indexes for table `news`
 --
 ALTER TABLE `news`
   ADD PRIMARY KEY (`newsId`),
   ADD KEY `fk_NEWS_USER1_idx` (`userId`);
 
 --
--- Indizes für die Tabelle `payment_method`
+-- Indexes for table `payment_method`
 --
 ALTER TABLE `payment_method`
   ADD PRIMARY KEY (`paymentMethodId`),
   ADD KEY `USERID_idx` (`userId`);
 
 --
--- Indizes für die Tabelle `purchased_article`
+-- Indexes for table `purchased_article`
 --
 ALTER TABLE `purchased_article`
   ADD KEY `fk_purchase_news` (`newsId`),
   ADD KEY `fk_purchase_user` (`userId`);
 
 --
--- Indizes für die Tabelle `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`userId`);
 
 --
--- AUTO_INCREMENT für exportierte Tabellen
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT für Tabelle `category`
+-- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `catId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `catId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT für Tabelle `comment`
+-- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `commentId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `commentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT für Tabelle `image`
+-- AUTO_INCREMENT for table `image`
 --
 ALTER TABLE `image`
-  MODIFY `imageId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `imageId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT für Tabelle `news`
+-- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
-  MODIFY `newsId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `newsId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT für Tabelle `payment_method`
+-- AUTO_INCREMENT for table `payment_method`
 --
 ALTER TABLE `payment_method`
-  MODIFY `paymentMethodId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `paymentMethodId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT für Tabelle `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- Constraints der exportierten Tabellen
+-- Constraints for dumped tables
 --
 
 --
--- Constraints der Tabelle `category_has_news`
+-- Constraints for table `category_has_news`
 --
 ALTER TABLE `category_has_news`
   ADD CONSTRAINT `fk_CATEGORY_has_NEWS_CATEGORY1` FOREIGN KEY (`catId`) REFERENCES `category` (`catId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_CATEGORY_has_NEWS_NEWS1` FOREIGN KEY (`newsId`) REFERENCES `news` (`newsId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints der Tabelle `comment`
+-- Constraints for table `comment`
 --
 ALTER TABLE `comment`
   ADD CONSTRAINT `fk_COMMENT_NEWS1` FOREIGN KEY (`newsId`) REFERENCES `news` (`newsId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_COMMENT_USER1` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints der Tabelle `image`
+-- Constraints for table `image`
 --
 ALTER TABLE `image`
   ADD CONSTRAINT `fk_IMAGE_NEWS1` FOREIGN KEY (`newsId`) REFERENCES `news` (`newsId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints der Tabelle `news`
+-- Constraints for table `news`
 --
 ALTER TABLE `news`
   ADD CONSTRAINT `fk_NEWS_USER1` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints der Tabelle `payment_method`
+-- Constraints for table `payment_method`
 --
 ALTER TABLE `payment_method`
   ADD CONSTRAINT `USERID` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints der Tabelle `purchased_article`
+-- Constraints for table `purchased_article`
 --
 ALTER TABLE `purchased_article`
   ADD CONSTRAINT `fk_purchase_news` FOREIGN KEY (`newsId`) REFERENCES `news` (`newsId`),
