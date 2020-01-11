@@ -14,10 +14,10 @@ if(isset($_POST['submit']))
                 
                 $request->execute([$hash, $userId]);
 
-                echo 'the Update was Successful';
+                echo 'The Update was Successful';
             }
             else{
-                echo 'the password is not the same !!! ';
+                echo 'The password is not the same !!! ';
             }
         }
 }

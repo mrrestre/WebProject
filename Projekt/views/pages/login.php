@@ -14,6 +14,7 @@
             foreach ($username as $row)
             {
                 $verifyPassword = password_verify($password, $row['password']);
+
                 if($email === $row['eMail'] && $verifyPassword === true)
                 {
                     $_SESSION['loggedIn'] = true;
