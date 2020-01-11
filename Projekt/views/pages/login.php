@@ -10,7 +10,6 @@
             $email    = $_POST['email']     ?? null;
             $password = $_POST['password']  ?? null;
             
-
             foreach ($username as $row)
             {
                 $verifyPassword = password_verify($password, $row['password']);
@@ -26,6 +25,8 @@
                     $_SESSION['currentUser'] = $thisUserID;
                     
                     $permission = getUsersWithPermission ( $database );
+
+                    $_SESSION['justLoggedIn'] = true;
 
                     foreach($permission as $row)
                     {

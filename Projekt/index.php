@@ -1,43 +1,52 @@
 <?php
+	//For the first load of the page
+	if(empty($_SESSION))
+	{ 
+		session_start();
+	}
 
-if(empty($_SESSION))
-{ 
-	session_start();
-}
+	//If a session exists and no one is logged in
+	if(empty($_SESSION['loggedIn'])){
+		$_SESSION['loggedIn'] = null;
+		$_SESSION['justLoggedIn'] = null;
+	}
 
-if(empty($_SESSION['loggedIn'])){
-	$_SESSION['loggedIn'] = null;
-}
+	//If a session exists and no one with Admin Permission is logged in
+	if(empty($_SESSION['admin'])){
+		$_SESSION['admin'] = null;
+	}
 
-if(empty($_SESSION['admin'])){
-	$_SESSION['admin'] = null;
-}
+	//All require stuff to work
+	require_once 'init/10_database.php';
+	require_once 'init/20_functions.php';
 
-// all require stuff to work!!
-require_once 'init/10_database.php';
-require_once 'init/20_functions.php';
+	//Definition of absolute path from the whole Proyect
+	define('ROOT', str_replace('\\', '/', realpath(__DIR__)));
 
-
-define('ROOT', str_replace('\\', '/', realpath(__DIR__)));
-
-
-if (!isset($_GET['page']))
-{
-	$page = 'home';
-}
-else
-{
-	$page = $_GET['page'];      				// Set page variable in URI
-}
-
-
-$_SESSION['admin'] && $_SESSION['loggedIn']
-
+	//Set page variable in URI
+	if (!isset($_GET['page']))
+	{
+		$page = 'home';
+	}
+	else
+	{
+		$page = $_GET['page'];      				
+	}
 ?>
 
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 	<head>
 		<?php echo file_get_contents("static/head.html"); ?>
+		<link type="text/css" href="./assets/css/home.css" rel="stylesheet"/>
+		<!-- Automatic include the CSS design file for each page -->
+		<?php 
+			if($page !== 'home')
+			{
+				?> <link type="text/css" href="./assets/css/<?=$page?>.css" rel="stylesheet"/> <?php
+			}
+		?>
 	</head>
 
 	<body>
@@ -46,7 +55,16 @@ $_SESSION['admin'] && $_SESSION['loggedIn']
 		</header>
 		
 		<main>
-			<?php
+			<?php 
+				// Welcome message (if logged in)
+				if($_SESSION['loggedIn'] === true && $_SESSION['justLoggedIn'] === true)
+				{
+					$name = getUserNameByID ( $database, $_SESSION['currentUser'] );
+					$_SESSION['justLoggedIn'] = false;
+
+					?><h4>Welcome: <?=$name['userName']?></h4><?php
+				}
+			
 				// Switch section content based on URI
 				switch($page) {
 					case '';
@@ -65,37 +83,59 @@ $_SESSION['admin'] && $_SESSION['loggedIn']
 						include(ROOT.'/views/pages/contact.php');
 						break;
 					case 'admin':
+						// First case: Logged in and Admin?
 						if($_SESSION['admin'] === true &&  $_SESSION['loggedIn'] === true)
-						{include(ROOT.'/views/pages/admin.php');}
+						{
+							include(ROOT.'/views/pages/admin.php');
+						}
+						// Second case: Logged in but not an Admin 
 						else if($_SESSION['loggedIn'] === true)
 						{
-							echo 'Sorry!! you do not have a Permission to do that';
+							echo 'Sorry!! you do not have Permission to do that';
 						}
-						else{
+						// Third case: not logged in at all
+						else
+						{
 							include(ROOT.'/views/pages/login.php');
-							echo 'please Login first';
+							echo 'Please Login first';
 						}
 						break;
 					case 'login':
-						include(ROOT.'/views/pages/login.php');
-						break;
+						// You can cannot Log in if already logged in
+						if($_SESSION['loggedIn'] === true)
+						{
+							echo 'You are already logged in ';
+							?><br><a href="index.php?page=home">Go to Home</a><?php
+							break;
+						}
+						else 
+						{
+							include(ROOT.'/views/pages/login.php');
+							break;
+						}
 					case 'logout':
 						include(ROOT.'/views/pages/logout.php');
 						break;
 					case 'profile':
+						//only if logged in is shown
 						if($_SESSION['loggedIn'] === true)
-						{include(ROOT.'/views/pages/profile.php');}
+						{
+							include(ROOT.'/views/pages/profile.php');
+						}
 						else{
 							include(ROOT.'/views/pages/login.php');
-							echo 'please Login first';
+							echo 'Please Login first';
 						}
 						break;
 					case 'updateProfile':
+						//only if logged in is shown
 						if($_SESSION['loggedIn'] === true)
-						{include(ROOT.'/views/pages/updateProfile.php');}
+						{
+							include(ROOT.'/views/pages/updateProfile.php');
+						}
 						else{
 							include(ROOT.'/views/pages/login.php');
-							echo 'please Login first';
+							echo 'Please Login first';
 						}
 						break;
 					case 'registration':
@@ -113,27 +153,33 @@ $_SESSION['admin'] && $_SESSION['loggedIn']
 						include(ROOT.'/views/pages/impressum.html');
 						break;
 					case 'addArticle':
+						//only if admin is shown
 						if($_SESSION['admin'] === true &&  $_SESSION['loggedIn'] === true)
-						{include(ROOT.'/views/pages/addArticle.php');}
+						{
+							include(ROOT.'/views/pages/addArticle.php');
+						}
 						else if($_SESSION['loggedIn'] === true)
 						{
 							echo 'Sorry!! you do not have a Permission to do that';
 						}
 						else{
 							include(ROOT.'/views/pages/login.php');
-							echo 'please Login first';
+							echo 'Please Login first';
 						}
 						break; 
 					case 'deleteUser':
+						//only if admin is shown
 						if($_SESSION['admin'] === true &&  $_SESSION['loggedIn'] === true)
-						{include(ROOT.'/views/pages/deleteUser.php');}
+						{
+							include(ROOT.'/views/pages/deleteUser.php');
+						}
 						else if($_SESSION['loggedIn'] === true)
 						{
 							echo 'Sorry!! you do not have a Permission to do that';
 						}
 						else{
 							include(ROOT.'/views/pages/login.php');
-							echo 'please Login first';
+							echo 'Please Login first';
 						}
 						break; 
 					default:
@@ -143,12 +189,8 @@ $_SESSION['admin'] && $_SESSION['loggedIn']
 			?>
 		</main>
 
-		
 		<footer>
 			<?php include "static/footer.php"; ?>
 		</footer>
 	</body>
 </html>
-
-
-

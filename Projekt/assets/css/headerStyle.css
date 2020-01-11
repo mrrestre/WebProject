@@ -1,25 +1,20 @@
-* {
-    box-sizing: border-box;
-}
-
-.headerbackround {
-    background-color: #52525269;
-    height: 60px;
-    margin-bottom: 100px;
-}
-
-.header {
+.top_header {
     background-color: #27313a;
-    padding: 7px;
-    margin-left: 0px;
-    margin-right: 0px;
+    height: 10%;
+    width: 100%;
+    padding: 10px;
+    padding-top: 0px;
 }
 
-.header a.logo {
-    background-color: #27313a;
-    padding: 12px 8px;
-    border-radius: 4px;
-    margin-left: 0px;
+.middle_header {
+    background-color: #ffffff;
+    padding-top: 0px;
+    text-align: center;
+    height: 70%;
+}
+
+.middle_header a {
+    padding: 20px;
 }
 
 .header a {
@@ -41,12 +36,4 @@
 .header a:hover {
     background-color: #cccccc;
     color: black;
-}
-
-.header-left {
-    float: left;
-}
-
-.header-right {
-    float: right;
 }

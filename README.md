@@ -1,2 +1,5 @@
-# WebProject
-Hier kommt alles rein, was mit dem Projekt zu tun hat
+# WebProject TakeTec
+
+Installation Step by Step:
+
+TODO: add intallation guide

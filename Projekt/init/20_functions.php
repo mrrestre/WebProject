@@ -49,6 +49,14 @@
             return $request->execute() ? $request->fetchAll() : false;
         }
 
+        // Param: database and user ID
+        // Return: users First Name + Last Name
+        function getUserNameByID ( $database , $userId )
+        {
+            $request = $database->prepare(" SELECT concat(firstName, ' ', surname) as userName FROM user WHERE userId = ?");
+            return $request->execute(array($userId)) ? $request->fetch() : false;
+        }    
+
         function getUsersWithPermission ( $database )
         {
             $request = $database->prepare(" SELECT userId FROM user WHERE permission IS NOT NULL");
