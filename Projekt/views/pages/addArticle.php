@@ -45,6 +45,26 @@ $status='';
                                    'copyright' => $imageCopyright,
                                    'newsId' => $lastId]);
 
+             
+
+            // add Category to the news
+            $categoryDescription = fetchCategory( $database );
+            $category = $_POST['category'];
+            foreach($category as $selected)
+            {
+                foreach($categoryDescription as $row)
+                {
+                    if($selected === $row['description'])
+                    {
+                        $catId = $row['catId'];
+                        $request = $database->prepare("INSERT INTO category_has_news (catId, newsId)
+                                                    VALUES (:catId, :newsId)");
+                        $request->execute(['catId' => $catId,
+                                          'newsId' => $lastId]);
+                    }
+                }
+            }
+
                 $status ='You added an Article Successfully';   
                 echo $status;
         } 
@@ -63,6 +83,12 @@ $status='';
 </head>
 <body>
     <form action="index.php?page=addArticle" method="POST">
+
+        <label for="title">Title*</label><br>
+        <input type="text" id="title" name="title" placeholder="title" required><br>
+
+        <label for="teaser">Teaser*</label><br>
+        <textarea id="teaser" name="teaser" placeholder="Teaser" style="height:100px; width:400px"></textarea><br>
         
         <label for="content">Content*</label><br>
         <textarea id="content" name="content" placeholder="Article Content" style="height:200px; width:400px"></textarea><br>
@@ -70,11 +96,15 @@ $status='';
         <label for="copyright">Copyright</label><br>
         <input type="text" id="copyright" name="copyright" placeholder="copyright" ><br>
 
-        <label for="title">Title*</label><br>
-        <input type="text" id="title" name="title" placeholder="title" required><br>
-
-        <label for="teaser">Teaser*</label><br>
-        <textarea id="teaser" name="teaser" placeholder="Teaser" style="height:200px; width:400px"></textarea><br>
+        <p>Choose one or more Category: 
+        <input type="checkbox" id="IOS" name="category[]" value="IOS"> <label for="IOS">IOS</label>
+        <input type="checkbox" id="Android" name="category[]" value="Android"> <label for="Android">Android</label>
+        <input type="checkbox" id="Apple" name="category[]" value="Apple"> <label for="Apple">Apple</label>
+        <input type="checkbox" id="Windows" name="category[]" value="Windows"> <label for="Windows">Windows</label>
+        <input type="checkbox" id="Wearables" name="category[]" value="Wearables"> <label for="Wearables"> Wearables</label>
+        <input type="checkbox" id="Audio" name="category[]" value="Audio">  <label for="Audio">Audio</label>
+        <input type="checkbox" id="ChromeOS" name="category[]" value="ChromeOS">  <label for="ChromeOS">Chrome OS</label> </p>
+        
     
         <label for="paidNews">Payed Article?*</label><br>  
         <input type="radio" value="0" id="free" name="paidNews" required checked>   

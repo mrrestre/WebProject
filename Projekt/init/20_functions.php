@@ -11,7 +11,13 @@
     	{
             $request = $database->prepare(" SELECT userId, concat(firstName, ' ', surname) as userName, DOB, country, phone, eMail FROM user ");
     		return $request->execute() ? $request->fetchAll() : false; 
-    	}
+        }
+        
+        function fetchCategory( $database )
+        {
+            $request = $database->prepare(" SELECT catId, description FROM category ");
+    		return $request->execute() ? $request->fetchAll() : false; 
+        }
     
         function getAnArticle( $newsId, $database )
     	{
@@ -61,12 +67,23 @@
     	// 	return $request->execute(array($differ_id)) ? $request->fetchAll() : false; 
         // }
         
-        // function to Delete a User by an Admin Parameter is the e-Mail of the User 
+        // function to Delete a User and his Payment Method Data 
+        // from User and payment_method Tables by an Admin.
+        // Parameter is the e-Mail of the User 
 
         function deleteUserFromDatabase($database, $email)
         {
-            $request = $database->prepare(" DELETE user, payment_method FROM user join payment_method on user.userId = payment_method.userId WHERE user.eMail = ?");
-            $request->execute(array($email)) ? $request->fetchAll() : false;
+            $userId = getUserIDByEMail ( $database , $email );
+            $userId = $userId[0];
+            $userId = $userId['userId'];
+
+            $request = $database->prepare(" DELETE FROM payment_method  WHERE userId = ?");
+            $request->execute(array($userId)) ? true : false;
+
+            $request = $database->prepare(" DELETE FROM user  WHERE eMail = ?");
+            $request->execute(array($email)) ? true : false;
+            
+         
         }
 
         // function to increase the Like counter in Database
