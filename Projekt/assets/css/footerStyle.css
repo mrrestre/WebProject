@@ -1,16 +1,21 @@
 footer {
+    font-family: "MontserratRegular";
     text-align: center;
-    line-height: 20px;
+    line-height: 0.5;
     color: #00a19c;
+    height: 70px;
     background-color: #27313a;
     width: 100%;
     position: fixed;
     bottom: 0px;
 }
 
+footer h4 {
+    font-size: 16px;
+}
+
 footer a {
-    font-size: 10px;
-    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
     text-align: center;
     color: #00a19c;
 }

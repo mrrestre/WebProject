@@ -51,7 +51,7 @@
 
 	<body>
 		<header>
-			<?php include "static/header.php"; ?>
+			<?php include_once "static/header.php"; ?>
 		</header>
 		
 		<main>
@@ -75,7 +75,10 @@
 						break;
 					case 'top10':
 						include(ROOT.'/views/pages/top10.php');
-						break;   
+						break;
+					case 'aboutUs':
+						include(ROOT.'/views/pages/aboutUs.php');
+						break;
 					case 'readArticle':
 						include(ROOT.'/views/pages/readArticle.php');
 						break;

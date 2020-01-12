@@ -18,7 +18,7 @@
             $request = $database->prepare(" SELECT catId, description FROM category ");
     		return $request->execute() ? $request->fetchAll() : false; 
         }
-    
+   
         function getAnArticle( $newsId, $database )
     	{
        		$request =  $database->prepare(" SELECT newsId, newsTitle, content, concat(firstName, ' ', surname) as authorName, creation, updated, copyright, paidNew, price FROM news JOIN user ON user.userId = news.userId WHERE newsId = ? ");
