@@ -21,7 +21,7 @@
    
         function getAnArticle( $newsId, $database )
     	{
-       		$request =  $database->prepare(" SELECT newsId, newsTitle, content, concat(firstName, ' ', surname) as authorName, creation, updated, copyright, paidNew, price FROM news JOIN user ON user.userId = news.userId WHERE newsId = ? ");
+       		$request =  $database->prepare(" SELECT newsId, newsTitle, newsShortDescription, content, concat(firstName, ' ', surname) as authorName, creation, updated, copyright, paidNew, price FROM news JOIN user ON user.userId = news.userId WHERE newsId = ? ");
     		return $request->execute(array($newsId)) ? $request->fetchAll() : false; 
         }
         
@@ -90,8 +90,6 @@
 
             $request = $database->prepare(" DELETE FROM user  WHERE eMail = ?");
             $request->execute(array($email)) ? true : false;
-            
-         
         }
 
         // function to increase the Like counter in Database
@@ -104,7 +102,6 @@
 
 
         // for the random number of the existing newsId:
-
         function getMaxAndMinIDFromNews($database)
         {
             $request = $database->prepare("SELECT MAX(newsId), MIN(newsId) FROM news");

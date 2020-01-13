@@ -6,12 +6,12 @@ footer {
     height: 70px;
     background-color: #27313a;
     width: 100%;
-    position: fixed;
     bottom: 0px;
 }
 
 footer h4 {
     font-size: 16px;
+    padding-top: 12px;
 }
 
 footer a {

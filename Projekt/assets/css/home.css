@@ -1,3 +1,8 @@
+.content_wrap {
+    max-height: 100%;
+    margin-bottom: 80px;
+}
+
 .news_container {
     padding: 0% 3%;
     margin-bottom: 70px;
@@ -14,11 +19,8 @@
     }
     main .new .title a {
         font-size: 13px;
-        padding: 8px;
+        padding: 5px;
         width: 100%;
-    }
-    main .new .title {
-        top: 18%;
     }
 }
 
@@ -33,7 +35,26 @@
 
 .new img {
     width: 100%;
-    padding-top: 0;
+    padding-top: 0px;
+}
+
+.new .title {
+    position: absolute;
+    margin-top: 7%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #27313a;
+    opacity: 0.8;
+}
+
+.new .title a {
+    text-decoration: none;
+    font-size: 33px;
+    font-family: "Offside";
+    color: #00a19c;
+    opacity: 1;
+    padding: 20px;
+    padding-top: 0px;
 }
 
 .new .info {
@@ -42,6 +63,7 @@
     background-color: #27313a;
     opacity: 0.7;
     width: 100%;
+    padding-top: 0px;
 }
 
 .new .info p {
@@ -54,24 +76,6 @@
     font-family: "MontserratRegular";
     font-size: 18px;
     color: #006B67;
-}
-
-.new .title {
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    top: 55px;
-    background-color: #27313a;
-    opacity: 0.8;
-}
-
-.new .title a {
-    text-decoration: none;
-    font-size: 33px;
-    font-family: "Offside";
-    color: #00a19c;
-    opacity: 1;
-    padding: 20px;
 }
 
 .new:hover .title,

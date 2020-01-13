@@ -48,8 +48,8 @@
                     
                     <div class="search-container">
                         <form>
-                            <input type="text" id="search" name="search">    
-                            <button type="submit"><img icon="search" src="./assets/icons/search.png" alt="Search"></img></button>
+                            <input type="text" id="search" name="search" placeholder="Search...">    
+                            <input type="image" src="./assets/icons/search.png" alt="Search"/>
                         </form>                       
                     </div>
                 </nav>

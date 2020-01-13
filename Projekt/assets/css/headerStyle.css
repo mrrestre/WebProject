@@ -1,6 +1,5 @@
 * {
     box-sizing: border-box;
-    overflow: visible;
 }
 
 body {
@@ -92,27 +91,26 @@ header {
 }
 
 .bottom_header .search-container {
-    margin-top: -14px;
     float: right;
-    overflow: auto;
+    display: inline-flex;
+    margin-top: -14px;
 }
 
-.bottom_header img {
-    margin-top: 3px;
+.bottom_header .search-container input[type=image] {
     height: 45px;
-    padding: 8px;
+    padding: 5px;
+    padding-top: 7px;
+    margin-bottom: -15px;
 }
 
 .bottom_header .search-container input[type=text] {
-    line-height: 40px;
-    margin-right: -5px;
-    padding-top: 40px;
-    padding-bottom: 6px;
-    height: 57px;
-    font-size: 17px;
+    font-family: "MontserratRegular";
+    font-size: 16px;
+    height: 58px;
     border-style: solid;
     border-color: #cccccc;
     border-width: 1px;
+    padding-left: 8px;
 }
 
 .bottom_header .search-container button:hover {

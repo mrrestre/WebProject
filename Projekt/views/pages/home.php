@@ -1,7 +1,4 @@
 <html>
-    <head>
-    <!-- hier den css von home hinzüfugen -->
-    </head>
     <div class="news_container">
         <?php 
             $news = fetchNews ($database); 
