@@ -2,7 +2,7 @@
     <head>
     <!-- hier den css von home hinzüfugen -->
     </head>
-    <body>
+    <div class="news_container">
         <?php 
             $news = fetchNews ($database); 
         ?>
@@ -31,5 +31,5 @@
                 </div>
             </div>
         <?php } ?>
-    </body>    
+    </div>    
 </html>
