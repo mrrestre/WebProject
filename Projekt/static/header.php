@@ -36,8 +36,15 @@
                     <a class="<?php $active = ($_GET['page'] === 'home' || $_GET['page'] === '' ? 'btn active' : 'btn'); 
                     echo $active; ?>" href="index.php?page=home">Home</a>
                     
-                    <a class="<?php $active = ($_GET['page'] === 'top10' ? 'btn active' : 'btn');
-                    echo $active; ?>" href="index.php?page=top10">Top 10</a>
+                    <div class = "dropdown">
+                        <button class="dropbtn">
+                            Top 10 
+                        </button>
+                        <div class = "dropdown-content">
+                            <a href="index.php?page=top10">Comments</a>
+                            <a href="index.php?page=top10">Likes</a>
+                        </div>
+                    </div>
                     
                     <?php $random=getRandomNumberFromIdRange( $database ); ?>
                     <a class="<?php $active = ($_GET['page'] === 'readArticle' ? 'btn active' : 'btn');
