@@ -37,6 +37,7 @@ header {
     height: 15%;
     width: 100%;
     padding-right: 2%;
+    position: relative;
 }
 
 .top_header a {
@@ -70,6 +71,9 @@ header {
     border-color: #cccccc;
     border-width: 1px;
     padding-top: 13px;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0px;
 }
 
 .btn {

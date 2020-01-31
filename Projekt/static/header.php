@@ -38,20 +38,21 @@
                     
                     <a class="<?php $active = ($_GET['page'] === 'top10' ? 'btn active' : 'btn');
                     echo $active; ?>" href="index.php?page=top10">Top 10</a>
-
-                    <a class="<?php $active = ($_GET['page'] === 'aboutUs' ? 'btn active' : 'btn');
-                    echo $active; ?>" href="index.php?page=aboutUs">About Us</a>
                     
                     <?php $random=getRandomNumberFromIdRange( $database ); ?>
                     <a class="<?php $active = ($_GET['page'] === 'readArticle' ? 'btn active' : 'btn');
                     echo $active; ?>" href="index.php?page=readArticle&newsid=<?echo $random?>">Random</a>
                     
+                    <a class="<?php $active = ($_GET['page'] === 'aboutUs' ? 'btn active' : 'btn');
+                    echo $active; ?>" href="index.php?page=aboutUs">About Us</a>
+
                     <div class="search-container">
                         <form>
                             <input type="text" id="search" name="search" placeholder="Search...">    
                             <input type="image" src="./assets/icons/search.png" alt="Search"/>
                         </form>                       
                     </div>
+                    
                 </nav>
             </div>
         </header>
