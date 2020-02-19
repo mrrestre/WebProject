@@ -1,0 +1,80 @@
+/* .containerDiv {
+    text-align: center;
+    font-family: "MontserratRegular";
+    width: 100%;
+    margin-left: 0;
+} */
+
+.loginDiv,
+.signUpDiv {
+    width: 50%;
+    text-align: center;
+    font-family: "MontserratRegular";
+    font-size: 20px;
+}
+
+.salutation {
+    font-family: "PT_Sans_Caption";
+    color: #27313a;
+    font-size: 55px;
+    padding: 0.5%;
+    margin-top: 5%;
+}
+
+
+/* Full-width input fields */
+
+input[type=email],
+input[type=password] {
+    width: 70%;
+    font-family: "MontserratRegular";
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #00a19c;
+}
+
+
+/* Set a style for all buttons */
+
+.loginButton {
+    background-color: #00a19c;
+    color: #eeeeee;
+    padding: 14px 14px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 70%;
+}
+
+.loginButton:hover {
+    opacity: 0.8;
+}
+
+.signupButton {
+    background-color: #00a19c;
+    color: #eeeeee;
+    text-align: center;
+    padding: 14px 14px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 10%;
+}
+
+.signupButton:hover {
+    opacity: 0.8;
+}
+
+
+/* Change styles for span and cancel button on extra small screens */
+
+@media screen and (max-width: 300px) {
+    span.psw {
+        display: block;
+        float: none;
+    }
+    .cancelbtn {
+        width: 100%;
+    }
+}

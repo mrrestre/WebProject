@@ -62,47 +62,48 @@ $status='';
 </head>
 <body>
     <div class="content-wrap">
-        <h1>Welcome to the Registration</h1>
+        
 
         <div class="loginclass">
+            <h1 class="salutation">Registration</h1>
             <form action="index.php?page=registration" method="POST">
                             
-                <label for="firstName">First Name*</label><br>
+                <label for="firstName">First Name*</label>
                 <input type="text" id="firstName" name="firstName" placeholder="First Name" required><br>
                 
-                <label for="surname">Last Name*</label><br>
+                <label for="surname">Last Name*</label>
                 <input type="text" id="surname" name="surname" placeholder="Last Name" required><br>
                     
-                <label for="password">Password*</label><br>
+                <label for="password">Password*</label>
                 <input type="password" id="password" name="password" placeholder="Password" required><br>
                     
-                <label for="passwordagain">Password*</label><br>
+                <label for="passwordagain">Password*</label>
                 <input type="password" id="passwordagain" name="passwordagain" placeholder="Password" required><br>
                     
-                <label for="gender">Gender*</label><br>  
+                <label for="gender">Gender*</label>  
                 <input type="radio" value="m" id="male" name="gender" required>   
                 <label for="male">male</label>
                 <input type="radio" value="f" id="female" name="gender" required>
                 <label for="female">female</label><br>
                                 
-                <label for="DOB">Date of Birth*</label><br>
+                <label for="DOB">Date of Birth*</label>
                 <input type="date" id="DOB" name="DOB" required><br>
                     
-                <label for="country">Country*</label><br>
+                <label for="country">Country*</label>
                 <?php include ROOT.'/assets/country/country.html'; ?> <br>
 
-                <label for="phone">Telephone Number*</label><br>
+                <label for="phone">Telephone Number*</label>
                 <input type="number" id="phone" name="phone" placeholder="Telephone Number" required><br>
 
-                <label for="eMail">E-Mail*</label><br>
+                <label for="eMail">E-Mail*</label>
                 <input type="email" id="eMail" name="eMail" placeholder="E-Mail" required><br>
 
                 <label for="submit">
-                <input type="submit" id="submit" name="submit" value="Send">
+                <input type="submit" class="registrationButton" id="submit" name="submit" value="Send">
                 </label>
                 
                 <label for="reset">
-                <input type="reset" id="reset" name="reset" value="Reset">
+                <input type="reset" class="resetButton" id="reset" name="reset" value="Reset">
                 </label>
             </form>
         </div>
