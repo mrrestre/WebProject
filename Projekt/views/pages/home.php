@@ -20,7 +20,7 @@
                     <p><?=$row['newsShortDescription'] ?></p>
 
                     <div class="published">
-                        published on <?=$row['creation']?> by <?=$row['authorName'] ?>
+                        Published on <?=$row['creation']?> by <?=$row['authorName'] ?>
                         <? if($row['updated'] != NULL){
                             echo 'updated on '.$row['updated'];
                         }?>

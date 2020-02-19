@@ -6,7 +6,29 @@
             $request = $database->prepare(" SELECT newsId, newsTitle, newsShortDescription, concat(firstName, ' ', surname) as authorName, creation, updated, copyright, paidNew FROM news JOIN user ON user.userId = news.userId ORDER BY creation DESC");
     		return $request->execute() ? $request->fetchAll() : false; 
         }
-        
+
+        function fetchNewsWithMostComments( $database )
+    	{
+            $request = $database->prepare(" SELECT news.newsId, newsTitle, newsShortDescription, concat(firstName, ' ', surname) as authorName, creation, updated, copyright, paidNew, count(comment.newsId) as nmComments
+                                            FROM news 
+                                            JOIN user ON user.userId = news.userId 
+                                            JOIN comment ON news.newsId = comment.newsId
+                                            GROUP BY comment.newsId
+                                            ORDER BY nmComments DESC 
+                                            LIMIT 10");
+    		return $request->execute() ? $request->fetchAll() : false; 
+        }
+
+        function fetchNewsWithMostLikes( $database )
+    	{
+            $request = $database->prepare(" SELECT news.newsId, newsTitle, newsShortDescription, concat(firstName, ' ', surname) as authorName, creation, updated, copyright, paidNew, likes
+                                            FROM news 
+                                            JOIN user ON user.userId = news.userId 
+                                            ORDER BY likes DESC 
+                                            LIMIT 10");
+    		return $request->execute() ? $request->fetchAll() : false; 
+        }
+       
         function fetchUsers( $database )
     	{
             $request = $database->prepare(" SELECT userId, concat(firstName, ' ', surname) as userName, DOB, country, phone, eMail FROM user ");

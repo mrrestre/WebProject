@@ -3,19 +3,19 @@ footer {
     text-align: center;
     line-height: 0.5;
     color: #00a19c;
-    height: 70px;
+    height: 8vh;
     background-color: #27313a;
     width: 100%;
     bottom: 0px;
 }
 
 footer h4 {
-    font-size: 16px;
-    padding-top: 12px;
+    font-size: 100%;
+    padding-top: 15px;
 }
 
 footer a {
-    font-size: 13px;
+    font-size: 80%;
     text-align: center;
     color: #00a19c;
 }

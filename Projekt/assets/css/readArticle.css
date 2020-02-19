@@ -28,6 +28,12 @@
     }
 }
 
+@media (min-width: 1000px) {
+    .image img {
+        width: 50%;
+    }
+}
+
 .prove {
     display: grid;
 }
@@ -40,7 +46,6 @@
 }
 
 .image img {
-    width: 50%;
     float: left;
     margin-right: 1%;
 }

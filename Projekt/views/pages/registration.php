@@ -100,6 +100,7 @@ $status='';
                 <label for="submit">
                 <input type="submit" id="submit" name="submit" value="Send">
                 </label>
+                
                 <label for="reset">
                 <input type="reset" id="reset" name="reset" value="Reset">
                 </label>

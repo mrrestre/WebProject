@@ -50,11 +50,12 @@
 	</head>
 
 	<body>
-		<header>
-			<?php include_once "static/header.php"; ?>
-		</header>
+		<div class="content_wrap">
 		
-		<div class="content.wrap">
+			<header>
+				<?php include_once "static/header.php"; ?>
+			</header>
+				
 			<main>
 				<?php 
 					// Welcome message (if logged in)
@@ -79,6 +80,9 @@
 							break;
 						case 'aboutUs':
 							include(ROOT.'/views/pages/aboutUs.php');
+							break;
+						case 'searchResults':
+							include(ROOT.'/views/pages/searchResults.php');
 							break;
 						case 'readArticle':
 							include(ROOT.'/views/pages/readArticle.php');
@@ -193,8 +197,10 @@
 				?>
 			</main>
 		</div>
+		
 		<footer>
 			<?php include "static/footer.php"; ?>
 		</footer>
+	
 	</body>
 </html>
