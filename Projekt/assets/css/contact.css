@@ -1,16 +1,20 @@
-/* .containerDiv {
-    text-align: center;
-    font-family: "MontserratRegular";
-    width: 100%;
-    margin-left: 0;
-} */
-
 .containerDiv {
-    width: 50%;
+    width: 100%;
     text-align: center;
     color: #27313a;
     font-family: "MontserratRegular";
     font-size: 20px;
+}
+
+.right {
+    width: 49%;
+    float: right;
+    margin-top: 15%;
+}
+
+.left {
+    width: 49%;
+    float: left;
 }
 
 .salutation {
@@ -45,7 +49,7 @@ input[type=submit] {
     margin: 8px 0;
     border: none;
     cursor: pointer;
-    width: 70%;
+    width: 20%;
 }
 
 input[type=submit]:hover {
@@ -54,11 +58,11 @@ input[type=submit]:hover {
 
 a {
     text-decoration: none;
-    color: #27313a;
+    color: #00a19c;
 }
 
 a:visited {
-    color: #00a19c;
+    color: #27313a;
 }
 
 a:hover {

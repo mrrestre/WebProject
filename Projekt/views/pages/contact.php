@@ -1,4 +1,5 @@
 <div class="containerDiv">
+    <div class="left">
     <h2 class="salutation">Send an E-Mail to the Support team</h2>
     <form action="mailto:taketec_support@gmail.com" method="POST">
 
@@ -15,5 +16,8 @@
             <input type="submit" class="sendButton" id="submit" name="submit" value="Send a Message">
         </label>
     </form>
-    <h3>Want to know more about us? <a href="index.php?page=impressum">Impressum</a></h3>
-</div>
+    </div> <!-- left-->
+    <div class="right">
+    <h3>Want to know more about us?<br> <a href="index.php?page=impressum">Impressum</a></h3>
+    </div> <!-- right-->
+</div> <!-- ContainerDiv-->

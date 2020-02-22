@@ -58,23 +58,23 @@
         <!-- hier den css von home hinzüfugen -->
     </head>
     <body>
-        <div class="containerDiv">
-            <div class="loginDiv">
+        <section class="sectionAll">
+            <section class="leftSection" >
                 <h1 class="salutation">Login</h1>
-                <form class ="form" action="index.php?page=login" method="POST">
-                    <label for="email">E-Mail*</label><br>
+                <form class ="form" action="index.php?page=login" method="POST" onsubmit="validLoginForm()">
+                    <label for="email">E-Mail*</label><span id="toJS" ></span><br>
                     <input type="email" id="email" name="email" placeholder="E-Mail" required><br>
 
-                    <label for="password">Password*</label><br>
+                    <label for="password">Password*</label><span id="toJS2"></span><br>
                     <input type="password" id="password" name="password" placeholder="Password" required><br>
 
                     <label for="submit"></label>
                     <input type="submit" class="loginButton" id="submit" name="submit" value="Login">   
                 </form>
-            </div>
-            <div class="signUpDiv">
-                <p> No Account yet? What are you waiting? <br> <a href="index.php?page=registration"><input type="submit" class="signupButton" id="submit" name="submit" value="SignUp"></a></p>
-            </div>
-        </div> <!-- end containerDiv -->
+            </section>
+            <section class ="rightSection">
+                <p> No Account yet?<br><br> What are you waiting for? <br><br> <a href="index.php?page=registration"><input type="submit" class="signupButton" id="submit" name="submit" value="SignUp"></a></p>
+            </section>
+    </section> <!-- end containerDiv -->
     </body>
 </html>

@@ -1,27 +1,42 @@
-/* .containerDiv {
-    text-align: center;
+.sectionAll {
     font-family: "MontserratRegular";
     width: 100%;
-    margin-left: 0;
-} */
+    color: #27313a;
+}
 
-.loginclass {
-    width: 50%;
+.rightSection {
+    width: 49%;
     text-align: center;
     font-family: "MontserratRegular";
     font-size: 20px;
 }
 
+.leftSection {
+    width: 49%;
+    padding-left: 5%;
+    text-align: left;
+    font-family: "MontserratRegular";
+    font-size: 20px;
+}
+
+.rightSection p {
+    font-family: "MontserratRegular";
+    font-size: xx-large;
+    text-align: left;
+    line-height: 150%;
+    font-weight: bolder;
+    padding-top: 30%;
+    color: teal;
+}
+
 .salutation {
     font-family: "PT_Sans_Caption";
     color: #27313a;
+    margin-left: 10%;
     font-size: 55px;
     padding: 0.5%;
-    margin-top: 5%;
+    margin-top: 10%;
 }
-
-
-/* Full-width input fields */
 
 input[type=email],
 input[type=password],
@@ -51,7 +66,7 @@ label {
     margin: 8px 0;
     border: none;
     cursor: pointer;
-    width: 70%;
+    width: 30%;
 }
 
 .registrationButton:hover {
@@ -63,9 +78,10 @@ label {
     color: #eeeeee;
     padding: 14px 14px;
     margin: 8px 0;
+    margin-left: 10%;
     border: none;
     cursor: pointer;
-    width: 70%;
+    width: 30%;
 }
 
 .resetButton:hover {

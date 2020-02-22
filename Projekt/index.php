@@ -47,6 +47,8 @@
 				?> <link type="text/css" href="./assets/css/<?=$page?>.css" rel="stylesheet"/> <?php
 			}
 		?>
+
+		<script language="javascript" type="text/javascript" src="./assets/js/<?=$page?>.js"></script>
 	</head>
 
 	<body>

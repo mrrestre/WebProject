@@ -63,51 +63,73 @@ $status='';
 <body>
     <div class="content-wrap">
         
-
-        <div class="loginclass">
+        
+        <div class="sectionAll">
+            <div class="leftSection">
             <h1 class="salutation">Registration</h1>
-            <form action="index.php?page=registration" method="POST">
-                            
-                <label for="firstName">First Name*</label>
-                <input type="text" id="firstName" name="firstName" placeholder="First Name" required><br>
-                
-                <label for="surname">Last Name*</label>
-                <input type="text" id="surname" name="surname" placeholder="Last Name" required><br>
-                    
-                <label for="password">Password*</label>
-                <input type="password" id="password" name="password" placeholder="Password" required><br>
-                    
-                <label for="passwordagain">Password*</label>
-                <input type="password" id="passwordagain" name="passwordagain" placeholder="Password" required><br>
-                    
-                <label for="gender">Gender*</label>  
-                <input type="radio" value="m" id="male" name="gender" required>   
+            
+            <form action="index.php?page=registration" method="POST" onsubmit="validRegistrationForm()">
+            <div id="error"></div>
+            <table width="100%" >
+                <tr>             
+                <td><label for="firstName">First Name*</label></td>
+                <td><input type="text" id="firstName" name="firstName" placeholder="First Name" required></td>
+                </tr>
+                <tr>
+                <td><label for="surname">Last Name*</label></td>
+                <td><input type="text" id="surname" name="surname" placeholder="Last Name" required></td>
+                </tr>
+                <tr>
+                <td><label for="password">Password*</label></td>
+                <td><input type="password" id="password" name="password" placeholder="Password" required></td>
+                </tr>
+                <tr>   
+                <td><label for="passwordagain">Password*</label></td>
+                <td><input type="password" id="passwordagain" name="passwordagain" placeholder="Password" required></td>
+                </tr>
+                <tr>   
+                <td><label for="gender">Gender*</label></td>  
+                <td><input type="radio" value="m" id="male" name="gender" required>   
                 <label for="male">male</label>
                 <input type="radio" value="f" id="female" name="gender" required>
-                <label for="female">female</label><br>
-                                
-                <label for="DOB">Date of Birth*</label>
-                <input type="date" id="DOB" name="DOB" required><br>
-                    
-                <label for="country">Country*</label>
-                <?php include ROOT.'/assets/country/country.html'; ?> <br>
-
-                <label for="phone">Telephone Number*</label>
-                <input type="number" id="phone" name="phone" placeholder="Telephone Number" required><br>
-
-                <label for="eMail">E-Mail*</label>
-                <input type="email" id="eMail" name="eMail" placeholder="E-Mail" required><br>
-
+                <label for="female">female</label></td>
+                </tr>
+                <tr>               
+                <td><label for="DOB">Date of Birth*</label></td>
+                <td><input type="date" id="DOB" name="DOB" required></td>
+                </tr>  
+                <tr> 
+                <td><label for="country">Country*</label></td>
+                <td><?php include ROOT.'/assets/country/country.html'; ?> </td>
+                </tr>
+                <tr>
+                <td><label for="phone">Telephone Number*</label></td>
+                <td><input type="number" id="phone" name="phone" placeholder="Telephone Number" required></td>
+                </tr>
+                <tr>
+                <td><label for="eMail">E-Mail*</label></td>
+                <td><input type="email" id="eMail" name="eMail" placeholder="E-Mail" required></td>
+                </tr>
+            </table>
+                <br>
+                <br>
+                <label for="reset">
+                <input type="reset" class="resetButton" id="reset" name="reset" value="Reset">
+                </label>
                 <label for="submit">
                 <input type="submit" class="registrationButton" id="submit" name="submit" value="Send">
                 </label>
                 
-                <label for="reset">
-                <input type="reset" class="resetButton" id="reset" name="reset" value="Reset">
-                </label>
             </form>
-        </div>
-    </div>
+            </div> <!-- leftSection-->
+            <div class="rightSection">
+               <p>
+                   create now your User Account <br> and stay up to date on everything <br> about Laptops, Tablets and Smartphones...
+               </p>
+            </div>
+            </div>   <!-- sectionAll -->
+        
+    </div> <!--content_wrap-->
 
     <? echo $status?>
 

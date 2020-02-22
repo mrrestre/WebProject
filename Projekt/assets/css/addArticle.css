@@ -1,0 +1,56 @@
+.All {
+    width: 100%;
+    padding-top: 5%;
+    margin-left: 5%;
+    text-align: left;
+    color: #27313a;
+    font-family: "MontserratRegular";
+    font-size: 20px;
+}
+
+input[type=text],
+input[type=number],
+textarea {
+    width: 120%;
+    font-family: "MontserratRegular";
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #00a19c;
+    resize: none;
+}
+
+
+/* Set a style for all buttons */
+
+input[type=submit] {
+    background-color: #00a19c;
+    color: #eeeeee;
+    padding: 14px 14px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 20%;
+}
+
+input[type=submit]:hover {
+    opacity: 0.8;
+}
+
+span {
+    color: #00a19c;
+    font-weight: bold;
+}
+
+
+/* Change styles for span and cancel button on extra small screens */
+
+@media screen and (max-width: 300px) {
+    span.psw {
+        display: block;
+        float: none;
+    }
+    .cancelbtn {
+        width: 100%;
+    }
+}

@@ -1,0 +1,29 @@
+.complett {
+    font-family: "MontserratRegular";
+    color: #27313a;
+    width: 100%;
+    margin-top: 5%;
+    position: sticky;
+    text-align: center;
+}
+
+.leftImg {
+    width: 49%;
+    float: left;
+    margin-left: 0%;
+    position: sticky;
+}
+
+.rightImg {
+    width: 49%;
+    float: right;
+    margin-right: 0%;
+    position: sticky;
+}
+
+p {
+    font-family: "MontserratRegular";
+    color: #27313a;
+    font-weight: bolder;
+    font-size: xx-large;
+}

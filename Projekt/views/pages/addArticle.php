@@ -80,51 +80,75 @@ $status='';
         <!-- hier den css von addArticle hinzüfugen -->
 </head>
 <body>
+    <div class="All">
+    <table>
     <form action="index.php?page=addArticle" method="POST">
 
-        <label for="title">Title*</label><br>
-        <input type="text" id="title" name="title" placeholder="title" required><br>
+        <tr>
+        <td><label for="title">Title*</label></td>
+        <td><input type="text" id="title" name="title" placeholder="title" required></td>
+        </tr>
 
-        <label for="teaser">Teaser*</label><br>
-        <textarea id="teaser" name="teaser" placeholder="Teaser" style="height:100px; width:400px"></textarea><br>
+        <tr>
+        <td><label for="teaser">Teaser*</label></td>
+        <td><textarea id="teaser" name="teaser" placeholder="Teaser"></textarea></td>
+        </tr>
         
-        <label for="content">Content*</label><br>
-        <textarea id="content" name="content" placeholder="Article Content" style="height:200px; width:400px"></textarea><br>
+        <tr>
+        <td><label for="content">Content*</label></td>
+        <td><textarea id="content" name="content" placeholder="Article Content"></textarea></td>
+        </tr>
 
-        <label for="copyright">Copyright</label><br>
-        <input type="text" id="copyright" name="copyright" placeholder="copyright" ><br>
+        <tr>
+        <td><label for="copyright">Copyright</label></td>
+        <td><input type="text" id="copyright" name="copyright" placeholder="copyright" ></td>
+        </tr>
 
-        <p>Choose one or more Category: 
-        <input type="checkbox" id="IOS" name="category[]" value="IOS"> <label for="IOS">IOS</label>
+        <tr>
+        <td><p>Choose the Categories: </td>
+        <td><input type="checkbox" id="IOS" name="category[]" value="IOS"> <label for="IOS">IOS</label>
         <input type="checkbox" id="Android" name="category[]" value="Android"> <label for="Android">Android</label>
         <input type="checkbox" id="Apple" name="category[]" value="Apple"> <label for="Apple">Apple</label>
-        <input type="checkbox" id="Windows" name="category[]" value="Windows"> <label for="Windows">Windows</label>
+        <input type="checkbox" id="Windows" name="category[]" value="Windows"> <label for="Windows">Windows</label><br>
         <input type="checkbox" id="Wearables" name="category[]" value="Wearables"> <label for="Wearables"> Wearables</label>
         <input type="checkbox" id="Audio" name="category[]" value="Audio">  <label for="Audio">Audio</label>
-        <input type="checkbox" id="ChromeOS" name="category[]" value="ChromeOS">  <label for="ChromeOS">Chrome OS</label> </p>
+        <input type="checkbox" id="ChromeOS" name="category[]" value="ChromeOS">  <label for="ChromeOS">Chrome OS</label> </p> </td>
+        </tr>
         
     
-        <label for="paidNews">Payed Article?*</label><br>  
-        <input type="radio" value="0" id="free" name="paidNews" required checked>   
+        <tr>
+        <td><label for="paidNews">Payed Article?*</label></td>  
+        <td><input type="radio" value="0" id="free" name="paidNews" required checked>   
         <label for="free">Free</label> //
         <input type="radio" value="1" id="paid" name="paidNews" required>
-        <label for="paid">Paid</label><br>
+        <label for="paid">Paid</label></td>
+        </tr>
         
-        <label for="price">Price</label><br>
-        <input type="number" id="price" name="price" placeholder="0.00 €" step=".01">€<br>
+        <tr>
+        <td><label for="price">Price</label></td>
+        <td><input type="number" id="price" name="price" placeholder="0.00 €" step=".01"></td>
+        </tr>
         
-        <label for="imageName">image Name* (IMAGE_NAME.FILE_EXTENSIONS)</label><br>
-        <input type="text" name="imageName"  id="imageName" placeholder="Image Name" required><br>
+        <tr>
+        <td><label for="imageName">image Name* <br><span>(imageName.fileExtention)</span></label></td>
+        <td><input type="text" name="imageName"  id="imageName" placeholder="Image Name" required></td>
+        </tr>
 
-        <label for="imageCopyright">image Copyright*</label><br>
-        <input type="text" name="imageCopyright" id="imageCopyright" placeholder="imageCopyright" required><br>
+        <tr>
+        <td><label for="imageCopyright">image Copyright*</label></td>
+        <td><input type="text" name="imageCopyright" id="imageCopyright" placeholder="imageCopyright" required></td>
+        </tr>
                             
 
-        <label for="submit">
+        <tr>
+        <td colspan="2"><label for="submit">
         <input type="submit" id="submit" name="submit" value="Save">
-        </label>
+        </label></td>
+        </tr>
 
     </form>
+    </table>
+    </div>
 </body>
 </html>
 
