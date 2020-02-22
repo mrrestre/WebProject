@@ -4,42 +4,64 @@ if(isset($_POST['submit']))
     if( !empty($_POST['newPassword'])
         &&!empty($_POST['repeatPassword']))
         {
-            $password = $_POST['newPassword'];
-            $repeatPassword = $_POST['repeatPassword'];
-            $userId = $_SESSION['currentUser'];
-            if($password === $repeatPassword)
+            $isPasswordSafe = isPasswordSafe($_POST['newPassword']);
+            if($isPasswordSafe == true)
             {
-                $hash = password_hash($password, PASSWORD_DEFAULT);
-                $request = $database->prepare("UPDATE user SET password = ? WHERE userId =? ");
-                
-                $request->execute([$hash, $userId]);
+                $password = $_POST['newPassword'];
+                $repeatPassword = $_POST['repeatPassword'];
+                $userId = $_SESSION['currentUser'];
+                if($password === $repeatPassword)
+                {
+                    $hash = password_hash($password, PASSWORD_DEFAULT);
+                    $request = $database->prepare("UPDATE user SET password = ? WHERE userId =? ");
+                    
+                    $request->execute([$hash, $userId]);
 
-                echo 'The Update was Successful';
+                    echo 'The Update was Successful';
+                }
+                else{
+                    echo 'The password is not the same !!! ';
+                }
             }
             else{
-                echo 'The password is not the same !!! ';
+                echo 'The Password is not safe enough';
             }
+            
         }
 }
 ?>
 
 
 
+<div class="all">
+    <h3>Update Your Password </h3>
 
-<h3>Update Your Data </h3>
-<hr>
+    <form action="index.php?page=updateProfile" method="POST">
+        
+        <p>
+            <strong>Password must contain:</strong>
+            <br>
+            Upper Case  
+            <br>
+            Lower Case
+            <br>
+            Special character [!@#$%^&*()\-_=+{};:,<.>] 
+            <br>
+            At least 8 characters long
+        </p>    
+        
+      
 
-<form action="index.php?page=updateProfile" method="POST">
 
+        <label for="newPassword">New Password</label><br>
+        <input type="password" id="newPassword" name="newPassword" placeholder="New Password"><br>
 
-    <label for="newPassword">New Password</label><br>
-    <input type="password" id="newPassword" name="newPassword" placeholder="New Password"><br>
+        <label for="repeatPassword">Repeat the New Password</label><br>
+        <input type="password" id="repeatPassword" name="repeatPassword" placeholder="Repeat New Password"><br><br>
 
-    <label for="repeatPassword">repeat the New Password</label><br>
-    <input type="password" id="repeatPassword" name="repeatPassword" placeholder="repeat the New Password"><br><br>
+        <label for="submit">
+            <input type="submit" name="submit" id="submit" value="Save Changes">
+        </label>
 
-    <label for="submit">
-        <input type="submit" name="submit" id="submit" value="Save Changes">
-    </label>
-
-</form>
+    </form>
+</div>

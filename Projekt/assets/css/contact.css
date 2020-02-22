@@ -1,83 +1,129 @@
-.containerDiv {
-    width: 100%;
-    text-align: center;
-    color: #27313a;
-    font-family: "MontserratRegular";
-    font-size: 20px;
-}
-
-.right {
-    width: 49%;
-    float: right;
-    margin-top: 15%;
-}
-
-.left {
-    width: 49%;
-    float: left;
-}
-
-.salutation {
-    font-family: "PT_Sans_Caption";
-    color: #27313a;
-    font-size: 30px;
-    padding: 0.5%;
-    margin-top: 10%;
-}
-
-
-/* Full-width input fields */
-
-input[type=text],
-textarea {
-    width: 70%;
-    font-family: "MontserratRegular";
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #00a19c;
-    resize: none;
-}
-
-
-/* Set a style for all buttons */
-
-input[type=submit] {
-    background-color: #00a19c;
-    color: #eeeeee;
-    padding: 14px 14px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 20%;
-}
-
-input[type=submit]:hover {
-    opacity: 0.8;
-}
-
-a {
-    text-decoration: none;
-    color: #00a19c;
-}
-
-a:visited {
-    color: #27313a;
-}
-
-a:hover {
-    opacity: 0.8;
-}
-
-
-/* Change styles for span and cancel button on extra small screens */
-
-@media screen and (max-width: 300px) {
-    span.psw {
-        display: block;
-        float: none;
-    }
-    .cancelbtn {
+@media (max-width: 720px) {
+    .containerDiv {
         width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        color: #27313a;
+        font-family: "MontserratRegular";
+        margin-top: 30px;
+    }
+    .right {
+        display: none;
+    }
+    .left {
+        width: 90%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .salutation {
+        font-family: "PT_Sans_Caption";
+        color: #27313a;
+        font-size: 26px;
+        padding: 0.5%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .thisBox {
+        width: 300px;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #00a19c;
+        resize: none;
+    }
+    .thisArea {
+        width: 300px;
+        height: 200px;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #00a19c;
+        resize: none;
+    }
+    input[type=submit] {
+        background-color: #00a19c;
+        color: #eeeeee;
+        padding: 14px 14px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 150px;
+    }
+    @media screen and (max-width: 300px) {
+        span.psw {
+            display: block;
+            float: none;
+        }
+        .cancelbtn {
+            width: 100%;
+        }
+    }
+}
+
+@media (min-width: 721px) {
+    .containerDiv {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        color: #27313a;
+        font-family: "MontserratRegular";
+        font-size: 20px;
+        margin-top: 30px;
+    }
+    .right {
+        width: 40%;
+        margin-top: 10%;
+        text-align: center;
+    }
+    .left {
+        width: 70%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .salutation {
+        font-family: "PT_Sans_Caption";
+        color: #27313a;
+        font-size: 30px;
+        padding: 0.5%;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    .thisBox {
+        width: 500px;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #00a19c;
+        resize: none;
+    }
+    .thisArea {
+        width: 500px;
+        height: 200px;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #00a19c;
+        resize: none;
+    }
+    input[type=submit] {
+        background-color: #00a19c;
+        color: #eeeeee;
+        padding: 14px 14px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 150px;
+    }
+    input[type=submit]:hover {
+        opacity: 0.8;
     }
 }

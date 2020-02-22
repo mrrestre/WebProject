@@ -1,11 +1,17 @@
 .All {
     width: 100%;
-    padding-top: 5%;
-    margin-left: 5%;
+    padding: 0 5%;
     text-align: left;
     color: #27313a;
     font-family: "MontserratRegular";
     font-size: 20px;
+    margin-bottom: 70px;
+}
+
+h5 {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: -10px;
 }
 
 input[type=text],
@@ -20,10 +26,11 @@ textarea {
     resize: none;
 }
 
+.content {
+    height: 300px;
+}
 
-/* Set a style for all buttons */
-
-input[type=submit] {
+.submitForm {
     background-color: #00a19c;
     color: #eeeeee;
     padding: 14px 14px;
@@ -31,6 +38,8 @@ input[type=submit] {
     border: none;
     cursor: pointer;
     width: 20%;
+    position: absolute;
+    left: 40%;
 }
 
 input[type=submit]:hover {
@@ -40,6 +49,7 @@ input[type=submit]:hover {
 span {
     color: #00a19c;
     font-weight: bold;
+    font-size: 13px;
 }
 
 

@@ -68,7 +68,7 @@
 
 						?><h4>Welcome: <?=$name['userName']?></h4><?php
 					}
-				
+					
 					// Switch section content based on URI
 					switch($page) {
 						case '';
@@ -100,13 +100,13 @@
 							}
 							// Second case: Logged in but not an Admin 
 							else if($_SESSION['loggedIn'] === true)
-							{
+							{ 
 								echo 'Sorry!! you do not have Permission to do that';
 							}
 							// Third case: not logged in at all
 							else
 							{
-								include(ROOT.'/views/pages/login.php');
+								header("Location: index.php?page=login");
 								echo 'Please Login first';
 							}
 							break;
@@ -114,15 +114,14 @@
 							// You can cannot Log in if already logged in
 							if($_SESSION['loggedIn'] === true)
 							{
-								echo 'You are already logged in ';
 								?><br><a href="index.php?page=home">Go to Home</a><?php
-								break;
+								echo 'You are already logged in ';	
 							}
 							else 
 							{
 								include(ROOT.'/views/pages/login.php');
-								break;
 							}
+							break;
 						case 'logout':
 							include(ROOT.'/views/pages/logout.php');
 							break;
@@ -133,7 +132,7 @@
 								include(ROOT.'/views/pages/profile.php');
 							}
 							else{
-								include(ROOT.'/views/pages/login.php');
+								header("Location: index.php?page=login");
 								echo 'Please Login first';
 							}
 							break;
@@ -144,7 +143,7 @@
 								include(ROOT.'/views/pages/updateProfile.php');
 							}
 							else{
-								include(ROOT.'/views/pages/login.php');
+								header("Location: index.php?page=login");
 								echo 'Please Login first';
 							}
 							break;
@@ -155,8 +154,8 @@
 							}
 							else if($_SESSION['loggedIn'] === true)
 							{
+								header("Location: index.php?page=home");
 								echo 'You are already registered';
-								include(ROOT.'/views/pages/home.php');
 							}
 							break;
 						case 'impressum':
@@ -173,7 +172,7 @@
 								echo 'Sorry!! you do not have a Permission to do that';
 							}
 							else{
-								include(ROOT.'/views/pages/login.php');
+								header("Location: index.php?page=login");
 								echo 'Please Login first';
 							}
 							break; 
@@ -188,7 +187,7 @@
 								echo 'Sorry!! you do not have a Permission to do that';
 							}
 							else{
-								include(ROOT.'/views/pages/login.php');
+								header("Location: index.php?page=login");
 								echo 'Please Login first';
 							}
 							break; 

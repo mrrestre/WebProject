@@ -76,17 +76,16 @@ $status='';
 
 <!-- Form to let the Admin of the Website Add an Article to the Database --> 
 <html>
-<head>
-        <!-- hier den css von addArticle hinzüfugen -->
-</head>
+
 <body>
     <div class="All">
+    <h5> Add an Article</h5>
     <table>
     <form action="index.php?page=addArticle" method="POST">
 
         <tr>
         <td><label for="title">Title*</label></td>
-        <td><input type="text" id="title" name="title" placeholder="title" required></td>
+        <td><input type="text" id="title" name="title" placeholder="Title" required></td>
         </tr>
 
         <tr>
@@ -96,23 +95,32 @@ $status='';
         
         <tr>
         <td><label for="content">Content*</label></td>
-        <td><textarea id="content" name="content" placeholder="Article Content"></textarea></td>
+        <td><textarea id="content" name="content" placeholder="Article Content" class="content"></textarea></td>
         </tr>
 
         <tr>
         <td><label for="copyright">Copyright</label></td>
-        <td><input type="text" id="copyright" name="copyright" placeholder="copyright" ></td>
+        <td><input type="text" id="copyright" name="copyright" placeholder="Copyright" ></td>
         </tr>
 
         <tr>
-        <td><p>Choose the Categories: </td>
-        <td><input type="checkbox" id="IOS" name="category[]" value="IOS"> <label for="IOS">IOS</label>
-        <input type="checkbox" id="Android" name="category[]" value="Android"> <label for="Android">Android</label>
-        <input type="checkbox" id="Apple" name="category[]" value="Apple"> <label for="Apple">Apple</label>
-        <input type="checkbox" id="Windows" name="category[]" value="Windows"> <label for="Windows">Windows</label><br>
-        <input type="checkbox" id="Wearables" name="category[]" value="Wearables"> <label for="Wearables"> Wearables</label>
-        <input type="checkbox" id="Audio" name="category[]" value="Audio">  <label for="Audio">Audio</label>
-        <input type="checkbox" id="ChromeOS" name="category[]" value="ChromeOS">  <label for="ChromeOS">Chrome OS</label> </p> </td>
+        <td>
+        <p>
+            Categories: </td>
+            <div class="posibilities">
+                <td>
+                    <input type="checkbox" id="IOS" name="category[]" value="IOS"> <label for="IOS">IOS</label>
+                    <input type="checkbox" id="Android" name="category[]" value="Android"> <label for="Android">Android</label>
+                    <input type="checkbox" id="Apple" name="category[]" value="Apple"> <label for="Apple">Apple</label>
+                    <input type="checkbox" id="Windows" name="category[]" value="Windows"> <label for="Windows">Windows</label>
+                    <input type="checkbox" id="Wearables" name="category[]" value="Wearables"> <label for="Wearables"> Wearables</label>
+                    <input type="checkbox" id="Audio" name="category[]" value="Audio">  <label for="Audio">Audio</label>
+                    <input type="checkbox" id="ChromeOS" name="category[]" value="Chrome OS">  <label for="ChromeOS">Chrome OS</label> 
+                </td>
+            </div>
+        </p> 
+                         
+        
         </tr>
         
     
@@ -130,19 +138,19 @@ $status='';
         </tr>
         
         <tr>
-        <td><label for="imageName">image Name* <br><span>(imageName.fileExtention)</span></label></td>
+        <td><label for="imageName">Image Name* <br><span>(imageName.fileExtention)</span></label></td>
         <td><input type="text" name="imageName"  id="imageName" placeholder="Image Name" required></td>
         </tr>
 
         <tr>
-        <td><label for="imageCopyright">image Copyright*</label></td>
-        <td><input type="text" name="imageCopyright" id="imageCopyright" placeholder="imageCopyright" required></td>
+        <td><label for="imageCopyright">Image Copyright*</label></td>
+        <td><input type="text" name="imageCopyright" id="imageCopyright" placeholder="image Copyright" required></td>
         </tr>
                             
 
         <tr>
         <td colspan="2"><label for="submit">
-        <input type="submit" id="submit" name="submit" value="Save">
+        <input type="submit" id="submit" name="submit" value="Save" class="submitForm">
         </label></td>
         </tr>
 

@@ -1,0 +1,37 @@
+.all {
+    width: 100%;
+    font-family: "MontserratRegular";
+    color: #27313a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.all input[type=submit] {
+    background-color: #00a19c;
+    color: #eeeeee;
+    padding: 14px 14px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 150px;
+}
+
+.all label {
+    font-size: 1.3em;
+}
+
+.all input[type=submit]:hover {
+    opacity: 0.8;
+}
+
+.all input[type=password] {
+    width: 80%;
+    color: #27313a;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #00a19c;
+}

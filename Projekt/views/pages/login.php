@@ -46,7 +46,7 @@
             }
             if (!$success)
             {
-                echo 'Your username or password is wrong';
+                $status = 'Your username or password is wrong';
             }
         }   
     }
@@ -54,13 +54,12 @@
 ?>
 
 <html>
-    <head>  
-        <!-- hier den css von home hinzüfugen -->
-    </head>
     <body>
         <section class="sectionAll">
             <section class="leftSection" >
+          
                 <h1 class="salutation">Login</h1>
+
                 <form class ="form" action="index.php?page=login" method="POST" onsubmit="validLoginForm()">
                     <label for="email">E-Mail*</label><span id="toJS" ></span><br>
                     <input type="email" id="email" name="email" placeholder="E-Mail" required><br>
@@ -73,7 +72,10 @@
                 </form>
             </section>
             <section class ="rightSection">
-                <p> No Account yet?<br><br> What are you waiting for? <br><br> <a href="index.php?page=registration"><input type="submit" class="signupButton" id="submit" name="submit" value="SignUp"></a></p>
+                <p> No Account yet? What are you waiting for? 
+                    <br> 
+                    <a href="index.php?page=registration"><input type="submit" class="signupButton" id="submit" name="submit" value="Sign Up"></a>
+                </p>
             </section>
     </section> <!-- end containerDiv -->
     </body>

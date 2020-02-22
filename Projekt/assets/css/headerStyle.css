@@ -12,7 +12,7 @@ header {
     margin-bottom: 2vh;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 720px) {
     .top_header a {
         padding-right: 1vh;
     }
@@ -27,7 +27,7 @@ header {
     }
 }
 
-@media (min-width: 1001px) {
+@media (min-width: 721px) {
     .top_header a {
         padding-right: 2vh;
     }
@@ -92,7 +92,7 @@ header {
     text-decoration: none;
     background-color: inherit;
     font-family: inherit;
-    font-size: 24px;
+    font-size: 22px;
     padding-left: 1.9vw;
 }
 
@@ -102,6 +102,15 @@ header {
     outline: none;
     font-family: "MontserratRegular";
     font-size: inherit;
+}
+
+.bottom_header .btn .tp10_active {
+    border: none;
+    background-color: inherit;
+    outline: none;
+    font-family: "MontserratRegular";
+    font-size: 22px;
+    color: #00a19c;
 }
 
 .bottom_header .top10 {
@@ -169,6 +178,7 @@ header {
     outline: none;
     height: 6vh;
     width: 3vw;
+    cursor: pointer;
     background-image: url("../icons/search.png");
     background-position: center;
     background-repeat: no-repeat;

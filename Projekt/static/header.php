@@ -2,7 +2,7 @@
 <html lang="en">
 
 <?php
-    if(isset($_GET['submit'])){
+    if(isset($_GET['searchSubmit'])){
         $search = $_GET['search'];
         header("Location: index.php?page=searchResults&search=$search");
     }
@@ -19,7 +19,7 @@
             <div class="top_header">
                 <nav>
                     <a href="index.php?page=contact">Contact</a>
-
+                    
                     <?php 
                     if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === true) { ?>
                         <a href="index.php?page=profile">Profile</a>
@@ -48,7 +48,10 @@
                     
                     <div class = "btn">
                         <div class = "top10">
-                            <button class = "tp10">Top 10</button>
+                            <button class ="<?php $active = ($_GET['page'] === 'top10' || $_GET['page'] === '' ? 'tp10_active' : 'tp10'); 
+                             echo $active; ?>">
+                                Top 10
+                             </button>
                             <ul>
                                 <li><a href="index.php?page=top10&type=comment">Comments</a></li>
                                 <li><a href="index.php?page=top10&type=likes">Likes</a></li>
@@ -67,7 +70,7 @@
                     <div class="search-container">
                         <form action="index.php?" name="searchform" method="GET">
                             <input type="text" id="search" name="search" placeholder="Search..." maxlength = "50">
-                            <input type="submit" id="submit" name="submit" value="">
+                            <input type="submit" id="submit" name="searchSubmit" value="">
                         </form>                       
                     </div>
                 </nav>

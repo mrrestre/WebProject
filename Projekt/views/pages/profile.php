@@ -22,7 +22,7 @@ foreach($userData as $row)
 
 ?>
 <div class="all">
-<div class="left">
+    <div class="left">
         <img src="./assets/icons/man.png" alt="Avatar"> <br>
         <a href="index.php?page=updateProfile"> Update Password </a> <br>
     </div>

@@ -12,7 +12,7 @@
     font-size: 20px;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 720px) {
     .title {
         font-size: 30px;
     }
@@ -28,7 +28,7 @@
     }
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 721px) {
     .image img {
         width: 50%;
     }

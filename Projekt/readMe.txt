@@ -30,6 +30,22 @@ deleteUser.js: wurde nur das Löschen prozess bestätigt bevor es ausgeführ wir
 also validierung der Formulare mit javascript ist noch nicht fertig, du kannst css fertig machen uns am Montag kann ich damit
 weiter machen, viel spaß noch  
 
+____________________________________
+
+22.02.2020
+
+WICHTIG: DatenBank hat neue daten, also nochmal importieren
+
+Gemacht: 
+- Bei Registrierung muss das Email nicht vorhanden sein, Das passwort hat auch Regex in PHP
+- CSS überall gemacht. Falls du findest, irgendwo wo es nicht so gut aussieht oder so, sag mir
+- Responsiv auch uberäll aber auch bitte prüfen
+- Suche Implementiert, mann kann in Contect, Tittel, Kategorie und Author.Firstname suchen alles auf einmal
+- Footer bleibt immer ruhig
+- Filter  reingebaut, man kann nur eine categorie ausählen, ich will es mit radiobox tauschen, aber heute habe ich kein Bock mehr
+  Morgen mache ich weter damit, ich bin mir nicht sicher von design aber
+- Ein paar Artikel und sache in DatenBank Importiert
+
 
 
 
