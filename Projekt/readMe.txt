@@ -37,19 +37,20 @@ ____________________________________
 WICHTIG: DatenBank hat neue daten, also nochmal importieren
 
 Gemacht: 
-- Bei Registrierung muss das Email nicht vorhanden sein, Das passwort hat auch Regex in PHP
-- CSS überall gemacht. Falls du findest, irgendwo wo es nicht so gut aussieht oder so, sag mir
-- Responsiv auch uberäll aber auch bitte prüfen
-- Suche Implementiert, mann kann in Contect, Tittel, Kategorie und Author.Firstname suchen alles auf einmal
-- Footer bleibt immer ruhig
+- Bei Registrierung muss das Email nicht vorhanden sein, Das passwort hat auch Regex in PHP    👍👍👍👍👍👍
+- CSS überall gemacht. Falls du findest, irgendwo wo es nicht so gut aussieht oder so, sag mir 👍👍👍👍👍👍
+  o noch deleteUser
+  o ich finde bei login müssen die felder nicht so breit sein
+  o bei Contact der Text am rechten seite ist so weit nach rechts, könnte ein bisschen so in der Mitte sein
+  o und bei registration auch der text box ist so weit oben, weil theorethich wenn man die Formular ausfüllt scrollt ein bisschen 
+    nach unten und er muss das immer ungefähr in der Mitte sehen
+  *** die sind alle kleinichkeiten, wenn sie so viel zeit kosten werden mach das nicht, es sieht trotzdem gut aus. 
+- Responsiv auch uberäll aber auch bitte prüfen 👍👍👍👍👍👍
+- Suche Implementiert, mann kann in Contect, Tittel, Kategorie und Author.Firstname suchen alles auf einmal 👍👍👍👍👍👍
+- Footer bleibt immer ruhig 👍👍👍👍guuuut👍👍👍👍
 - Filter  reingebaut, man kann nur eine categorie ausählen, ich will es mit radiobox tauschen, aber heute habe ich kein Bock mehr
-  Morgen mache ich weter damit, ich bin mir nicht sicher von design aber
-- Ein paar Artikel und sache in DatenBank Importiert
-
-
-
-
-
-
+  Morgen mache ich weiter damit, ich bin mir nicht sicher von design aber
+  o hast du mit drop down navi probiert ? 
+- Ein paar Artikel und sache in DatenBank Importiert 👍👍👍👍👍👍
 
 
