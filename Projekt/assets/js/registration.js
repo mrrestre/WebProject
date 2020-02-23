@@ -1,45 +1,41 @@
-const fname = document.getElementById('firstName');
-const surname = document.getElementById('surname');
-const password = document.getElementById('password');
-const passwordagain = document.getElementById('passwordagain');
-const phone = document.getElementById('phone');
-const error = document.getElementById('error');
-
-var messages = [];
-
-function validRegistrationForm() {
+function registrationFormValidation() {
+    var firstName = document.forms["registForm"]["firstName"];
+    var surname = document.forms["registForm"]["surname"];
+    var password = document.forms["registForm"]["password"];
+    var passwordagain = document.forms["registForm"]["passwordagain"];
+    var phone = document.forms["registForm"]["phone"];
 
 
-    if (fname.value.length <= 2) {
-        messages.push('Name must be greater than 2');
+    if (firstName.value == "" || firstName.value.length < 3) {
+        window.alert("please Enter your Name,\n and the name should be at least 3 letters");
+        firstName.focus({ preventScroll: true });
+        firstName.style.border = "solid red"
+        return false;
     }
 
-    if (surname.value.length <= 2) {
-        messages.push('surname must be greater than 2');
+    if (surname.value == "" || surname.value.length < 3) {
+        window.alert("please Enter your Name,\n and the name should be at least 3 letters");
+        surname.focus({ preventScroll: true });
+        surname.style.border = "solid red"
+        return false;
     }
+
 
     if (password.value !== passwordagain.value) {
-        messages.push('the two Passwords are\'nt the same');
+        window.alert("the Passwords must be the same");
+        passwordagain.focus({ preventScroll: true });
+        passwordagain.style.border = "solid red"
+        return false;
     }
 
-    if (password.value.length < 6) {
-        messages.push('the Password must be Min. 6');
+    if (phone.value.toString().length > 14) {
+        window.alert("the Phone Number is Max. 14");
+        phone.focus({ preventScroll: true });
+        phone.style.border = "solid red"
+        return false;
     }
 
-    if (password.value.length > 15) {
-        messages.push('the Password must be Max. 15');
-    }
+    return true;
 
-    if (phone.value.toString().length < 9) {
-        messages.push('the Phone Number must be MIN. 9');
-    }
 
-    if (phone.value.toString().length > 15) {
-        messages.push('the Phone Number must be MAX. 15');
-    }
-
-    if (messages.length > 0) {
-        event.preventDefault();
-        error.innerHTML = messages.join(', ');
-    }
 }

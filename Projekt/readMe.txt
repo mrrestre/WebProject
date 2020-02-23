@@ -76,11 +76,11 @@ Gemacht:
 
 TODO(Dringend):
 - Irgendwas nachladen mit AJAX ?? ich wollte im Home aber ich weis nicht wie und heute bin ich tot
-- htmlspecialcharacters bei jede ausgabe (Ist langweillig, ich kann es auch irgendwann machen)
 - Formulare mit AJAX schicken
-- Dokumentation in HTML in Footer anbinden und machen!! 
+- htmlspecialcharacters bei jede ausgabe (Ist langweillig, ich kann es auch irgendwann machen)
 - Soviel testen wie möglich, alles was und einfällt
 - Code Einigermaßen dokumentieren (Funktionene habe ich schon gemacht)
+- Dokumentation in HTML in Footer anbinden und machen!! 
 - Ein Formular muss mehrseitig sein (Steht bei Kruse)
 
 ________________________________________

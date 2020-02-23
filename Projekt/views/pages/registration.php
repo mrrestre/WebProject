@@ -87,7 +87,7 @@ $status='';
                 ?>
                 <h1 class="salutation">Registration</h1>
                 
-                <form action="index.php?page=registration" method="POST" onsubmit="validRegistrationForm()">
+                <form name="registForm" action="index.php?page=registration" method="POST" onsubmit="return validRegistrationForm()">
                 <div id="error"></div>
                 <table width="100%" >
                     
