@@ -1,0 +1,31 @@
+.background {
+    background-image: url(../images/404.jpg);
+    background-position: center;
+    height: 115vh;
+    opacity: 0.8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: -25px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 60px;
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.background p {
+    font-size: 38px;
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.background a {
+    font-size: 30px;
+    color: white;
+    text-decoration: none;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}

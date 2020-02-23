@@ -4,17 +4,107 @@
         // Returns all the news from Datase
     	function fetchNews( $database )
     	{
-            $request = $database->prepare(" SELECT newsId, newsTitle, newsShortDescription, concat(firstName, ' ', surname) as authorName, creation, updated, copyright, paidNew 
+            $request = $database->prepare(" SELECT newsId, newsTitle, newsShortDescription, concat(firstName, ' ', surname) as authorName, creation, updated, copyright, paidNew, price 
                                             FROM news 
                                             JOIN user ON user.userId = news.userId 
                                             ORDER BY creation DESC");
     		return $request->execute() ? $request->fetchAll() : false; 
         }
 
+        // Returns true if this user has alredy bought this article
+        function hasUserBuyedThisArticle ($userId, $newsId, $database){
+            $request = $database->prepare(" SELECT newsId, userId 
+                                            FROM purchased_article ");
+            $request->execute();
+            $result = $request->fetchAll();
+            
+            foreach ($result as $row){
+                if(($row['newsId'] == $newsId) && ($row['userId'] == $userId)){
+                    $found = true;
+                    break;
+                }
+                else{
+                    $found = false;
+                }
+            } 
+            return $found;
+        }
+
+        // Return true if Article is a Paid article
+        function isAPaidArticle ($newsid, $database)
+        {
+            $request = $database->prepare(" SELECT paidNew 
+                                            FROM news
+                                            WHERE newsId = ?");
+            $request->execute(array($newsid));
+            $result = $request->fetchAll();
+            
+            foreach ($result as $row){
+                if($row['paidNew'] == 1){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            } 
+        }
+
+        // Decides depending if the user has already bought an article what happen when he/she click on the article
+        function whereShouldTheLinkTakeMeTo ($row, $database){
+            $userid = '';
+            $href = '';
+            $userBoughtThisNew = '';
+            $newsid = $row['newsId'];
+            if(isset($_SESSION['currentUser'])){
+                $userid = $_SESSION['currentUser'];
+            }
+            else {
+                $userid = '-1';
+            }
+
+            //its a free new
+            if($row['paidNew'] == 0){
+                $href = "index.php?page=readArticle&newsid=".$row['newsId'];
+            }
+            //Paid new
+            elseif($row['paidNew'] == 1){
+                $userBoughtThisNew = hasUserBuyedThisArticle($userid, $newsid, $database);
+                // Not signed in
+                if($userid == -1){
+                    $href = "index.php?page=login";
+                }
+                // Signed in but has not buyed it
+                elseif ($userBoughtThisNew == false){
+                    $href = "index.php?page=buyArticle&newsid=".$row['newsId'];
+                }
+                else {
+                    $href = "index.php?page=readArticle&newsid=".$row['newsId'];
+                }
+            }
+            return $href;
+        }
+
+        // Gets the Payment Method from a person
+        function getPaymentMethods ($userid, $database) {
+            $request = $database->prepare(" SELECT cardType, cardNumber, nameOnCard
+                                            FROM payment_method 
+                                            WHERE userId = ? ");
+    		return $request->execute(array($userid)) ? $request->fetchAll() : false; 
+        }
+
+        // Gets the CVV from a Persons Payment Method
+        function getCVV ($userid, $database, $cardNumber) {
+            $request = $database->prepare(" SELECT CVV
+                                            FROM payment_method 
+                                            WHERE userId = :userid AND cardNumber = :cardNumber ");
+    		return $request->execute(array( 'userid' => $userid,
+                                            'cardNumber' => $cardNumber)) ? $request->fetchAll() : false; 
+        }
+
         // Returns the top 10 news (Most comments)
         function fetchNewsWithMostComments( $database )
     	{
-            $request = $database->prepare(" SELECT news.newsId, newsTitle, newsShortDescription, concat(firstName, ' ', surname) as authorName, creation, updated, copyright, paidNew, count(comment.newsId) as nmComments
+            $request = $database->prepare(" SELECT news.newsId, newsTitle, newsShortDescription, concat(firstName, ' ', surname) as authorName, creation, updated, copyright, paidNew, price, count(comment.newsId) as nmComments
                                             FROM news 
                                             JOIN user ON user.userId = news.userId 
                                             JOIN comment ON news.newsId = comment.newsId
@@ -24,10 +114,12 @@
     		return $request->execute() ? $request->fetchAll() : false; 
         }
 
+        
+
         // Returns the top 10 news (Most Likes)
         function fetchNewsWithMostLikes( $database )
     	{
-            $request = $database->prepare(" SELECT news.newsId, newsTitle, newsShortDescription, concat(firstName, ' ', surname) as authorName, creation, updated, copyright, paidNew, likes
+            $request = $database->prepare(" SELECT news.newsId, newsTitle, newsShortDescription, concat(firstName, ' ', surname) as authorName, creation, updated, copyright, paidNew, price, likes
                                             FROM news 
                                             JOIN user ON user.userId = news.userId 
                                             ORDER BY likes DESC 
@@ -37,7 +129,9 @@
 
         // Returns a true if a there are not Registered Users with that email
         function isEmailAvailable ( $database, $email) {
-            $request =  $database->prepare(" SELECT * FROM user WHERE eMail = ? ");
+            $request =  $database->prepare(" SELECT * 
+                                                FROM user 
+                                                WHERE eMail = ? ");
             $request->execute(array($email)); 
 
             if($request->rowCount() > 0){
@@ -71,7 +165,7 @@
         // Searches in news.content and newTitle and Author and category description for given parameter
         function searchWithParameter($parameter, $database){
 
-            $sqlQuery = "SELECT DISTINCT news.newsId, newsTitle, newsShortDescription, concat(firstName, ' ', surname) as authorName, creation, updated, copyright, paidNew 
+            $sqlQuery = "SELECT DISTINCT news.newsId, newsTitle, newsShortDescription, concat(firstName, ' ', surname) as authorName, creation, updated, copyright, paidNew, price 
                             FROM news 
                             JOIN user ON user.userId = news.userId
                             JOIN category_has_news ON news.newsId = category_has_news.newsId
@@ -104,7 +198,7 @@
         
         // Returns the articles from a given category
         function getArticlesFromCategory ($category, $database){
-            $request = $database->prepare(" SELECT news.newsId, newsTitle, newsShortDescription, concat(firstName, ' ', surname) as authorName, creation, updated, copyright, paidNew 
+            $request = $database->prepare(" SELECT news.newsId, newsTitle, newsShortDescription, concat(firstName, ' ', surname) as authorName, creation, updated, copyright, paidNew, price 
                                             FROM news 
                                             JOIN user ON user.userId = news.userId
                                             JOIN category_has_news ON news.newsId = category_has_news.newsId
@@ -187,7 +281,7 @@
             return $request->execute() ? $request->fetchAll() : false;
         }
 
-        // Returns an User with the given Email
+        // Returns an UserID with the given Email
         function getUserIDByEMail ( $database , $email )
         {
             $request = $database->prepare(" SELECT userId 
@@ -245,8 +339,11 @@
                     $article = getAnArticle( $random, $database );
                     if($article)
                     {
-                        return $random;
-                        break;
+                        $article = $article[0];
+                        if($article['paidNew'] == 0){
+                            return $random;
+                            break;
+                        }
                     }
                 }
             }

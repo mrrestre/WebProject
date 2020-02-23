@@ -14,7 +14,8 @@ header {
 
 @media (max-width: 720px) {
     .top_header a {
-        padding-right: 1vh;
+        padding-right: 2vh;
+        font-size: 20px;
     }
     .bottom_header .search-container {
         display: none;
@@ -30,6 +31,7 @@ header {
 @media (min-width: 721px) {
     .top_header a {
         padding-right: 2vh;
+        font-size: 18px;
     }
     .bottom_header {
         padding-left: 15%;
@@ -51,7 +53,6 @@ header {
     float: right;
     text-decoration: none;
     color: #00a19c;
-    font-size: 2.5vh;
     padding-top: 0.5vh;
 }
 
@@ -151,7 +152,8 @@ header {
     text-decoration: none;
 }
 
-.bottom_header .top10 .tp10:focus+ul {
+.bottom_header .top10 .tp10:focus+ul,
+.bottom_header .top10 .tp10_active:focus+ul {
     opacity: 1;
     visibility: visible;
     transform: translateY(0px);

@@ -57,12 +57,17 @@
     <body>
         <section class="sectionAll">
             <section class="leftSection" >
-          
+                <?php 
+                    if(isset($status))
+                    {
+                        echo "<div class=\"status\">$status</div>"; 
+                    }
+                ?>    
                 <h1 class="salutation">Login</h1>
 
                 <form class ="form" action="index.php?page=login" method="POST" onsubmit="validLoginForm()">
                     <label for="email">E-Mail*</label><span id="toJS" ></span><br>
-                    <input type="email" id="email" name="email" placeholder="E-Mail" required><br>
+                    <input type="email" id="email" name="email" placeholder="E-Mail" value="<?php if(isset($_POST['email'])) echo $_POST['email'];?>" required><br>
 
                     <label for="password">Password*</label><span id="toJS2"></span><br>
                     <input type="password" id="password" name="password" placeholder="Password" required><br>

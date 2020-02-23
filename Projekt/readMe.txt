@@ -53,4 +53,36 @@ Gemacht:
   o hast du mit drop down navi probiert ? 
 - Ein paar Artikel und sache in DatenBank Importiert 👍👍👍👍👍👍
 
+________________________________________
+
+23.02.2020
+
+DatenBank nochmal importieren, nicht so viele ergänzungen
+Neue Standart Passwort für neue Users: Aa##123123
+
+Gemacht:
+-Man kann jetzt artikel Kaufen.
+    -Dafür gibt es jetzt eine neue Seite buyArticle
+    -Man kann das nicht so trick machen um artikel lesen mit URL (Redirect)
+    -Man kann eine neue Payment method hinzüfugen
+    -CCV funktioniert in creditkarte nicht wie es sollte (Kein Bock zu suchen)
+    -Price wurde ergänzt zu den artikel (Wenn vorhanden)
+    -Wurde ein artikel schon von dem Nutzen gekauft, kommt nicht der Preis
+-Delete User hat CSS
+-Error 404 überasching, schau mal rein
+-Versucht mit AJAX im home die Filter anzuwenden, ging nicht! :(
+-Registrierung hat erinnerung jetzt, es wird nicht alles gelöscht wenn irgendwas falsch ist
+-Allgemin anpassungen in CSS und in PHP (Habe vergessen was ich noch heute gemacht habe)
+
+TODO(Dringend):
+- Irgendwas nachladen mit AJAX ?? ich wollte im Home aber ich weis nicht wie und heute bin ich tot
+- htmlspecialcharacters bei jede ausgabe (Ist langweillig, ich kann es auch irgendwann machen)
+- Formulare mit AJAX schicken
+- Dokumentation in HTML in Footer anbinden und machen!! 
+- Soviel testen wie möglich, alles was und einfällt
+- Code Einigermaßen dokumentieren (Funktionene habe ich schon gemacht)
+- Ein Formular muss mehrseitig sein (Steht bei Kruse)
+
+________________________________________
+
 

@@ -18,18 +18,36 @@
             $articleImage = getArticleImage ( $row['newsId'], $database );
             $articleImage = $articleImage[0];?>
 
+            <?php
+                $href = whereShouldTheLinkTakeMeTo($row, $database);
+                $alreadyBought = '';
+                if(isset($_SESSION['currentUser'])){
+                    $userid = $_SESSION['currentUser'];
+                    $alreadyBought = hasUserBuyedThisArticle($userid, $row['newsId'], $database);
+                }
+                
+            ?>
+
             <div class="new">
                 <div class="title">
-                    <a href="index.php?page=readArticle&newsid=<?=$row['newsId'] ?>"><?=$row['newsTitle']?></a>
+                <a href=<?=$href?>><?=$row['newsTitle'] ?></a>
                 </div>
                 
-                <a href="index.php?page=readArticle&newsid=<?=$row['newsId'] ?>">
+                <a href=<?=$href?>>
                 <img src="<?='./assets/images/'.$articleImage['imagePath'];?>" alt="<? echo $articleImage['copyright'] ?>"></a>
 
                 <div class="info">
                     <p><?=$row['newsShortDescription'] ?></p>
 
                     <div class="published">
+                        <?php 
+                            if(isset($row))
+                            {
+                                if($row['paidNew'] == 1){
+                                    echo 'Price: '.$row['price'].'€<br>';
+                                }
+                            }
+                        ?>
                         <?php if(isset($row['nmComments'])){
                             echo 'Comments: ';
                             echo $row['nmComments'];

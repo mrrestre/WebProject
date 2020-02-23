@@ -57,18 +57,16 @@
 			<header>
 				<?php include_once "static/header.php"; ?>
 			</header>
+
+			<noscript>
+				<p>
+					Your browser does not support JavaScript!
+					To enjoy all the functions of this Website please turn on JavaScript
+				</p>
+			</noscript>
 				
 			<main>
-				<?php 
-					// Welcome message (if logged in)
-					if($_SESSION['loggedIn'] === true && $_SESSION['justLoggedIn'] === true)
-					{
-						$name = getUserNameByID ( $database, $_SESSION['currentUser'] );
-						$_SESSION['justLoggedIn'] = false;
-
-						?><h4>Welcome: <?=$name['userName']?></h4><?php
-					}
-					
+				<?php 		
 					// Switch section content based on URI
 					switch($page) {
 						case '';
@@ -91,6 +89,9 @@
 							break;
 						case 'contact':
 							include(ROOT.'/views/pages/contact.php');
+							break;
+						case 'buyArticle':
+							include(ROOT.'/views/pages/buyArticle.php');
 							break;
 						case 'admin':
 							// First case: Logged in and Admin?
@@ -191,8 +192,11 @@
 								echo 'Please Login first';
 							}
 							break; 
-						default:
+						case 'error404':
 							include(ROOT.'/views/pages/error404.php');
+							break;
+						default:
+							header("Location: index.php?page=error404");
 							break;
 					}
 				?>

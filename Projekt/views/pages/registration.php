@@ -52,7 +52,7 @@ $status='';
                     }
                 }
                 else{
-                    $status= 'Password and Passwordagain must be the same!!';
+                    $status= 'Password and Repeat Password must be the same!!';
                 }
                 
             }
@@ -93,12 +93,12 @@ $status='';
                     
                     <tr>             
                         <td><label for="firstName">First Name*</label></td>
-                        <td><input type="text" id="firstName" name="firstName" placeholder="First Name" required></td>
+                        <td><input type="text" id="firstName" name="firstName" placeholder="First Name" value="<?php if(isset($_POST['firstName'])) echo $_POST['firstName'];?>" required></td>
                     </tr>
                     
                     <tr>
                         <td><label for="surname">Last Name*</label></td>
-                        <td><input type="text" id="surname" name="surname" placeholder="Last Name" required></td>
+                        <td><input type="text" id="surname" name="surname" placeholder="Last Name" value="<?php if(isset($_POST['surname'])) echo $_POST['surname'];?>" required></td>
                     </tr>
                         
                     <tr>
@@ -129,7 +129,7 @@ $status='';
                     </tr>
                     
                     <tr>
-                        <td><label for="passwordagain">Password*</label></td>
+                        <td><label for="passwordagain">Repeat Password*</label></td>
                         <td><input type="password" id="passwordagain" name="passwordagain" placeholder="Password" required></td>
                     </tr>
                 
@@ -143,7 +143,7 @@ $status='';
 
                     <tr>               
                         <td><label for="DOB">Date of Birth*</label></td>
-                        <td><input type="date" id="DOB" name="DOB" required></td>
+                        <td><input type="date" id="DOB" name="DOB" value="<?php if(isset($_POST['DOB'])) echo $_POST['DOB'];?>" required></td>
                     </tr>
 
                     <tr> 
@@ -153,12 +153,12 @@ $status='';
 
                     <tr>
                         <td><label for="phone">Telephone Number*</label></td>
-                        <td><input type="number" id="phone" name="phone" placeholder="Telephone Number" required></td>
+                        <td><input type="number" id="phone" name="phone" placeholder="Telephone Number" value="<?php if(isset($_POST['phone'])) echo $_POST['phone'];?>" required></td>
                     </tr>
                     
                     <tr>
                         <td><label for="eMail">E-Mail*</label></td>
-                        <td><input type="email" id="eMail" name="eMail" placeholder="E-Mail" required></td>
+                        <td><input type="email" id="eMail" name="eMail" placeholder="E-Mail" value="<?php if(isset($_POST['eMail'])) echo $_POST['eMail'];?>" required></td>
                     </tr>
 
                 </table>

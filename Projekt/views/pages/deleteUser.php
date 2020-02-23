@@ -20,20 +20,22 @@ if(isset($_POST['submit']))
 
 
 ?>
-<div class="containerDiv"></div>
-    <div class="innere"></div>
-        <form action="index.php?page=deleteUser" method="POST">
+<main>
+    <div class="containerDiv"></div>
+        <div class="innere"></div>
+            <form action="index.php?page=deleteUser" method="POST">
 
-            <label for="firstName">User's First Name*</label><br>
-                <input type="text" id="firstName" name="firstName" placeholder="User's First Name" required><br>
-            <label for="surname">User's Surname*</label><br>
-                <input type="text" id="surname" name="surname" placeholder="User's Surname" required><br>
-            <label for="email">User's E-Mail*</label><br>
-                <input type="email" id="email" name="email" placeholder="User's E-Mail" required><br>
-            <!-- TODO in Java Script: bestätigung des Prozesses -->
-            <label for="submit">
-                <input type="submit" id="submit" name="submit" value="Delete" onclick="validDeleteUserForm()">
-            </label>
-        </form>
+                <label for="firstName">User's First Name*</label><br>
+                    <input type="text" id="firstName" name="firstName" placeholder="First Name" required><br>
+                <label for="surname">User's Surname*</label><br>
+                    <input type="text" id="surname" name="surname" placeholder="Surname" required><br>
+                <label for="email">User's E-Mail*</label><br>
+                    <input type="email" id="email" name="email" placeholder="E-Mail" required><br>
+                <!-- TODO in Java Script: bestätigung des Prozesses -->
+                <label for="submit">
+                    <input type="submit" class="deleteButton" id="submit" name="submit" value="Delete" onclick="validDeleteUserForm()">
+                </label>
+            </form>
+        </div>
     </div>
-</div>
+</main>

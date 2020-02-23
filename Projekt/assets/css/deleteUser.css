@@ -1,0 +1,37 @@
+main {
+    font-family: "MontserratRegular";
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+}
+
+main input[type=text],
+main input[type=email] {
+    width: 100%;
+    color: #27313a;
+    padding: 12px 16px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #00a19c;
+}
+
+main label {
+    font-size: 1.2em;
+}
+
+.deleteButton {
+    background-color: #00a19c;
+    color: #eeeeee;
+    padding: 14px 14px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.deleteButton:hover {
+    opacity: 0.8;
+}

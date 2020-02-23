@@ -1,4 +1,27 @@
 <?php
+    $newsid = $_GET['newsid'];
+    $userid = -1;
+    
+    if(isset($_SESSION['currentUser'])){
+        $userid = $_SESSION['currentUser'];
+    }
+
+    $isPaid = isAPaidArticle ($newsid, $database);
+
+    if($isPaid == true){
+        if($userid == -1){
+            header("Location: index.php?page=login");
+        }
+        else {
+            $boughtIt = hasUserBuyedThisArticle ($userid, $newsid, $database);
+            if ($boughtIt == false) {
+                $link = 'index.php?page=buyArticle&newsid='.$newsid;
+                header("Location: $link");
+            }
+        }
+        
+    }
+
     if(isset($_GET['like']))
     {
         if(isset($_GET['newsid']) && isset($_SESSION['loggedIn']))
