@@ -36,7 +36,7 @@ if(isset($_POST['submit']))
 <div class="all">
     <h3>Update Your Password </h3>
 
-    <form action="index.php?page=updateProfile" method="POST">
+    <form id="passwordForm" name="passwordForm" action="index.php?page=updateProfile" method="POST" onsubmit="return updatePassFormValidation()">
         
         <p>
             <strong>Password must contain:</strong>
@@ -54,7 +54,7 @@ if(isset($_POST['submit']))
 
 
         <label for="newPassword">New Password</label><br>
-        <input type="password" id="newPassword" name="newPassword" placeholder="New Password"><br>
+        <input type="password" id="newPassword" name="newPassword" placeholder="New Password" value="<?php if(isset($_POST['newPassword'])) echo htmlspecialchars($_POST['firstName']);?>"><br>
 
         <label for="repeatPassword">Repeat the New Password</label><br>
         <input type="password" id="repeatPassword" name="repeatPassword" placeholder="Repeat New Password"><br><br>

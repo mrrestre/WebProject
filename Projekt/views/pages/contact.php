@@ -2,7 +2,7 @@
 
     <div class="left">
         <h2 class="salutation">Send an E-Mail to the Support team</h2>
-        <form name="contactForm" action="mailto:taketec_support@gmail.com" method="POST" onsubmit="return contactFormValidation()">
+        <form name="contactForm" id="contactForm" action="mailto:taketec_support@gmail.com" method="POST" onsubmit="return contactFormValidation()">
 
             <label for="firstName">First Name*</label><br>
                 <input type="text" id="firstName" name="firstName" placeholder="First Name" class="thisBox" required ><br>

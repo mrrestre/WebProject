@@ -85,4 +85,49 @@ TODO(Dringend):
 
 ________________________________________
 
+					24.02.2020
+###### js formulare validation ########
+
+-login: ist schon von dem Browser geprüft.
+-registration JS Validieren:
+		der Name und Nachname dürfen nicht leer sein und  müssen mind. 3 Buchstaben enthalten
+		die Telefonnummer < 14
+		Passwörter müssen das gleiche sein
+-contact: wurde gemacht, bei html hab ich required attribut für message gelöscht aber wird durch JS geprüft.
+	 kommt alert was soll ausgefüllt werden und wird der Border rot.
+-deleteUser: wird alert gezeigt um das delete Peozess zu bestätigen		
+-addArticle: fertig. title, teaser und content haben bestimmte große
+	    imageName darf nicht leer sein 
+-updatePassword: die 2 passwörter müssen das selbe sein
+_______________________________________
+
+- Formulare mit AJAX schicken
+  min. 1 Formular wie Registation:
+  hab genau eins zu eins wie in der Folien steht aber hat nicht funktioniert 
+
+  contact: hat auch nicht funktioniert.
+_______________________________________
+
+htmlspecialchars():
+
+-login
+-contact hat keine php behandlung sondern action="mailto..." deswegen ist aufwendig das hier zu anwenden
+-registration
+-addArticle mit value attribute
+
+_______________________________________
+
+ noch TODO(Dringend):
+
+- Irgendwas nachladen mit AJAX ?? ich wollte im Home aber ich weis nicht wie und heute bin ich tot
+- Ein Formular muss mehrseitig sein (Steht bei Kruse)
+
+- Code Einigermaßen dokumentieren (Funktionene habe ich schon gemacht)
+- Dokumentation in HTML in Footer anbinden und machen!! 
+- Soviel testen wie möglich, alles was und einfällt
+
+
+
+
+
 

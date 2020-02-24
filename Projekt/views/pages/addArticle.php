@@ -81,26 +81,26 @@ $status='';
     <div class="All">
     <h5> Add an Article</h5>
     <table>
-    <form action="index.php?page=addArticle" method="POST">
+    <form name="addArticle" action="index.php?page=addArticle" method="POST" onsubmit="return addArticleFormValidation()">
 
         <tr>
         <td><label for="title">Title*</label></td>
-        <td><input type="text" id="title" name="title" placeholder="Title" required></td>
+        <td><input type="text" id="title" name="title" placeholder="Title" value="<?php if(isset($_POST['title'])) echo htmlspecialchars($_POST['title']);?>" required></td>
         </tr>
 
         <tr>
         <td><label for="teaser">Teaser*</label></td>
-        <td><textarea id="teaser" name="teaser" placeholder="Teaser"></textarea></td>
+        <td><textarea id="teaser" name="teaser" placeholder="Teaser" value="<?php if(isset($_POST['teaser'])) echo htmlspecialchars($_POST['teaser']);?>"></textarea></td>
         </tr>
         
         <tr>
         <td><label for="content">Content*</label></td>
-        <td><textarea id="content" name="content" placeholder="Article Content" class="content"></textarea></td>
+        <td><textarea id="content" name="content" placeholder="Article Content" class="content" value="<?php if(isset($_POST['content'])) echo htmlspecialchars($_POST['content']);?>"></textarea></td>
         </tr>
 
         <tr>
         <td><label for="copyright">Copyright</label></td>
-        <td><input type="text" id="copyright" name="copyright" placeholder="Copyright" ></td>
+        <td><input type="text" id="copyright" name="copyright" placeholder="Copyright" value="<?php if(isset($_POST['copyright'])) echo htmlspecialchars($_POST['copyright']);?>"></td>
         </tr>
 
         <tr>
@@ -134,17 +134,17 @@ $status='';
         
         <tr>
         <td><label for="price">Price</label></td>
-        <td><input type="number" id="price" name="price" placeholder="0.00 €" step=".01"></td>
+        <td><input type="number" id="price" name="price" placeholder="0.00 €" step=".01" value="<?php if(isset($_POST['price'])) echo htmlspecialchars($_POST['price']);?>"></td>
         </tr>
         
         <tr>
         <td><label for="imageName">Image Name* <br><span>(imageName.fileExtention)</span></label></td>
-        <td><input type="text" name="imageName"  id="imageName" placeholder="Image Name" required></td>
+        <td><input type="text" name="imageName"  id="imageName" placeholder="Image Name" value="<?php if(isset($_POST['imageName'])) echo htmlspecialchars($_POST['imageName']);?>" required></td>
         </tr>
 
         <tr>
         <td><label for="imageCopyright">Image Copyright*</label></td>
-        <td><input type="text" name="imageCopyright" id="imageCopyright" placeholder="image Copyright" required></td>
+        <td><input type="text" name="imageCopyright" id="imageCopyright" placeholder="image Copyright" value="<?php if(isset($_POST['imageCopyright'])) echo htmlspecialchars($_POST['imageCopyright']);?>" required></td>
         </tr>
                             
 

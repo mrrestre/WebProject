@@ -1,6 +1,6 @@
 <?php
 $status='';
-    if(isset($_POST['submit']))
+    if(isset($_POST['submit']) || isset($_POST['ajax']))
     {       
         if(!empty($_POST['firstName'])
         &&!empty($_POST['surname'])
@@ -64,6 +64,14 @@ $status='';
         {
             $status= 'All fields must be filled';
         }
+
+        if(isset($_POST['ajax']))
+        {
+            echo 'the date were successfully received ';
+        }
+        else{
+           echo 'something went wrong, please try later';
+        }
     }
     else{
     }
@@ -87,18 +95,18 @@ $status='';
                 ?>
                 <h1 class="salutation">Registration</h1>
                 
-                <form name="registForm" action="index.php?page=registration" method="POST" onsubmit="return validRegistrationForm()">
+                <form name="registForm" id="registForm" action="index.php?page=registration" method="POST" onsubmit="return registrationFormValidation()">
                 <div id="error"></div>
                 <table width="100%" >
                     
                     <tr>             
                         <td><label for="firstName">First Name*</label></td>
-                        <td><input type="text" id="firstName" name="firstName" placeholder="First Name" value="<?php if(isset($_POST['firstName'])) echo $_POST['firstName'];?>" required></td>
+                        <td><input type="text" id="firstName" name="firstName" placeholder="First Name" value="<?php if(isset($_POST['firstName'])) echo htmlspecialchars($_POST['firstName']);?>" required></td>
                     </tr>
                     
                     <tr>
                         <td><label for="surname">Last Name*</label></td>
-                        <td><input type="text" id="surname" name="surname" placeholder="Last Name" value="<?php if(isset($_POST['surname'])) echo $_POST['surname'];?>" required></td>
+                        <td><input type="text" id="surname" name="surname" placeholder="Last Name" value="<?php if(isset($_POST['surname'])) echo htmlspecialchars($_POST['surname']);?>" required></td>
                     </tr>
                         
                     <tr>
@@ -153,12 +161,12 @@ $status='';
 
                     <tr>
                         <td><label for="phone">Telephone Number*</label></td>
-                        <td><input type="number" id="phone" name="phone" placeholder="Telephone Number" value="<?php if(isset($_POST['phone'])) echo $_POST['phone'];?>" required></td>
+                        <td><input type="number" id="phone" name="phone" placeholder="Telephone Number" value="<?php if(isset($_POST['phone'])) echo htmlspecialchars($_POST['phone']);?>" required></td>
                     </tr>
                     
                     <tr>
                         <td><label for="eMail">E-Mail*</label></td>
-                        <td><input type="email" id="eMail" name="eMail" placeholder="E-Mail" value="<?php if(isset($_POST['eMail'])) echo $_POST['eMail'];?>" required></td>
+                        <td><input type="email" id="eMail" name="eMail" placeholder="E-Mail" value="<?php if(isset($_POST['eMail'])) echo htmlspecialchars($_POST['eMail']);?>" required></td>
                     </tr>
 
                 </table>
