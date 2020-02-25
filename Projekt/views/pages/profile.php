@@ -12,12 +12,7 @@ foreach($userData as $row)
         $eMail = $row['eMail']; 
     }
 }
-// if ($userData['gender'] == 'm'){
-//     $gender= 'man.png';
-// }
-// else{
-//     $gender = 'woman.png';
-// }
+
 
 
 ?>

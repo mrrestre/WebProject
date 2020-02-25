@@ -48,6 +48,7 @@
 			}
 		?>
 
+			<!-- Automatic include the JS  file for each page -->
 		<script language="javascript" type="text/javascript" src="./assets/js/<?=$page?>.js"></script>
 	</head>
 
