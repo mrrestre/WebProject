@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 23, 2020 at 07:17 PM
--- Server version: 10.3.15-MariaDB
--- PHP Version: 7.3.6
+-- Erstellungszeit: 26. Feb 2020 um 11:57
+-- Server-Version: 10.4.8-MariaDB
+-- PHP-Version: 7.3.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,22 +19,25 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `taketec-pdo-version-1`
+-- Datenbank: `taketec-pdo-version-1`
 --
+CREATE DATABASE IF NOT EXISTS `taketec-pdo-version-1` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `taketec-pdo-version-1`;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category`
+-- Tabellenstruktur für Tabelle `category`
 --
 
+DROP TABLE IF EXISTS `category`;
 CREATE TABLE `category` (
   `catId` int(11) NOT NULL,
   `description` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `category`
+-- Daten für Tabelle `category`
 --
 
 INSERT INTO `category` (`catId`, `description`) VALUES
@@ -49,16 +52,17 @@ INSERT INTO `category` (`catId`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category_has_news`
+-- Tabellenstruktur für Tabelle `category_has_news`
 --
 
+DROP TABLE IF EXISTS `category_has_news`;
 CREATE TABLE `category_has_news` (
   `catId` int(11) NOT NULL,
   `newsId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `category_has_news`
+-- Daten für Tabelle `category_has_news`
 --
 
 INSERT INTO `category_has_news` (`catId`, `newsId`) VALUES
@@ -80,14 +84,20 @@ INSERT INTO `category_has_news` (`catId`, `newsId`) VALUES
 (1, 11),
 (3, 11),
 (5, 11),
-(6, 11);
+(6, 11),
+(3, 13),
+(1, 13),
+(2, 14),
+(2, 15),
+(5, 15);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `comment`
+-- Tabellenstruktur für Tabelle `comment`
 --
 
+DROP TABLE IF EXISTS `comment`;
 CREATE TABLE `comment` (
   `commentId` int(11) NOT NULL,
   `content` text NOT NULL,
@@ -96,7 +106,7 @@ CREATE TABLE `comment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `comment`
+-- Daten für Tabelle `comment`
 --
 
 INSERT INTO `comment` (`commentId`, `content`, `newsId`, `userId`) VALUES
@@ -111,9 +121,10 @@ INSERT INTO `comment` (`commentId`, `content`, `newsId`, `userId`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `image`
+-- Tabellenstruktur für Tabelle `image`
 --
 
+DROP TABLE IF EXISTS `image`;
 CREATE TABLE `image` (
   `imageId` int(11) NOT NULL,
   `imagePath` varchar(200) NOT NULL,
@@ -122,7 +133,7 @@ CREATE TABLE `image` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `image`
+-- Daten für Tabelle `image`
 --
 
 INSERT INTO `image` (`imageId`, `imagePath`, `copyright`, `newsId`) VALUES
@@ -136,14 +147,18 @@ INSERT INTO `image` (`imageId`, `imagePath`, `copyright`, `newsId`) VALUES
 (8, 'galaxyBuds.jpg', 'https://9to5google.com/2020/02/20/samsung-galaxy-buds-plus-review/', 8),
 (9, 'samsungGalaxyChromebook.jpg', 'https://9to5google.com/2020/02/20/samsung-galaxy-chromebook-release-date-leak/', 9),
 (10, 'surfacePro.jpg', 'https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2019/10/Surface-Pro-7-and-X-2-of-7.jpg', 10),
-(11, 'AirPods.jpg', 'https://9to5mac.com/2020/02/11/airpods-continue-to-dominate/', 11);
+(11, 'AirPods.jpg', 'https://9to5mac.com/2020/02/11/airpods-continue-to-dominate/', 11),
+(12, 'MacPro.jpg', NULL, 13),
+(13, 'S20Ultra.jpg', 'https://www.schmidtisblog.de/samsung-galaxy-s20-ultra-hat-erwartungsgemaess-das-beste-smartphone-dis', 14),
+(14, 'active2.jpg', 'https://www.golem.de/news/galaxy-watch-active-2-samsungs-neue-smartwatch-bekommt-eine-digitale-luene', 15);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `news`
+-- Tabellenstruktur für Tabelle `news`
 --
 
+DROP TABLE IF EXISTS `news`;
 CREATE TABLE `news` (
   `newsId` int(11) NOT NULL,
   `creation` date NOT NULL,
@@ -159,7 +174,7 @@ CREATE TABLE `news` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `news`
+-- Daten für Tabelle `news`
 --
 
 INSERT INTO `news` (`newsId`, `creation`, `updated`, `userId`, `content`, `copyright`, `paidNew`, `price`, `newsTitle`, `newsShortDescription`, `likes`) VALUES
@@ -173,14 +188,18 @@ INSERT INTO `news` (`newsId`, `creation`, `updated`, `userId`, `content`, `copyr
 (8, '2020-02-22', NULL, 2, 'Truly wireless earbuds have exploded in popularity over the past couple of years, pushing options like Apple’s AirPods to become a multi-billion-dollar market. There’s no shortage of options out there, but one that many Android users have gravitated toward has been Samsung’s Galaxy Buds, and now, they’ve got a second generation.\r\n\r\nI never had a chance to use the original Galaxy Buds, unfortunately, but I’ve been able to try quite a few pairs of truly wireless earbuds in the past several months. After a few days of testing out the Galaxy Buds+ pretty extensively, I’m surprised at how much I like them. I don’t think they’re the right answer for everyone, but there’s a lot to love with the Galaxy Buds+, especially if you’re a Spotify user. Here’s the good and the bad.\r\n\r\nGalaxy Buds+: The Good\r\nWorks great with Android, even better with Samsung\r\nFirst, let’s talk about the main reason you’re probably interested in these earbuds — they work with Android. Pretty much every pair of truly wireless earbuds work with Android in one way or another, even Apple’s AirPods. However, a lot of them lack extra functions on the platform.\r\n\r\nWith the Samsung Galaxy Buds+, there’s no shortage of extra functionality. On a Samsung smartphone, just pair and you’ll be greeted with a pop-up that shows the battery status of each bud and the case, too. It’s a direct clone of what Apple shows with AirPods, but that’s not really a bad thing!\r\nUnfortunately, those bonuses aren’t available on all Android phones. My testing was paired to a Pixel 4 XL, which meant I had to download extra apps. More on that later, but once the apps are installed, you’ll have control over the Buds+ to customize taps and the like. The only thing you won’t get is the pop-up with battery details. That’s held within the app only.\r\n\r\nGalaxy Buds+: The Bad\r\nPoor default sound profile\r\nIf you’re not a Samsung user, there’s one big negative to the Galaxy Buds+. The default sound profile is legitimately awful. When I first paired these and listened to them, I wondered if there was some plastic still on, then realizing there wasn’t, I just assumed they were worse than I’d heard.\r\n\r\nThis review would have had a very different outcome had that sound profile been what these always sound like. Upon downloading the Samsung Gear app, you can switch the Buds+ to “Dynamic” mode, which sounds a whole lot better. I’d still rank Jabra’s Elite 75t above the Buds+, but with Dynamic mode, they’re pretty decent.', 'https://9to5google.com/2020/02/20/samsung-galaxy-buds-plus-review/', 1, '2.99', 'Samsung Galaxy Buds+ Review', 'The new Galaxy Buds+: Come for Android compatibility, stay for Spotify', 2),
 (9, '2020-02-22', NULL, 2, 'One of the most exciting things coming in the Chrome OS world right now is the Galaxy Chromebook, but Samsung wasn’t keen to share its release date back at CES. Now, a product listing might be revealing that information and it’s not too far off.\r\n\r\nWhen the Galaxy Chromebook was announced, Samsung only said that it would be coming out sometime in Q1 of this year. That’s definitely soon, but it’s not quite enough of an exact timeline to help customers put aside the cash needed to buy it.\r\n\r\nAboutChromebooks spotted a product listing from Best Buy — since removed — which mentions an April 6 release date for the Galaxy Chromebook. Of course, that’s definitely subject to change, but it’s the first mention we’ve heard of a release date for the product outside of Samsung’s vague timeline. That date makes sense, too, as it gives Samsung a bit of time to cool off following the Galaxy S20/Z Flip launch.\r\n\r\nAlso of interest, an LTE model was spotted on Samsung’s own website. Samsung didn’t announce this previously, but it’d be an appreciated option for Chrome OS users. As it stands today, there are very few Chromebooks with LTE connectivity, Samsung’s Chromebook Plus v2 being one of the only ones that comes to mind.\r\n\r\nIf that is actually happening, though, Samsung would have to create another variant of the machine, possibly running on a different chip. This is definitely within the realm of possibility, but I wouldn’t get too excited.', 'https://9to5google.com/2020/02/20/samsung-galaxy-chromebook-release-date-leak/', 0, '0.00', 'Samsung Galaxy Chromebook', 'Samsung Galaxy Chromebook release date may be April 6', 0),
 (10, '2020-02-22', NULL, 2, 'I\'ve been a Surface Book 2 user — and fan — since it was released in 2017. I bit the bullet and preordered the 13-inch model shortly after it was announced, and I never looked back. However, when my Surface Book 2 met an untimely demise due to an unfortunate incident involving a glass of water a few weeks ago (it got very wet), I started re-thinking what I wanted out of a portable PC.\r\n\r\nEnter the Surface Pro X. I wound up going with Microsoft\'s latest iteration on the long-running Surface Pro line, and it\'s been the perfect fit. Still, it\'s a relatively big step down in terms of capabilities. Here\'s why I ultimately decided that it doesn\'t matter, and why I\'m loving the Surface Pro X.\r\n\r\nSurface Pro X is the perfect fit\r\n\r\nWhen I picked up my Surface Pro X, several people on Twitter rightly pointed out the sudden \"lane change\". Making the jump from an Intel processor with a discrete graphics chip to Microsoft\'s custom ARM SQ1 chip (a riff on the Snapdragon 8cx) does have its downsides. But, for me, the positives outweigh the negatives.\r\n\r\nThe key here is that my laptop is no longer my main PC. I bought the Surface Book 2 when I didn\'t have a desktop PC to fall back on, so I went for power and maximum app compatibility. Now, I spend more time at a pretty powerful desktop rig than not, so my priorities have shifted drastically.\r\n\r\nThe three biggest draws for me with the Surface Pro X were LTE connectivity, portability, and battery life. There are several LTE laptops on the market nowadays, but none of them check all three of those boxes quite like the Surface Pro X.', 'https://www.windowscentral.com/i-went-surface-book-2-surface-pro-x-and-im-love-heres-why', 1, '0.99', 'I switched from Surface Book 2 to Surface Pro X', 'I switched from Surface Book 2 to Surface Pro X, and I\'m in love. Here\'s why.', 0),
-(11, '2020-02-22', NULL, 2, 'The latest estimate of the true wireless in-ear headphones market shows that Apple’s AirPods continue to dominate the market, with a 47% market share across 2019.\r\n\r\nSecond place was shared by Xiaomi and Samsung, who weren’t even close …\r\n\r\nCounterpoint Research said that the Apple’s market share did dip a little in the final quarter, but still left its rivals standing.\r\n\r\nThe launch of Apple’s new AirPods Pro model in late October helped the company record steady 44% growth in 4Q19, with 6m units sold despite supply shortages. Apple’s market share fell slightly to 41% QoQ as it attempted to keep up with swift overall market growth; market share for the full year reached 47% […]\r\n\r\nXiaomi kept its second-place spot in the quarter supported by strong sales of its Redmi Airdots, followed by Samsung, QCY and JLab. The race for second intensified, with both Xiaomi and Samsung holding around 6% unit market share for the year.\r\n\r\nThe market as a whole grew significantly in the final quarter of the year.\r\n\r\nThe global market size for true wireless hearables beat expectations, growing 53% QoQ in 4Q19, topping 51m units for the quarter and 130m units for the full year, according to Counterpoint Research’s latest Hearables Market Tracker. The US was the main driver for the quarter, growing 76% QoQ and accounting for 35% of the global market on the back of seasonal promotions and Apple’s new model launch.\r\n\r\nCounterpoint expects AirPods sales to top 100M this year, and says that while Samsung is targeting a distant second place, it may struggle to achieve this.\r\n\r\n“We expect Apple to sell more than 100m true wireless hearables in 2020, including AirPods Pros, to maintain their comfortable lead in the market,” said Liz Lee, Senior Analyst at Counterpoint Research. “The real competition will be for second place, especially in the premium market; Samsung, which sold 8m Galaxy Buds last year, will need further upgrades to those expected in the Galaxy Buds Plus, including noise cancellation and other advanced features and designs, in order to beat its rivals.”\r\n\r\nThere may be a temporary dent in AirPods sales this quarter. Apple was already struggling to meet demand, and production seems near-certain to be hit by the coronavirus outbreak. Other manufacturers will also be hit, however, so the prediction that AirPods continue to dominate sales this year seems safe.', 'https://9to5mac.com/2020/02/11/airpods-continue-to-dominate/', 0, '0.00', 'AirPods continue to dominate', 'AirPods continue to dominate; Samsung will struggle for 2nd place this year', 0);
+(11, '2020-02-22', NULL, 2, 'The latest estimate of the true wireless in-ear headphones market shows that Apple’s AirPods continue to dominate the market, with a 47% market share across 2019.\r\n\r\nSecond place was shared by Xiaomi and Samsung, who weren’t even close …\r\n\r\nCounterpoint Research said that the Apple’s market share did dip a little in the final quarter, but still left its rivals standing.\r\n\r\nThe launch of Apple’s new AirPods Pro model in late October helped the company record steady 44% growth in 4Q19, with 6m units sold despite supply shortages. Apple’s market share fell slightly to 41% QoQ as it attempted to keep up with swift overall market growth; market share for the full year reached 47% […]\r\n\r\nXiaomi kept its second-place spot in the quarter supported by strong sales of its Redmi Airdots, followed by Samsung, QCY and JLab. The race for second intensified, with both Xiaomi and Samsung holding around 6% unit market share for the year.\r\n\r\nThe market as a whole grew significantly in the final quarter of the year.\r\n\r\nThe global market size for true wireless hearables beat expectations, growing 53% QoQ in 4Q19, topping 51m units for the quarter and 130m units for the full year, according to Counterpoint Research’s latest Hearables Market Tracker. The US was the main driver for the quarter, growing 76% QoQ and accounting for 35% of the global market on the back of seasonal promotions and Apple’s new model launch.\r\n\r\nCounterpoint expects AirPods sales to top 100M this year, and says that while Samsung is targeting a distant second place, it may struggle to achieve this.\r\n\r\n“We expect Apple to sell more than 100m true wireless hearables in 2020, including AirPods Pros, to maintain their comfortable lead in the market,” said Liz Lee, Senior Analyst at Counterpoint Research. “The real competition will be for second place, especially in the premium market; Samsung, which sold 8m Galaxy Buds last year, will need further upgrades to those expected in the Galaxy Buds Plus, including noise cancellation and other advanced features and designs, in order to beat its rivals.”\r\n\r\nThere may be a temporary dent in AirPods sales this quarter. Apple was already struggling to meet demand, and production seems near-certain to be hit by the coronavirus outbreak. Other manufacturers will also be hit, however, so the prediction that AirPods continue to dominate sales this year seems safe.', 'https://9to5mac.com/2020/02/11/airpods-continue-to-dominate/', 0, '0.00', 'AirPods continue to dominate', 'AirPods continue to dominate; Samsung will struggle for 2nd place this year', 0),
+(13, '2020-02-26', NULL, 1, 'Nachdem in der gestrigen WWDC diverse Dinge vorgestellt worden sind, war für mich nur eine Neuigkeit wichtig: nämlich die eines neuen, modular aufgebauten Mac Pro. Und zwar ganz der Tradition des erfolgreichsten bisherigen Mac Pro folgend, wieder in einem Käsereibe-Design. Man kann sogar sagen, dass dieses neue Design eine Hommage an den alten MacPro ist. Und das ist auch gut so!\r\n\r\nIch empfand die gesamte Keynote spannend, es war eine der besten Keynotes der letzten Jahre. Sie war witzig, abwechslungsreich und lud verschiedenste Protagonisten auf die Bühne, unter anderem wieder Greg Federighi. Allerdings kann ich auch den Shitstorm des Interwebs verstehen, den ein Mac Pro mit einem Startpreis von $5999 auslöst. Zumal die Leistung dieses Einstiegs-Mac Pro locker in einem aktuellen Notebook für $999 gefunden werden kann. Neben dem neuen Mac Pro war auch immer die Rede von einem neuen Bildschirm, nachdem sich Apple 2016 aus der Produktion selbiger verabschiedet hatte. Und auch dieser wurde gestern vorgestellt, zusammen mit dem Mac Pro.\r\n\r\nApples Pro-Display XDR genannter 6K-Bildschirm richtet sich zweifelsohne an professionelle Nutzer und wird mit $5999 zu Buche schlagen. Dieser Preis ist angesichts der professionellen Klasse in der er spielt, die Features die er hat, wahrscheinlich sogar angebracht, aber auf verständliches Unverständnis stößt die Preispolitik seitens Apple an dieser Stelle: die Monitorhalterung, seit jeher Bestandteil eines jedes Monitors, ist hier nicht Bestandteil. Der von Apple als Pro Stand bezeichnete Ständer schlägt mit $999 ins Kassenbuch ein. Und das ist unglaublich. Oder lächerlich? Oder der Wahnsinn der heutigen Zeit.', 'https://thahipster.de/macpro7-1-die-neue-kasereibe/', 0, NULL, 'MacPro and his Display', 'MacPro 7,1 - die neue Käsereibe', 0),
+(14, '2020-02-26', NULL, 1, 'Perhaps one of the most exciting things about the Galaxy S20 Ultra is its huge 5,000 mAh battery. That number on its own should mean killer battery life, but it seems the Galaxy S20 Ultra’s 120Hz display is going to put a pretty huge drain on that.\r\n\r\nTom’s Guide has been putting the S20 Ultra through its paces over the past several days and so far, the results on the out-of-the-box settings have been more than respectable. Using it’s default settings, the Galaxy S20 Ultra’s battery averaged just shy of 12 hours — 11:58 to be exact.\r\n\r\nThis battery test sees the device run from a 100% charge with continuous web surfing over a cellular connection until the phone dies. In this case, that was using the Ultra’s 5G connectivity on T-Mobile’s network. This is notable, too, since the newer 5G radios are more battery intensive, meaning the test would probably have even better results on a 4G connection or WiFi. That 5G connection is probably why the S10+ averaged around 40 extra minutes in the same test.\r\n\r\nWhat’s important to note with this battery test, though, is just how much of a dent the Galaxy S20 Ultra’s 120Hz display makes on the 5,000 mAh cell. Simply switching from the out-of-the-box default of FHD 60Hz to FHD 120Hz sees the device losing nearly 3 hours on this test.\r\n\r\nOf course, real-life results will definitely vary since no one hardly anyone actually uses their phone for 9 hours straight, but it’s clear the 120Hz panel is going to have a pretty big effect on battery life. This is probably part of the reason Samsung didn’t enable the 120Hz refresh rate at the full QHD+ resolution at launch, though that feature is rumored to be coming later.', 'https://9to5google.com/2020/02/25/galaxy-s20-ultra-battery-test-120hz-display/', 0, NULL, 'Samsung Galaxy S20 Ultra Battery', 'Galaxy S20 Ultra battery test shows how much of a drain 120Hz might be', 0),
+(15, '2020-02-26', NULL, 1, 'Released just six months after its predecessor, the Active 2 is a reasonably good option. Some software issues keep it from being great, though. And if your phone isn’t made by Samsung, plan on some software annoyances.\r\n\r\nThe obvious and clear success of the Apple Watch for iPhone owners has made the dearth of quality options for Android phones feel that much more acute. But Samsung has been quietly plugging away at improving the Galaxy Watch and the software that runs it. The result is a watch that checks off most of the boxes smartwatch buyers should care about.\r\n\r\nThe Galaxy Watch Active 2 is a round smartwatch that starts at $279, though you can pay higher prices depending on the size and LTE. It comes in 40 and 44mm sizes, has a few different finishes, and the watch bands can be easily swapped out. (The original Active is still available and slightly less expensive. The original Galaxy Watch with a physical rotating bezel is also sticking around for a higher price.)\r\n\r\nI like how unassuming the Active 2 looks. I have the basic black model, and its matte finish and slightly curved glass give it simple, clean lines. In a world where most Android smartwatches either look explicitly like fitness bands (the Fitbit) or emulate big, expensive watches (hiding how big they need to be), the Active 2 just looks like a simple watch.\r\n\r\nIt is not a watch I expected to exist because its predecessor is barely six months old. The main problem with the last one is that Samsung whiffed on supporting the very best feature of the Galaxy Watch lineup: a rotating bezel for scrolling through the software.\r\n\r\nThe Active 2 doesn’t fully bring that back, but it now has a touch-sensitive capacitive ring around the screen. Dragging your finger around it to scroll through various screens feels much more intuitive than just swiping because the Active 2’s interface is mostly built on circles.\r\n\r\nMore specifically, the software works by presenting you with a lot of screens you can quickly scroll through. In one direction, you have notifications. In the other, there are a bunch of widgets with discrete pieces of information. I enjoy jamming through these screens more with a physical bezel, but the touch-sensitive one isn’t terrible and much better than not having this kind of control at all.\r\n\r\nOne of the reasons this interface works is that it’s fast. Especially if you go with a simple watchface that doesn’t have a bunch of information in complications, it’s convenient to just rotate through your weather, calendar, and fitness. (It’s such a good idea that Google lifted it wholesale for Wear OS.) That would never work if the watch were slow. You will have some delays when launching full apps, but the widget system means you don’t have to that often.\r\n\r\nI also like that it has Spotify on it, and it’s relatively easy to download Spotify playlists directly to the watch. But the quality of third-party apps drops off steeply from there. There’s no built-in mapping or directions app, and the app store doesn’t have anything good to fill the gap. The third-party app situation isn’t very good at all, but then again, it’s not great on any platform.', 'https://www.theverge.com/2019/10/8/20903452/samsung-galaxy-watch-active-2-review-fitness-tizen-apps-', 0, '0.00', 'Samsung Galaxy Watch Active 2', 'the best smartwatch for Android users?', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `payment_method`
+-- Tabellenstruktur für Tabelle `payment_method`
 --
 
+DROP TABLE IF EXISTS `payment_method`;
 CREATE TABLE `payment_method` (
   `paymentMethodId` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
@@ -191,7 +210,7 @@ CREATE TABLE `payment_method` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `payment_method`
+-- Daten für Tabelle `payment_method`
 --
 
 INSERT INTO `payment_method` (`paymentMethodId`, `userId`, `cardType`, `cardNumber`, `CVV`, `nameOnCard`) VALUES
@@ -204,16 +223,17 @@ INSERT INTO `payment_method` (`paymentMethodId`, `userId`, `cardType`, `cardNumb
 -- --------------------------------------------------------
 
 --
--- Table structure for table `purchased_article`
+-- Tabellenstruktur für Tabelle `purchased_article`
 --
 
+DROP TABLE IF EXISTS `purchased_article`;
 CREATE TABLE `purchased_article` (
   `newsId` int(11) NOT NULL,
   `userId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `purchased_article`
+-- Daten für Tabelle `purchased_article`
 --
 
 INSERT INTO `purchased_article` (`newsId`, `userId`) VALUES
@@ -230,9 +250,10 @@ INSERT INTO `purchased_article` (`newsId`, `userId`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Tabellenstruktur für Tabelle `user`
 --
 
+DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `userId` int(11) NOT NULL,
   `firstName` varchar(45) NOT NULL,
@@ -247,37 +268,37 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `user`
+-- Daten für Tabelle `user`
 --
 
 INSERT INTO `user` (`userId`, `firstName`, `surname`, `password`, `gender`, `DOB`, `country`, `phone`, `eMail`, `permission`) VALUES
-(1, 'Ahmad', 'Abo Louha', '$2y$10$v.OesU8F18k20JJxHalb2urgeXJvxy2Qv6inidkph1F5vX381SavK', 'm', '1993-09-08', 'DE', '01778899', 'ahmad@gmail.com', 1),
-(2, 'Alejandro', 'Restrepo Klinge', '$2y$10$BA8xz.0aPyP62NX68HnxGeDCfdPdzJMVY3Ia2xPuhKpGwcMH6Xmn.', 'm', '1996-12-24', 'CO', '01778888', 'alejandro@gmail.com', 1),
-(3, 'James', 'Bond', '$2y$10$KckKU1PyqY7q4wkAinREn.BDXmNYbpnjRLJDoJXL1Z00x9SmNGT0K', 'm', '1950-07-30', 'UK', '01778877', 'james@gmail.com', NULL),
-(4, 'Maria', 'Mustermann', '$2y$10$nxUcO28S3wUS80NY7Tp22ufbGhyLvJm1A4AZIeeI8zc6i7PhTWxG.', 'f', '2002-02-02', 'DE', '2036598', 'maria@gmail.com', NULL),
+(1, 'Ahmad', 'Abo Louha', '$2y$10$9Q8CepjIQWsgmmp7/ImSRe7LYXSIU2CmqB7yoMV0jIyxLBantS2kG', 'm', '1993-09-08', 'DE', '01778899', 'ahmad@gmail.com', 1),
+(2, 'Alejandro', 'Restrepo Klinge', '$2y$10$tZlX0lRT6E6grLE87nacwOOU4bkA/U3u3nffpLwjCbxz/x6fNyPbW', 'm', '1996-12-24', 'CO', '01778888', 'alejandro@gmail.com', 1),
+(3, 'James', 'Bond', '$2y$10$8qNMDCHQMvLvP1M8m6a7g.udiz8Woadp.4WfRb2d.w6OrANg8GMji', 'm', '1950-07-30', 'UK', '01778877', 'james@gmail.com', NULL),
+(4, 'Maria', 'Mustermann', '$2y$10$Mxha/vVdoHfCnC.nNWVfpeZuKPJvWQbo/WUGgOQNYR9LNaI2fiwRC', 'f', '2002-02-02', 'DE', '2036598', 'maria@gmail.com', NULL),
 (5, 'Sara', 'Musterfrau', '$2y$10$AchTLb1s7ZNPr9f5zo1DTebjVIW0OqJmNQYoNDt82mKwByTd6fgsq', 'f', '1999-02-02', 'NF', '01778811', 'sara@gmail.com', NULL),
 (6, 'Sabrina', 'Oberli', '$2y$10$ayLfW/.EYyWBybydRpUDYut6yLMSAcl5TTwDrRyREBgxArp5ckKwS', 'f', '1950-11-20', 'VE', '202365986', 'sabrina@gmail.com', NULL),
 (8, 'John', 'Meyer', '$2y$10$nx5DZ52P/bhBGgWdXHXZzOOl96oRGq6hd3Fdlw9JLuAbFH5lOqgE6', 'm', '1920-02-02', 'BS', '956781235', 'john@gmail.com', NULL);
 
 --
--- Indexes for dumped tables
+-- Indizes der exportierten Tabellen
 --
 
 --
--- Indexes for table `category`
+-- Indizes für die Tabelle `category`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`catId`);
 
 --
--- Indexes for table `category_has_news`
+-- Indizes für die Tabelle `category_has_news`
 --
 ALTER TABLE `category_has_news`
   ADD KEY `fk_CATEGORY_has_NEWS_NEWS1_idx` (`newsId`),
   ADD KEY `fk_CATEGORY_has_NEWS_CATEGORY1_idx` (`catId`);
 
 --
--- Indexes for table `comment`
+-- Indizes für die Tabelle `comment`
 --
 ALTER TABLE `comment`
   ADD PRIMARY KEY (`commentId`),
@@ -285,117 +306,117 @@ ALTER TABLE `comment`
   ADD KEY `fk_COMMENT_USER1_idx` (`userId`);
 
 --
--- Indexes for table `image`
+-- Indizes für die Tabelle `image`
 --
 ALTER TABLE `image`
   ADD PRIMARY KEY (`imageId`),
   ADD KEY `fk_IMAGE_NEWS1_idx` (`newsId`);
 
 --
--- Indexes for table `news`
+-- Indizes für die Tabelle `news`
 --
 ALTER TABLE `news`
   ADD PRIMARY KEY (`newsId`),
   ADD KEY `fk_NEWS_USER1_idx` (`userId`);
 
 --
--- Indexes for table `payment_method`
+-- Indizes für die Tabelle `payment_method`
 --
 ALTER TABLE `payment_method`
   ADD PRIMARY KEY (`paymentMethodId`),
   ADD KEY `USERID_idx` (`userId`);
 
 --
--- Indexes for table `purchased_article`
+-- Indizes für die Tabelle `purchased_article`
 --
 ALTER TABLE `purchased_article`
   ADD KEY `fk_purchase_news` (`newsId`),
   ADD KEY `fk_purchase_user` (`userId`);
 
 --
--- Indexes for table `user`
+-- Indizes für die Tabelle `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`userId`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT für exportierte Tabellen
 --
 
 --
--- AUTO_INCREMENT for table `category`
+-- AUTO_INCREMENT für Tabelle `category`
 --
 ALTER TABLE `category`
   MODIFY `catId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `comment`
+-- AUTO_INCREMENT für Tabelle `comment`
 --
 ALTER TABLE `comment`
   MODIFY `commentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `image`
+-- AUTO_INCREMENT für Tabelle `image`
 --
 ALTER TABLE `image`
-  MODIFY `imageId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `imageId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT for table `news`
+-- AUTO_INCREMENT für Tabelle `news`
 --
 ALTER TABLE `news`
-  MODIFY `newsId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `newsId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT for table `payment_method`
+-- AUTO_INCREMENT für Tabelle `payment_method`
 --
 ALTER TABLE `payment_method`
   MODIFY `paymentMethodId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT für Tabelle `user`
 --
 ALTER TABLE `user`
   MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- Constraints for dumped tables
+-- Constraints der exportierten Tabellen
 --
 
 --
--- Constraints for table `category_has_news`
+-- Constraints der Tabelle `category_has_news`
 --
 ALTER TABLE `category_has_news`
   ADD CONSTRAINT `fk_CATEGORY_has_NEWS_CATEGORY1` FOREIGN KEY (`catId`) REFERENCES `category` (`catId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_CATEGORY_has_NEWS_NEWS1` FOREIGN KEY (`newsId`) REFERENCES `news` (`newsId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `comment`
+-- Constraints der Tabelle `comment`
 --
 ALTER TABLE `comment`
   ADD CONSTRAINT `fk_COMMENT_NEWS1` FOREIGN KEY (`newsId`) REFERENCES `news` (`newsId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_COMMENT_USER1` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `image`
+-- Constraints der Tabelle `image`
 --
 ALTER TABLE `image`
   ADD CONSTRAINT `fk_IMAGE_NEWS1` FOREIGN KEY (`newsId`) REFERENCES `news` (`newsId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `news`
+-- Constraints der Tabelle `news`
 --
 ALTER TABLE `news`
   ADD CONSTRAINT `fk_NEWS_USER1` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `payment_method`
+-- Constraints der Tabelle `payment_method`
 --
 ALTER TABLE `payment_method`
   ADD CONSTRAINT `USERID` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `purchased_article`
+-- Constraints der Tabelle `purchased_article`
 --
 ALTER TABLE `purchased_article`
   ADD CONSTRAINT `fk_purchase_news` FOREIGN KEY (`newsId`) REFERENCES `news` (`newsId`),

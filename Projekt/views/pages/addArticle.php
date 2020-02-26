@@ -5,7 +5,6 @@ $status='';
         if(!empty($_POST['content'])
         &&!empty($_POST['title'])
         &&!empty($_POST['teaser'])
-        &&isset($_POST['paidNews'])
         &&!empty($_POST['imageName'])
         &&!empty($_POST['imageCopyright'])
         )
