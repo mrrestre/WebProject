@@ -1,5 +1,5 @@
 // to confirm the User's Delete Process
 function validDeleteUserForm() {
-    alert('are you sure?');
+    alert('Are you sure?');
     return true;
 }

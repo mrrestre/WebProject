@@ -4,7 +4,8 @@
     $success = false;                                       //Works to determine if the login was succesfull
 
     if(isset($_POST['submit']))
-    {    
+    {   
+        // Not already logged in
         if(!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] === false)
         {
             $email    = $_POST['email']     ?? null;
@@ -12,22 +13,27 @@
             
             foreach ($username as $row)
             {
+                // Unhash the password
                 $verifyPassword = password_verify($password, $row['password']);
 
                 if($email === $row['eMail'] && $verifyPassword === true)
                 {
+                    // Just logged in
                     $_SESSION['loggedIn'] = true;
 
                     $thisUserID = getUserIDByEMail( $database, $email );
                     $thisUserID = $thisUserID[0];
                     $thisUserID = $thisUserID['userId'];
 
+                    // User ID of the just signed in user
                     $_SESSION['currentUser'] = $thisUserID;
                     
+                    // Fetsches all the admins
                     $permission = getUsersWithPermission ( $database );
 
                     $_SESSION['justLoggedIn'] = true;
 
+                    // Compares this user with the Admins to see if this user is an Admin
                     foreach($permission as $row)
                     {
                         if( $row['userId'] === $_SESSION['currentUser'] )
@@ -58,6 +64,7 @@
         <section class="sectionAll">
             <section class="leftSection" >
                 <?php 
+                    // Says if something went wrong
                     if(isset($status))
                     {
                         echo "<div class=\"status\">$status</div>"; 

@@ -76,87 +76,87 @@ $status='';
 <!-- Form to let the Admin of the Website Add an Article to the Database --> 
 <html>
 
-<body>
-    <div class="All">
-    <h5> Add an Article</h5>
-    <table>
-    <form name="addArticle" action="index.php?page=addArticle" method="POST" onsubmit="return addArticleFormValidation()">
+    <body>
+        <div class="All">
+            <h5> Add an Article</h5>
+            <table>
+                <form name="addArticle" action="index.php?page=addArticle" method="POST" onsubmit="return addArticleFormValidation()">
 
-        <tr>
-        <td><label for="title">Title*</label></td>
-        <td><input type="text" id="title" name="title" placeholder="Title" value="<?php if(isset($_POST['title'])) echo htmlspecialchars($_POST['title']);?>" required></td>
-        </tr>
+                    <tr>
+                    <td><label for="title">Title*</label></td>
+                    <td><input type="text" id="title" name="title" placeholder="Title" value="<?php if(isset($_POST['title'])) echo htmlspecialchars($_POST['title']);?>" required></td>
+                    </tr>
 
-        <tr>
-        <td><label for="teaser">Teaser*</label></td>
-        <td><textarea id="teaser" name="teaser" placeholder="Teaser" value="<?php if(isset($_POST['teaser'])) echo htmlspecialchars($_POST['teaser']);?>"></textarea></td>
-        </tr>
-        
-        <tr>
-        <td><label for="content">Content*</label></td>
-        <td><textarea id="content" name="content" placeholder="Article Content" class="content" value="<?php if(isset($_POST['content'])) echo htmlspecialchars($_POST['content']);?>"></textarea></td>
-        </tr>
+                    <tr>
+                    <td><label for="teaser">Teaser*</label></td>
+                    <td><textarea id="teaser" name="teaser" placeholder="Teaser" value="<?php if(isset($_POST['teaser'])) echo htmlspecialchars($_POST['teaser']);?>"></textarea></td>
+                    </tr>
+                    
+                    <tr>
+                    <td><label for="content">Content*</label></td>
+                    <td><textarea id="content" name="content" placeholder="Article Content" class="content" value="<?php if(isset($_POST['content'])) echo htmlspecialchars($_POST['content']);?>"></textarea></td>
+                    </tr>
 
-        <tr>
-        <td><label for="copyright">Copyright</label></td>
-        <td><input type="text" id="copyright" name="copyright" placeholder="Copyright" value="<?php if(isset($_POST['copyright'])) echo htmlspecialchars($_POST['copyright']);?>"></td>
-        </tr>
+                    <tr>
+                    <td><label for="copyright">Copyright</label></td>
+                    <td><input type="text" id="copyright" name="copyright" placeholder="Copyright" value="<?php if(isset($_POST['copyright'])) echo htmlspecialchars($_POST['copyright']);?>"></td>
+                    </tr>
 
-        <tr>
-        <td>
-        <p>
-            Categories: </td>
-            <div class="posibilities">
-                <td>
-                    <input type="checkbox" id="IOS" name="category[]" value="IOS"> <label for="IOS">IOS</label>
-                    <input type="checkbox" id="Android" name="category[]" value="Android"> <label for="Android">Android</label>
-                    <input type="checkbox" id="Apple" name="category[]" value="Apple"> <label for="Apple">Apple</label>
-                    <input type="checkbox" id="Windows" name="category[]" value="Windows"> <label for="Windows">Windows</label>
-                    <input type="checkbox" id="Wearables" name="category[]" value="Wearables"> <label for="Wearables"> Wearables</label>
-                    <input type="checkbox" id="Audio" name="category[]" value="Audio">  <label for="Audio">Audio</label>
-                    <input type="checkbox" id="ChromeOS" name="category[]" value="Chrome OS">  <label for="ChromeOS">Chrome OS</label> 
-                </td>
-            </div>
-        </p> 
-                         
-        
-        </tr>
-        
-    
-        <tr>
-        <td><label for="paidNews">Payed Article?*</label></td>  
-        <td><input type="radio" value="0" id="free" name="paidNews" required checked>   
-        <label for="free">Free</label> //
-        <input type="radio" value="1" id="paid" name="paidNews" required>
-        <label for="paid">Paid</label></td>
-        </tr>
-        
-        <tr>
-        <td><label for="price">Price</label></td>
-        <td><input type="number" id="price" name="price" placeholder="0.00 €" step=".01" value="<?php if(isset($_POST['price'])) echo htmlspecialchars($_POST['price']);?>"></td>
-        </tr>
-        
-        <tr>
-        <td><label for="imageName">Image Name* <br><span>(imageName.fileExtention)</span></label></td>
-        <td><input type="text" name="imageName"  id="imageName" placeholder="Image Name" value="<?php if(isset($_POST['imageName'])) echo htmlspecialchars($_POST['imageName']);?>" required></td>
-        </tr>
+                    <tr>
+                    <td>
+                    <p>
+                        Categories: </td>
+                        <div class="posibilities">
+                            <td>
+                                <input type="checkbox" id="IOS" name="category[]" value="IOS"> <label for="IOS">IOS</label>
+                                <input type="checkbox" id="Android" name="category[]" value="Android"> <label for="Android">Android</label>
+                                <input type="checkbox" id="Apple" name="category[]" value="Apple"> <label for="Apple">Apple</label>
+                                <input type="checkbox" id="Windows" name="category[]" value="Windows"> <label for="Windows">Windows</label>
+                                <input type="checkbox" id="Wearables" name="category[]" value="Wearables"> <label for="Wearables"> Wearables</label>
+                                <input type="checkbox" id="Audio" name="category[]" value="Audio">  <label for="Audio">Audio</label>
+                                <input type="checkbox" id="ChromeOS" name="category[]" value="Chrome OS">  <label for="ChromeOS">Chrome OS</label> 
+                            </td>
+                        </div>
+                    </p> 
+                                    
+                    
+                    </tr>
+                    
+                
+                    <tr>
+                    <td><label for="paidNews">Payed Article?*</label></td>  
+                    <td><input type="radio" value="0" id="free" name="paidNews" required checked>   
+                    <label for="free">Free</label> //
+                    <input type="radio" value="1" id="paid" name="paidNews" required>
+                    <label for="paid">Paid</label></td>
+                    </tr>
+                    
+                    <tr>
+                    <td><label for="price">Price</label></td>
+                    <td><input type="number" id="price" name="price" placeholder="0.00 €" step=".01" value="<?php if(isset($_POST['price'])) echo htmlspecialchars($_POST['price']);?>"></td>
+                    </tr>
+                    
+                    <tr>
+                    <td><label for="imageName">Image Name* <br><span>(imageName.fileExtention)</span></label></td>
+                    <td><input type="text" name="imageName"  id="imageName" placeholder="Image Name" value="<?php if(isset($_POST['imageName'])) echo htmlspecialchars($_POST['imageName']);?>" required></td>
+                    </tr>
 
-        <tr>
-        <td><label for="imageCopyright">Image Copyright*</label></td>
-        <td><input type="text" name="imageCopyright" id="imageCopyright" placeholder="image Copyright" value="<?php if(isset($_POST['imageCopyright'])) echo htmlspecialchars($_POST['imageCopyright']);?>" required></td>
-        </tr>
-                            
+                    <tr>
+                    <td><label for="imageCopyright">Image Copyright*</label></td>
+                    <td><input type="text" name="imageCopyright" id="imageCopyright" placeholder="image Copyright" value="<?php if(isset($_POST['imageCopyright'])) echo htmlspecialchars($_POST['imageCopyright']);?>" required></td>
+                    </tr>
+                                        
 
-        <tr>
-        <td colspan="2"><label for="submit">
-        <input type="submit" id="submit" name="submit" value="Save" class="submitForm">
-        </label></td>
-        </tr>
+                    <tr>
+                    <td colspan="2"><label for="submit">
+                    <input type="submit" id="submit" name="submit" value="Save" class="submitForm">
+                    </label></td>
+                    </tr>
 
-    </form>
-    </table>
-    </div>
-</body>
+                </form>
+            </table>
+        </div>
+    </body>
 </html>
 
 

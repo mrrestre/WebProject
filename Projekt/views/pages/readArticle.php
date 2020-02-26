@@ -8,6 +8,7 @@
 
     $isPaid = isAPaidArticle ($newsid, $database);
 
+    // Controller to check which user has access to which article
     if($isPaid == true){
         if($userid == -1){
             header("Location: index.php?page=login");
@@ -22,6 +23,7 @@
         
     }
 
+    // Like Increment in database
     if(isset($_GET['like']))
     {
         if(isset($_GET['newsid']) && isset($_SESSION['loggedIn']))
@@ -33,6 +35,8 @@
             echo 'You can only Like this Article if you are logged in ';
         }
     }
+
+    //Insert a Comment
     if(isset($_POST['submit']))
     {
         if(isset($_POST['comment'])
@@ -47,6 +51,7 @@
         }
     }
 ?>
+
 <html>
     <body>
         <?php 
@@ -109,7 +114,7 @@
                                 <form action="index.php?page=readArticle&newsid=<?=$id_article?>" method="POST">
                                     <textarea id="comment" name="comment" placeholder="Your Comment here" style="height:100px; width:100%"></textarea>
                                     <label for="submit">
-                                        <input type="submit" id="submit" name="submit" value="Save">
+                                        <input type="submit" id="submit" name="submit" value="Save" class="submitComment">
                                     </label>
                                 </form>
                             </div>

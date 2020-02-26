@@ -53,7 +53,7 @@
 	</head>
 
 	<body>
-		<div class="content_wrap">
+		<div class="content_wrap" id="content_wrap">
 		
 			<header>
 				<?php include_once "static/header.php"; ?>
@@ -93,6 +93,9 @@
 							break;
 						case 'buyArticle':
 							include(ROOT.'/views/pages/buyArticle.php');
+							break;
+						case 'documentation':
+							include(ROOT.'/docs/documentation.html');
 							break;
 						case 'admin':
 							// First case: Logged in and Admin?

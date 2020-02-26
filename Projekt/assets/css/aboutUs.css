@@ -1,0 +1,55 @@
+.all {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.all .whatwedo {
+    max-width: 80%;
+    text-align: center;
+    margin-bottom: 35px;
+    padding: 2% 0;
+    border: 1px solid #00a19c;
+}
+
+h2 {
+    text-align: center;
+    width: 80%;
+    padding: 2% 0;
+    border: 1px solid #00a19c;
+}
+
+.container {
+    padding: 0 3%;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+    display: flex;
+}
+
+.container p {
+    text-align: center;
+}
+
+.left,
+.right {
+    border: 1px solid #00a19c;
+    padding: 10px;
+    opacity: 0.6;
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.left:hover,
+.right:hover {
+    opacity: 1;
+    ;
+}
+
+.container img {
+    border-radius: 50%;
+}

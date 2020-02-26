@@ -191,7 +191,7 @@
         // Returns all users from Database
         function fetchUsers( $database )
     	{
-            $request = $database->prepare(" SELECT userId, concat(firstName, ' ', surname) as userName, DOB, country, phone, eMail 
+            $request = $database->prepare(" SELECT userId, concat(firstName, ' ', surname) as userName, DOB, country, phone, eMail, gender 
                                             FROM user ");
     		return $request->execute() ? $request->fetchAll() : false; 
         }

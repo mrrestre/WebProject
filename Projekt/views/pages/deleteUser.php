@@ -10,32 +10,33 @@ if(isset($_POST['submit']))
         $surname = $_POST['surname'];
         deleteUserFromDatabase($database, $email);
       
-        echo "the User: $firstName $surname is deleted";
+        echo "the User: $firstName $surname was deleted";
     }
     else{
-        echo ' all fields must be filled';
+        echo ' All fields must be filled';
     }
 }
-
-
-
 ?>
-<main>
-    <div class="containerDiv"></div>
-        <div class="innere"></div>
-            <form action="index.php?page=deleteUser" method="POST">
 
-                <label for="firstName">User's First Name*</label><br>
-                    <input type="text" id="firstName" name="firstName" placeholder="First Name" required><br>
-                <label for="surname">User's Surname*</label><br>
-                    <input type="text" id="surname" name="surname" placeholder="Surname" required><br>
-                <label for="email">User's E-Mail*</label><br>
-                    <input type="email" id="email" name="email" placeholder="E-Mail" required><br>
-                <!-- TODO in Java Script: bestätigung des Prozesses -->
-                <label for="submit">
-                    <input type="submit" class="deleteButton" id="submit" name="submit" value="Delete" onclick="validDeleteUserForm()">
-                </label>
-            </form>
-        </div>
-    </div>
-</main>
+<http>
+    <body>
+        <main>
+            <div class="containerDiv"></div>
+                <div class="innere"></div>
+                    <form action="index.php?page=deleteUser" method="POST">
+
+                        <label for="firstName">User's First Name*</label><br>
+                            <input type="text" id="firstName" name="firstName" placeholder="First Name" required><br>
+                        <label for="surname">User's Surname*</label><br>
+                            <input type="text" id="surname" name="surname" placeholder="Surname" required><br>
+                        <label for="email">User's E-Mail*</label><br>
+                            <input type="email" id="email" name="email" placeholder="E-Mail" required><br>
+                        <label for="submit">
+                            <input type="submit" class="deleteButton" id="submit" name="submit" value="Delete" onclick="validDeleteUserForm()">
+                        </label>
+                    </form>
+                </div>
+            </div>
+        </main>        
+    </body>
+</http>

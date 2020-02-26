@@ -6,7 +6,7 @@ function addArticleFormValidation() {
     var price = document.forms["addArticle"]["price"];
     var imageName = document.forms["addArticle"]["imageName"];
 
-    if (title.value.length > 35) {
+    if (title.value.length > 70) {
         window.alert("the Title should be shorter than 35 letters");
         title.focus({ preventScroll: true });
         title.style.border = "solid red"
