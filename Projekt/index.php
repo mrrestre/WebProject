@@ -94,9 +94,6 @@
 						case 'buyArticle':
 							include(ROOT.'/views/pages/buyArticle.php');
 							break;
-						case 'documentation':
-							include(ROOT.'/docs/documentation.html');
-							break;
 						case 'admin':
 							// First case: Logged in and Admin?
 							if($_SESSION['admin'] === true &&  $_SESSION['loggedIn'] === true)
