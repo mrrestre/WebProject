@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 26, 2020 at 07:50 PM
+-- Generation Time: Feb 27, 2020 at 11:45 AM
 -- Server version: 10.3.15-MariaDB
 -- PHP Version: 7.3.6
 
@@ -118,7 +118,8 @@ INSERT INTO `comment` (`commentId`, `content`, `newsId`, `userId`) VALUES
 (16, 'Not the best i\'ve seen', 14, 3),
 (17, 'No Laser? BOOOORING', 5, 3),
 (18, 'I would sell my liver for one of those ', 14, 5),
-(19, 'Im prefer products not made by Apple', 11, 5);
+(19, 'Im prefer products not made by Apple', 11, 5),
+(20, 'Never gonna give you up', 13, 13);
 
 -- --------------------------------------------------------
 
@@ -218,7 +219,8 @@ INSERT INTO `payment_method` (`paymentMethodId`, `userId`, `cardType`, `cardNumb
 (9, 2, 1, '265948152000', '554', 'Alejandro Restrepo Klinge'),
 (10, 6, 0, '20332569856', '', 'Sabrina Oberli'),
 (11, 6, 1, '2011023659', '555', 'Sabrina Oberli'),
-(12, 3, 0, '256595362258', '', 'James Pedro Bond');
+(12, 3, 0, '256595362258', '', 'James Pedro Bond'),
+(13, 13, 0, '2565592556', '', 'Rick Astley');
 
 -- --------------------------------------------------------
 
@@ -246,7 +248,9 @@ INSERT INTO `purchased_article` (`newsId`, `userId`) VALUES
 (8, 6),
 (6, 6),
 (13, 3),
-(8, 3);
+(8, 3),
+(13, 13),
+(13, 2);
 
 -- --------------------------------------------------------
 
@@ -277,8 +281,9 @@ INSERT INTO `user` (`userId`, `firstName`, `surname`, `password`, `gender`, `DOB
 (3, 'James', 'Bond', '$2y$10$8qNMDCHQMvLvP1M8m6a7g.udiz8Woadp.4WfRb2d.w6OrANg8GMji', 'm', '1950-07-30', 'UK', '01778877', 'james@gmail.com', NULL),
 (4, 'Maria', 'Mustermann', '$2y$10$Mxha/vVdoHfCnC.nNWVfpeZuKPJvWQbo/WUGgOQNYR9LNaI2fiwRC', 'f', '2002-02-02', 'DE', '2036598', 'maria@gmail.com', NULL),
 (5, 'Sara', 'Musterfrau', '$2y$10$AchTLb1s7ZNPr9f5zo1DTebjVIW0OqJmNQYoNDt82mKwByTd6fgsq', 'f', '1999-02-02', 'NF', '01778811', 'sara@gmail.com', NULL),
-(6, 'Sabrina', 'Oberli', '$2y$10$ayLfW/.EYyWBybydRpUDYut6yLMSAcl5TTwDrRyREBgxArp5ckKwS', 'f', '1950-11-20', 'VE', '202365986', 'sabrina@gmail.com', NULL),
-(8, 'John', 'Meyer', '$2y$10$nx5DZ52P/bhBGgWdXHXZzOOl96oRGq6hd3Fdlw9JLuAbFH5lOqgE6', 'm', '1920-02-02', 'BS', '956781235', 'john@gmail.com', NULL);
+(6, 'Sabrina', 'Oberli', '$2y$10$SYkCPXpoDskzKdcgVIuy2ORqaOR4L8r7vG5ZIQIYWqN2Qsd7YnCtK', 'f', '1950-11-20', 'VE', '202365986', 'sabrina@gmail.com', NULL),
+(8, 'John', 'Meyer', '$2y$10$nx5DZ52P/bhBGgWdXHXZzOOl96oRGq6hd3Fdlw9JLuAbFH5lOqgE6', 'm', '1920-02-02', 'BS', '956781235', 'john@gmail.com', NULL),
+(13, 'Rick ', 'Astley', '$2y$10$gZaphSJeiLmePhn8MEA1m.EALjfuRx3nhmUaKHek2LdF9LkLUF4ZC', 'm', '1962-07-25', 'US', '596826489', 'giveyouup@gmail.com', NULL);
 
 --
 -- Indexes for dumped tables
@@ -353,7 +358,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `commentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `commentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `image`
@@ -371,13 +376,13 @@ ALTER TABLE `news`
 -- AUTO_INCREMENT for table `payment_method`
 --
 ALTER TABLE `payment_method`
-  MODIFY `paymentMethodId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `paymentMethodId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables

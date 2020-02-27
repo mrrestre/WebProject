@@ -242,48 +242,89 @@
                         </ul>
                         <p>Allgemein GWP</p>
                         <ul>
-                            <li>Passende, abwechslungsreiche Gestaltung</li>
-                            <li>Interaktivit&auml;t schaffen mit CSS/JavasCript</li>
-                            es wurde versucht, einfaches und klares Design zu erstellen
-                            <li>Quelltext Optimierung durch Metas, Alt, Title, Noscript</li>
-                            alt Attribut wurde bei allen Bilder als Quelle eingesetzt
-                            <li>Sinvolle Verwendung von HTML5</li>
-                            nav, header und footer wurden in der Implementierung benutzt
-                            <li>Einbindung von Bilder</li>
-                            die Einbindung von Bildern geht dynamisch durch php, der Admin soll die Name des Bildes mit
-                            <br> die Nameendung beim Artikelhinzuf&uuml;gen geben und das Bild in Projekt/assets/images/ speichern
-                            <li>Responsive Webdesign</li>
-                            f&uuml;r die Ausl&ouml;sung der Laptops und Handys
+                            <li><s>Passende, abwechslungsreiche Gestaltung</s></li>
+                            <li><s>Interaktivit&auml;t schaffen mit CSS/JavasCript</s></li>
+                            <ul>
+                                <li>Es wurde versucht, einfaches und klares Design zu erstellen</li>
+                            </ul>
+                            <li><s>Quelltext Optimierung durch Metas, Alt, Title, Noscript</s></li>
+                            <ul>
+                                <li>alt Attribut wurde bei allen Bilder als Quelle eingesetzt</li>
+                            </ul>
+                            <li><s>Sinvolle Verwendung von HTML5</s></li>
+                            <ul>
+                                <li>Nav, header und footer wurden in der Implementierung benutzt</li>
+                            </ul>
+                            <li><s>Einbindung von Bilder</s></li>
+                            <ul>
+                                <li>Die Einbindung von Bildern geht dynamisch durch php, der Admin soll die Name des Bildes
+                                    <br> die Nameendung beim Artikelhinzuf&uuml;gen geben und das Bild in Projekt/assets/images/ speichern
+                                </li>
+                            </ul>
+                            <li><s>Responsive Webdesign</s></li>
+                            <ul>
+                                <li>Optimiert f&uuml;r Bildschrirme kleiner und gr&ouml;ser als 720px</li>
+                                <li>F&uuml;r die Ausl&ouml;sung der Laptops und Handys</li>
+                            </ul>
+
                         </ul>
                         <p>Allgemein DWP</p>
                         <ul>
-                            <li>Formulare werden mittels PHP/JS behandelt und Fehler angezeigt</li>
-                            alle Formulare werden clientseitig mittels javascript und html required Attribut gepr&uuml;ft,
-                            <br>dann werden sie zum server gesendet und da werden sie nochmal mittels php gecheckt.
-                            <br> HTMLspecialchars wurde auch verwendet und bei der Eingabefehler wurden die Daten des Nutzers
-                            <br> behalten
-                            <li>Nutzeranmeldung</li>
-                            gilt durch E-mail und Password
-                            <li>Nutzerregistrierung</li>
-                            bei der Registrierung des Nutzers wird geprüft, ob die eingegebene E-Mail Adresse schon in der Datenbank
-                            <br>vorhanden ist, wenn ja wird der Nutzer eine Mitteilung bekommen, dass er bereits bei uns registriert ist
-
-                            <li>Funktionsbereitstellung mit / ohne JS</li>
-                            die Seitefunktionalität arbeitet komplett ohne Javascript.
-                            <br> noscript Tag wurde auch benutzt
-                            <li>Absenden von Formulare mit AJAX</li>
-                            wurde Implementiert aber leider hat nicht funktioniert (das Code ist noch zusehen)
-                            <li>Seiten werden dynamisch ausgebaut (Datenbank)</li>
-                            Home, topTen, read Article, buy Article und profile werden alle aus der Datenbank gebaut
-                            <li><s>Nachlade Funktion mit JS</s></li>
-                            <li>Seite Nicht gefunden (404)</li>
-                            bei einem falschen Seitename, wird 404 aufgerufen und von dort wurde ein Link zu Home gebaut
-                            <li>Datenbank angebunden</li>
-                            mittels PDO
-                            <li>Daten werden von Datenbank gelesen</li>
-                            bei der Ausgabe von Artikeln...
-                            <li>Daten werden in Datenbank geschrieben</li>
-                            bei der Eingabe von den Formularen
+                            <li><s>Formulare werden mittels PHP/JS behandelt und Fehler angezeigt</s></li>
+                            <ul>
+                                <li>Alle Formulare werden clientseitig mittels JavaScript und HTML required Attribut gepr&uuml;ft,
+                                    <br>dann werden sie zum server gesendet und da werden sie nochmal mittels PHP gecheckt.
+                                    <br> HTMLspecialchars wurde auch verwendet und bei der Eingabefehler wurden die Daten des Nutzers
+                                    <br> behalten bei Fehler</li>
+                            </ul>
+                            <li><s>Nutzeranmeldung</s></li>
+                            <ul>
+                                <li>Gilt durch E-mail (Wenn nicht bereit registriert in der Datenbank) und Password (RegEx)</li>
+                            </ul>
+                            <li><s>Nutzerregistrierung</s></li>
+                            <ul>
+                                <li>Bei der Registrierung des Nutzers wird es gepr&uuml;ft, ob die eingegebene E-Mail Adresse schon in der Datenbank
+                                    <br>vorhanden ist, wenn ja wird der Nutzer eine Mitteilung bekommen, dass er bereits bei uns registriert ist</li>
+                            </ul>
+                            <li><s>Funktionsbereitstellung mit/ohne JS</s></li>
+                            <ul>
+                                <li>Die Seitefunktionalit&auml;t arbeitet komplett ohne Javascript.
+                                    <br> noscript Tag wurde auch benutzt</li>
+                            </ul>
+                            <li><s>Absenden von Formulare mit AJAX</s></li>
+                            <ul>
+                                <li>Wurde Implementiert aber leider hat nicht funktioniert (das Code ist noch zusehen) <br> Siehe contact.php/contact.js und registration.php/registration.js</li>
+                            </ul>
+                            <li><s>Seiten werden dynamisch ausgebaut (Datenbank)</s></li>
+                            <ul>
+                                <li>Home, topTen, readArticle, buy Article und profile werden alle aus der Datenbank gebaut</li>
+                            </ul>
+                            <li>Nachlade Funktion mit JS</li>
+                            <ul>
+                                <li>Wir wollten in HomePage die anzahl von Artikel auf 4 reduzieren. Wenn der nutzer gescrollt
+                                    <br> hat, sollten mehrere Artikel von dem Datenbank herausgeholt. Leider hat diese Funktion
+                                    <br> bei uns nicht funktioniert. Alles was wir in Netzt gefunden haben, brauchte JQuery.
+                                    <br> Hier was uns gefehlt hat, war eigentlich Zeit.
+                                </li>
+                            </ul>
+                            <li><s>Seite Nicht gefunden (404)</s></li>
+                            <ul>
+                                <li>Bei einem falschen Seitename, wird 404 aufgerufen und von dort wurde ein Link zu Home gebaut
+                                    <br> Hinweis: Es lohnt sich, die sich anzugucken
+                                </li>
+                            </ul>
+                            <li><s>Datenbank angebunden</s></li>
+                            <ul>
+                                <li>Mittels PDO und bereitgestellte Funktionen in 20_function.php</li>
+                            </ul>
+                            <li><s>Daten werden von Datenbank gelesen</s></li>
+                            <ul>
+                                <li>Wird &uuml;berall gemacht. Beispiel daf&uuml;r ist die Ausgabe von Artikeln im HomePage</li>
+                            </ul>
+                            <li><s>Daten werden in Datenbank geschrieben</s></li>
+                            <ul>
+                                <li>Passiert in mehrere Orten. Beispiel daf&uuml;r ist die Eingabe bei Registrierung</li>
+                            </ul>
                         </ul>
 
             </div>
@@ -344,7 +385,7 @@
             </div>
             <div id="erModell">
                 <h4>ER-Modell</h4>
-                <img src="./Screenshots/ERModell.png" alt="erModell">
+                <img src="./Screenshots/ERModell.png" alt="erModell" style="width: 80%;">
                 <hr>
             </div>
             <div id="relationales">
@@ -390,24 +431,33 @@
                 <h4>Besonderheiten</h4>
                 <ul>
                     <li>
-                        Random Seite: es wird jedes Mal, wenn die Seite neugeladen ist, ein neuer Artikel gezeigt.
+                        Random Seite: es wird jedes Mal, wenn auf Random im Nav geklickt ist, ein neuer Artikel gezeigt.
                         <br> durch eine Funktion wird die Vorhandene Artikel in Datenbank gelesen und einer gezeigt
                     </li>
                     <li>
-                        Top Ten Artikel: es wird nach der Likesanzahl oder Nach der Kommentareanzahl die Artikel gefiltert
-                        <br> und 10 Artikel gezeigt
+                        Top Ten Artikel: es wird nach der Likesanzahl oder nach der Kommentareanzahl die Artikel gefiltert
+                        <br> und die Top 10 Artikel angezeigt
                     </li>
                     <li>
                         Search Bar: es k&ouml;nnte nach einem Wort im Inhalt der Artikel, des Teasers, des Titels oder
                         <br> des Vornames der Admin gesucht werden
                     </li>
                     <li>
-                        Likes und Kommentare: der angemeldete Nutzer kann einen Artikel liken oder Kommentieren und wird der Kommentar sofort
-                        <br> unter dem Artikel mit dem Name des Nutzers gezeigt oder/ und die Anzahl der Likes erh&ouml;ht
+                        Likes und Kommentare: der angemeldete Nutzer kann einen Artikel liken oder kommentieren. Der Kommentar wird sofort
+                        <br> unter dem Artikel mit dem Name des Nutzers gezeigt oder/und die Anzahl der Likes erh&ouml;ht
                     </li>
                     <li>
-                        gepr&uuml;fte E-Mail: ein Nutzer, der sich schon in der Seite registriert hat, kann er sich nicht nochmal mit
+                        Gepr&uuml;fte E-Mail: ein Nutzer, der sich schon in der Seite registriert hat, kann er sich nicht nochmal mit
                         <br> der selbe E-mail Adresse registrieren und wird er dar&uuml;ber informiert
+                    </li>
+                    <li>
+                        In index.php gibt es eine Feature, die automatisch der richtige JS und CSS Seite für die gewünschte Seite ladet.
+                    </li>
+                    <li>
+                        Manipulation von URI wurde behandelt, sodass nur die Seite dem Nutzer gezeigt werden, die er zugreiffen darf.
+                    </li>
+                    <li>
+                        Im Profile Seite wird der Avatar-Profilbild nach der Geschlecht der Nutzer dynamisch angepasst
                     </li>
                 </ul>
                 <hr>
